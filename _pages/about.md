@@ -6,7 +6,7 @@ subtitle: <a href='https://www.ucl.ac.uk/biosciences/'>Division of Biosciences</
 
 profile:
   align: right
-  image: abhilesh_pic.jpg
+  image: abhilesh_pic.png
   image_circular: false # crops the image to make it circular
   address: >
     <p>555 your office number</p>
