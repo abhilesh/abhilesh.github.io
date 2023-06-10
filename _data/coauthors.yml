@@ -1,34 +1,40 @@
-"Adams":
-  - firstname: ["Edwin", "E.", "E. P.", "Edwin Plimpton"]
-    url: https://en.wikipedia.org/wiki/Edwin_Plimpton_Adams
+"Camus":
 
-"Podolsky":
-  - firstname: ["Boris", "B.", "B. Y.", "Boris Yakovlevich"]
-    url: https://en.wikipedia.org/wiki/Boris_Podolsky
+  - firstname: ["Flo", "Florencia", "Florencia M", "M. Florencia"]
+    url: https://www.ucl.ac.uk/biosciences/people/dr-florencia-camus
 
-"Rosen":
-  - firstname: ["Nathan", "N."]
-    url: https://en.wikipedia.org/wiki/Nathan_Rosen
+"Montooth":
+  - firstname: ["Kristi L", "Kristi"]
+    url: https://biosci.unl.edu/kristi-montooth
 
-"Bach": 
-  - firstname: ["Johann Sebastian", "J. S."]
-    url: https://en.wikipedia.org/wiki/Johann_Sebastian_Bach
+"Meiklejohn":
+  - firstname: ["Colin D", "Colin"]
+    url: https://biosci.unl.edu/colin-meiklejohn
 
-  - firstname: ["Carl Philipp Emanuel", "C. P. E."]
-    url: https://en.wikipedia.org/wiki/Carl_Philipp_Emanuel_Bach
+"Roy":
+  - firstname: ["Ankit", "Ankit A"]
+    url: https://scholar.google.com/citations?user=e8lZuhcAAAAJ&hl=fr
 
-"Przibram":
-  - firstname: ["Karl"]
-    url: https://link.springer.com/article/10.1007/s00016-019-00242-z
+"Madhusudhan":
+  - firstname: ["Mallur S", "Mallur S.", "M S"]
+    url: https://www.iiserpune.ac.in/research/department/biology/people/faculty/regular-faculty/m-s-madhusudhan/290
 
-"Schrödinger":
-  - firstname: ["Erwin"]
-    url: https://en.wikipedia.org/wiki/Erwin_Schr%C3%B6dinger
+"Sharma":
+  - firstname: ["Parichit"]
+    url: https://parichitsharma.com/
 
-"Lorentz":
-  - firstname: ["Hendrik Antoon"]
-    url: https://en.wikipedia.org/wiki/Hendrik_Lorentz
+"Nelson":
+  - firstname: ["Thomas C"]
+    url: https://www.thomnelson.com/
 
-"Planck":
-  - firstname: ["Max"]
-    url: https://en.wikipedia.org/wiki/Max_Planck
+"Jones":
+  - firstname: ["Matthew R"]
+    url: https://scholar.google.com/citations?user=XtTUlvIAAAAJ&hl=en
+
+"Velotta":
+  - firstname: ["Jonathan P"]
+    url: https://science.du.edu/about/faculty-directory/jonathan-velotta
+
+"Schweizer":
+  - firstname: ["Rena M"]
+    url: https://renaschweizer.org/
