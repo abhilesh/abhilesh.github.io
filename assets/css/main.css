@@ -601,15 +601,17 @@ footer.sticky-bottom {
   font-weight: bolder;
 }
 .publications ol.bibliography li .author a {
-  border-bottom: 1px dashed var(--global-theme-color);
+  border-bottom: 1px dashed var(--global-text-color-light);
+  color: var(--global-text-color-light);
 }
 .publications ol.bibliography li .author a:hover {
   border-bottom-style: solid;
   text-decoration: none;
 }
 .publications ol.bibliography li .author > em {
-  border-bottom: 1px solid;
   font-style: normal;
+  font-weight: bold;
+  color: var(--global-theme-color);
 }
 .publications ol.bibliography li .author > span.more-authors {
   color: var(--global-text-color-light);
