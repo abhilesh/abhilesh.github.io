@@ -451,5 +451,5 @@ jekyll_get_json:
   - data: resume
     json: assets/json/resume.json
   
-  jsonresume:
-    - basics
+jsonresume:
+  - basics
