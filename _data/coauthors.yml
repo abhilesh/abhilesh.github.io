@@ -1,40 +1,39 @@
-"Camus":
-
+"camus":
   - firstname: ["Flo", "Florencia", "Florencia M", "M. Florencia"]
     url: https://www.ucl.ac.uk/biosciences/people/dr-florencia-camus
 
-"Montooth":
+"montooth":
   - firstname: ["Kristi L", "Kristi"]
     url: https://biosci.unl.edu/kristi-montooth
 
-"Meiklejohn":
+"meiklejohn":
   - firstname: ["Colin D", "Colin"]
     url: https://biosci.unl.edu/colin-meiklejohn
 
-"Roy":
+"roy":
   - firstname: ["Ankit", "Ankit A"]
     url: https://scholar.google.com/citations?user=e8lZuhcAAAAJ&hl=fr
 
-"Madhusudhan":
+"madhusudhan":
   - firstname: ["Mallur S", "Mallur S.", "M S"]
     url: https://www.iiserpune.ac.in/research/department/biology/people/faculty/regular-faculty/m-s-madhusudhan/290
 
-"Sharma":
+"sharma":
   - firstname: ["Parichit"]
     url: https://parichitsharma.com/
 
-"Nelson":
+"nelson":
   - firstname: ["Thomas C"]
     url: https://www.thomnelson.com/
 
-"Jones":
+"jones":
   - firstname: ["Matthew R"]
     url: https://scholar.google.com/citations?user=XtTUlvIAAAAJ&hl=en
 
-"Velotta":
+"velotta":
   - firstname: ["Jonathan P"]
     url: https://science.du.edu/about/faculty-directory/jonathan-velotta
 
-"Schweizer":
+"schweizer":
   - firstname: ["Rena M"]
     url: https://renaschweizer.org/
