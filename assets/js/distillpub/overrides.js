@@ -1,9 +1,8 @@
-$(document).ready(function() {
-    // Override styles of the footnotes.
-    document.querySelectorAll("d-footnote").forEach(function(footnote) {
-        footnote.shadowRoot.querySelector("sup > span")
-            .setAttribute("style", "color: var(--global-theme-color);");
-        footnote.shadowRoot.querySelector("d-hover-box").shadowRoot.querySelector("style").sheet
+$(document).ready(function () {
+  // Override styles of the footnotes.
+  document.querySelectorAll("d-footnote").forEach(function (footnote) {
+    footnote.shadowRoot.querySelector("sup > span").setAttribute("style", "color: var(--global-theme-color);");
+    footnote.shadowRoot.querySelector("d-hover-box").shadowRoot.querySelector("style").sheet
             .insertRule(".panel {background-color: var(--global-bg-color) !important;}");
         footnote.shadowRoot.querySelector("d-hover-box").shadowRoot.querySelector("style").sheet
             .insertRule(".panel {border-color: var(--global-divider-color) !important;}");

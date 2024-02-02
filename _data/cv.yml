@@ -16,6 +16,13 @@
       institution: Indian Institute of Science Education and Research, Pune
       year: 2015
 
+#- title: test map
+#  type: map
+#  contents:
+#    - name: Full Name
+#      value: Abhilesh Sunil Dhawanjewar
+#    - name: Languages
+#      value: English, Marathi, Hindi
 # - title: Experience
 #   type: time_table
 #   contents:
