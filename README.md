@@ -1,4 +1,6 @@
+## Personal Website
 
+Source code for my personal website based on the brilliant Jekyll theme [al-folio](https://github.com/alshedivat/al-folio/)
 
 ## License
 
