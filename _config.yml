@@ -4,7 +4,7 @@
 
 title: blank # the website title (if blank, full name will be used instead)
 first_name: Abhilesh
-middle_name: 
+middle_name:
 last_name: Dhawanjewar
 email: a.dhawanjewar@ucl.ac.uk
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
@@ -12,31 +12,30 @@ description: > # the ">" symbol means to ignore newlines until "footer_text:"
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
-keywords: jekyll, jekyll-theme, academic-website, portfolio-website  # add your own keywords or leave empty
-
+keywords: jekyll, jekyll-theme, academic-website, portfolio-website # add your own keywords or leave empty
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
-icon: favicon-32x32.png  # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
+icon: favicon-32x32.png # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
 url: https://abhilesh.github.io # the base hostname & protocol for your site
 baseurl: # the subpath of your site, e.g. /blog/
 last_updated: false # set to true if you want to display last updated in the footer
-impressum_path:  # set to path to include impressum link in the footer, use the same path as permalink in a page, helps to conform with EU GDPR
+impressum_path: # set to path to include impressum link in the footer, use the same path as permalink in a page, helps to conform with EU GDPR
 
 # -----------------------------------------------------------------------------
 # Theme
 # -----------------------------------------------------------------------------
 
 # code highlighter theme
-highlight_theme_light: github   # https://github.com/jwarby/jekyll-pygments-themes
-highlight_theme_dark: native    # https://github.com/jwarby/jekyll-pygments-themes
+highlight_theme_light: github # https://github.com/jwarby/jekyll-pygments-themes
+highlight_theme_dark: native # https://github.com/jwarby/jekyll-pygments-themes
 
 # repo color theme
-repo_theme_light: default       # https://github.com/anuraghazra/github-readme-stats/blob/master/themes/README.md
-repo_theme_dark: dark           # https://github.com/anuraghazra/github-readme-stats/blob/master/themes/README.md
+repo_theme_light: default # https://github.com/anuraghazra/github-readme-stats/blob/master/themes/README.md
+repo_theme_dark: dark # https://github.com/anuraghazra/github-readme-stats/blob/master/themes/README.md
 repo_trophies:
   enabled: true
-  theme_light: flat    # https://github.com/ryo-ma/github-profile-trophy
-  theme_dark: gitdimmed  # https://github.com/ryo-ma/github-profile-trophy
+  theme_light: flat # https://github.com/ryo-ma/github-profile-trophy
+  theme_dark: gitdimmed # https://github.com/ryo-ma/github-profile-trophy
 
 # -----------------------------------------------------------------------------
 # RSS Feed
@@ -111,11 +110,11 @@ contact_note: >
 # Analytics and search engine verification
 # -----------------------------------------------------------------------------
 
-google_analytics:  # your Google Analytics measurement ID (format: G-XXXXXXXXXX)
-panelbear_analytics:  # panelbear analytics site ID (format: XXXXXXXXX)
+google_analytics: # your Google Analytics measurement ID (format: G-XXXXXXXXXX)
+panelbear_analytics: # panelbear analytics site ID (format: XXXXXXXXX)
 
-google_site_verification:  # your google-site-verification ID (Google Search Console)
-bing_site_verification:  # out your bing-site-verification ID (Bing Webmaster)
+google_site_verification: # your google-site-verification ID (Google Search Console)
+bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 
 # -----------------------------------------------------------------------------
 # Blog
@@ -138,15 +137,15 @@ related_blog_posts:
 # Follow instructions on https://giscus.app/ to setup for your repo to fill out
 # the information below.
 giscus:
-  repo:       # <your-github-user-name>/<your-github-repo-name>
+  repo: # <your-github-user-name>/<your-github-repo-name>
   repo_id:
-  category: Comments             # name of the category under which discussions will be created
-  category_id: 
-  mapping: title                 # identify discussions by post title
-  strict: 1                      # use strict identification mode
-  reactions_enabled: 1           # enable (1) or disable (0) emoji reactions
-  input_position: bottom         # whether to display input form below (bottom) or above (top) the comments
-  theme: preferred_color_scheme  # name of the color scheme (preferred works well with al-folio light/dark mode)
+  category: Comments # name of the category under which discussions will be created
+  category_id:
+  mapping: title # identify discussions by post title
+  strict: 1 # use strict identification mode
+  reactions_enabled: 1 # enable (1) or disable (0) emoji reactions
+  input_position: bottom # whether to display input form below (bottom) or above (top) the comments
+  theme: preferred_color_scheme # name of the color scheme (preferred works well with al-folio light/dark mode)
   emit_metadata: 0
   lang: en
 
@@ -325,7 +324,6 @@ more_authors_animation_delay: 10 # more authors are revealed on click using anim
 # Enables publication thumbnails. If disabled, none of the publications will display thumbnails, even if specified in the bib entry.
 enable_publication_thumbnails: true
 
-
 # -----------------------------------------------------------------------------
 # Jekyll Link Attributes
 # -----------------------------------------------------------------------------
@@ -368,37 +366,37 @@ imagemagick:
 # See https://github.com/sverrirs/jekyll-webp for more information
 #webp:
 #  enabled: false
-  
-  # The quality of the webp conversion 0 to 100 (where 100 is least lossy)
+
+# The quality of the webp conversion 0 to 100 (where 100 is least lossy)
 #  quality: 75
 
-  # List of directories containing images to optimize, nested directories will only be checked if `nested` is true
-  # By default the generator will search for a folder called `/img` under the site root and process all jpg, png and tiff image files found there.
+# List of directories containing images to optimize, nested directories will only be checked if `nested` is true
+# By default the generator will search for a folder called `/img` under the site root and process all jpg, png and tiff image files found there.
 #  img_dir: ["assets/img/"]
 
-  # Whether to search in nested directories or not
+# Whether to search in nested directories or not
 #  nested: false
 
-  # add ".gif" to the format list to generate webp for animated gifs as well
+# add ".gif" to the format list to generate webp for animated gifs as well
 #  formats: [".jpeg", ".jpg", ".png", ".tiff"]
 
-  # File extensions for animated gif files 
+# File extensions for animated gif files
 #  gifs: [".gif"]
 
-  # Set to true to always regenerate existing webp files
+# Set to true to always regenerate existing webp files
 #  regenerate: false
 
-  # Local path to the WebP utilities to use (relative or absolute)
-  # Omit or leave as nil to use the utilities shipped with the gem, override only to use your local install
-  # Eg : "/usr/local/bin/cwebp"
+# Local path to the WebP utilities to use (relative or absolute)
+# Omit or leave as nil to use the utilities shipped with the gem, override only to use your local install
+# Eg : "/usr/local/bin/cwebp"
 #  webp_path: nil
 
-  # List of files or directories to exclude
-  # e.g. custom or hand generated webp conversion files
+# List of files or directories to exclude
+# e.g. custom or hand generated webp conversion files
 #  exclude: []
 
-  # append '.webp' to filename after original extension rather than replacing it.
-  # Default transforms `image.png` to `image.webp`, while changing to true transforms `image.png` to `image.png.webp`
+# append '.webp' to filename after original extension rather than replacing it.
+# Default transforms `image.png` to `image.webp`, while changing to true transforms `image.png` to `image.png.webp`
 #  append_ext: false
 
 # -----------------------------------------------------------------------------
@@ -406,29 +404,31 @@ imagemagick:
 # -----------------------------------------------------------------------------
 
 #jekyll-diagrams:
-    # configuration, see https://github.com/zhustec/jekyll-diagrams.
-    # feel free to comment out this section if not using jekyll diagrams.
-
+# configuration, see https://github.com/zhustec/jekyll-diagrams.
+# feel free to comment out this section if not using jekyll diagrams.
 
 # -----------------------------------------------------------------------------
 # Optional Features
 # -----------------------------------------------------------------------------
 
 enable_google_analytics: false # enables google analytics
-enable_panelbear_analytics: false  # enables panelbear analytics
-enable_google_verification: false  # enables google site verification
-enable_bing_verification:   false  # enables bing site verification
-enable_masonry:             true   # enables automatic project cards arrangement
-enable_math:                true   # enables math typesetting (uses MathJax)
-enable_tooltips:            false  # enables automatic tooltip links generated
-                                   # for each section titles on pages and posts
-enable_darkmode:            true   # enables switching between light/dark modes
-enable_navbar_social:       true   # enables displaying social links in the
-                                   # navbar on the about page
-enable_project_categories:  true   # enables categorization of projects into
-                                   # multiple categories
-enable_medium_zoom:         true   # enables image zoom feature (as on medium.com)
-enable_progressbar:         true   # enables a horizontal progress bar linked to the vertical scroll position
+enable_panelbear_analytics: false # enables panelbear analytics
+enable_google_verification: false # enables google site verification
+enable_bing_verification: false # enables bing site verification
+enable_masonry: true # enables automatic project cards arrangement
+enable_math: true # enables math typesetting (uses MathJax)
+enable_tooltips:
+  false # enables automatic tooltip links generated
+  # for each section titles on pages and posts
+enable_darkmode: true # enables switching between light/dark modes
+enable_navbar_social:
+  true # enables displaying social links in the
+  # navbar on the about page
+enable_project_categories:
+  true # enables categorization of projects into
+  # multiple categories
+enable_medium_zoom: true # enables image zoom feature (as on medium.com)
+enable_progressbar: true # enables a horizontal progress bar linked to the vertical scroll position
 
 # -----------------------------------------------------------------------------
 # Library versions
@@ -438,31 +438,31 @@ enable_progressbar:         true   # enables a horizontal progress bar linked to
 #  version: "1.9.1"
 #  integrity: "sha256-i1+4qU2G2860dGGIOJscdC30s9beBXjFfzjWLjBRsBg="
 #bootstrap:
-  #version: "4.6.1"
-  #integrity:
-  #  css: "sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY="
- #   js: "sha256-fgLAgv7fyCGopR/gBNq2iW3ZKIdqIcyshnUULC4vex8="
+#version: "4.6.1"
+#integrity:
+#  css: "sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY="
+#   js: "sha256-fgLAgv7fyCGopR/gBNq2iW3ZKIdqIcyshnUULC4vex8="
 #bootstrap-table:
- # version: "1.21.4"
+# version: "1.21.4"
 #fontawesome:
-  #version: "5.15.4"
- # integrity: "sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4="
+#version: "5.15.4"
+# integrity: "sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4="
 #jquery:
-  #version: "3.6.0"
- # integrity: "sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+#version: "3.6.0"
+# integrity: "sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 #mathjax:
- # version: "3.2.0"
+# version: "3.2.0"
 #masonry:
-  #version: "4.2.2"
- # integrity: "sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI="
+#version: "4.2.2"
+# integrity: "sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI="
 #mdb:
-  #version: "4.20.0"
-  #integrity:
-  #  css: "sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw="
- #   js: "sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA="
+#version: "4.20.0"
+#integrity:
+#  css: "sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw="
+#   js: "sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA="
 #medium_zoom:
-  #version: "1.0.8"
-  #integrity: "sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8="
+#version: "1.0.8"
+#integrity: "sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8="
 
 bootstrap-table:
   version: "1.22.1"
@@ -534,11 +534,10 @@ vega-lite:
 # Get external JSON data
 # -----------------------------------------------------------------------------
 
-
 jekyll_get_json:
   - data: resume
     json: assets/json/resume.json # it can also be an url
-  
+
 jsonresume:
   - basics
   - education
