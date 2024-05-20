@@ -1,6 +1,24 @@
 ---
 layout: default
 ---
+<style>
+  .content {
+    overflow: auto;
+  }
+  .profile {
+    margin-bottom: 0;
+  }
+
+  @media screen and (max-width: 575.98px) {
+    .content {
+      overflow: visible;
+    }
+    .profile {
+      margin-bottom: 20px; /* Adjust this value as needed */
+    }
+  }
+</style>
+
 <div class="post">
   <header class="post-header">
     <h1 class="post-title">
@@ -23,11 +41,9 @@ layout: default
           {% if page.profile.image_circular %}
             {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
           {% else %}
-            {% assign profile_image_class = 'img-fluid z-depth-1
-      rounded' %}
+            {% assign profile_image_class = 'img-fluid z-depth-1 rounded' %}
           {% endif %}
-          {% capture sizes %}(min-width: {{site.max_width}}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px)
-      30vw, 95vw"{% endcapture %}
+          {% capture sizes %}(min-width: {{site.max_width}}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px) 30vw, 95vw{% endcapture %}
           {%
             include figure.liquid path = profile_image_path class = profile_image_class sizes = sizes alt = page.profile.image
             cache_bust = true
@@ -39,7 +55,9 @@ layout: default
       </div>
     {% endif %}
 
-    <div class="clearfix">{{ content }}</div>
+    <div class="content">
+      <div class="text-content">{{ content }}</div>
+    </div>
 
     <!-- News -->
     {% if page.news and site.announcements.enabled %}

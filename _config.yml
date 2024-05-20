@@ -113,7 +113,7 @@ contact_note: >
 google_analytics: G-M1BWYLLR80 # your Google Analytics measurement ID (format: G-XXXXXXXXXX)
 panelbear_analytics: # panelbear analytics site ID (format: XXXXXXXXX)
 
-google_site_verification: google06760d29a6ead281.html # your google-site-verification ID (Google Search Console)
+google_site_verification: _lH3zRueYRvwRbtYVH56oH7lgUs5HnrIL1SN0LAtKyY # your google-site-verification ID (Google Search Console)
 bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 
 # -----------------------------------------------------------------------------
@@ -124,6 +124,7 @@ blog_name: Beyond the Lab Coat # blog_name will be displayed in your blog page
 blog_nav_title: Blog # your blog must have a title for it to be displayed in the nav bar
 blog_description: Random musings on science, technology, and life. # description of your blog
 permalink: /blog/:year/:title/
+lsi: true
 
 # Pagination
 pagination:
