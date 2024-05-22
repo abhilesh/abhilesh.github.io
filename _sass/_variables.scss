@@ -4,7 +4,8 @@
  ******************************************************************************/
 
 // Colors
-$red-color: #ff3636 !default;
+//$red-color: #ff3636 !default;
+$red-color: #d45453 !default; // Radix red
 // $red-color-dark: #b71c1c !default;
 $red-color-dark: #d45453 !default; // Radix red
 $orange-color: #f29105 !default;
@@ -38,3 +39,14 @@ $code-bg-color-dark: #2c3237 !default;
 
 // Font awesome location
 $fa-font-path: "../webfonts";
+
+// Tabler icons location
+$ti-font-path: "../fonts";
+
+// Back To Top button config
+$back-to-top-z-index: 10;
+$back-to-top-bottom: 30px;
+$back-to-top-right: 30px;
+$back-to-top-diameter: 40px;
+$back-to-top-height: $back-to-top-diameter;
+$back-to-top-width: $back-to-top-diameter;

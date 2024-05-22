@@ -209,6 +209,13 @@ blockquote {
       }
     }
   }
+
+  // Abhilesh was here
+  // Prevent content overflow on about.md
+
+  .clearfix {
+    overflow: auto;
+  }
 }
 
 .post-description {
@@ -426,6 +433,7 @@ footer.fixed-bottom {
     color: var(--global-footer-text-color);
     padding-top: 9px;
     padding-bottom: 8px;
+    text-align: center;
   }
 
   a {
@@ -443,6 +451,10 @@ footer.sticky-bottom {
   padding-top: 40px;
   padding-bottom: 40px;
   font-size: 0.9rem;
+
+  .container {
+    text-align: center;
+  }
 }
 
 // CV
@@ -751,6 +763,9 @@ footer.sticky-bottom {
             border-color: var(--global-theme-color);
           }
         }
+        a.award.btn {
+          border-color: var(--global-highlight-color);
+        }
       }
 
       .badges {
@@ -807,6 +822,12 @@ footer.sticky-bottom {
       div.abstract.hidden.open {
         border-color: var(--global-text-color);
       }
+    }
+    div.award.hidden {
+      border: dashed 1px var(--global-bg-color);
+    }
+    div.award.hidden.open {
+      border-color: var(--global-highlight-color);
     }
   }
 }
@@ -1038,6 +1059,25 @@ nav[data-toggle="toc"] {
     height: 0;
     top: 0;
   }
+
+  // Abhilesh was here
+  // Prevent content overflow on about.md
+
+  .profile {
+    margin-bottom: 20px;
+
+    .address {
+      p {
+        display: block;
+      }
+    }
+  }
+
+  // Adjust publication image size on small screens
+  .col-sm-2.preview img {
+    width: 150px !important; /* Adjust this value as needed */
+    height: auto;
+  }
 }
 
 .featured-posts {
@@ -1078,7 +1118,7 @@ nav[data-toggle="toc"] {
 
 .medium-zoom-overlay,
 .medium-zoom-image--opened {
-  z-index: 1001;
+  z-index: 999;
 }
 
 #toc-sidebar {
@@ -1101,7 +1141,14 @@ swiper-container {
   --swiper-pagination-bullet-inactive-color: var(--global-text-color);
 }
 
-// Justify text
-// p {
-//  text-align: justify;
-// }
+.ps-root {
+  .ps-algorithm {
+    margin: 0.8em 0;
+    border-top: 3px solid var(--global-text-color);
+    border-bottom: 2px solid var(--global-text-color);
+  }
+
+  .ps-algorithm.with-caption > .ps-line:first-child {
+    border-bottom: 2px solid var(--global-text-color);
+  }
+}
