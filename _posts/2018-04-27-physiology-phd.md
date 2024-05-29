@@ -6,6 +6,7 @@ description: "A physiological perspective on my PhD exams"
 tags: PhD-journey, data-visualization
 categories: miscellany
 thumbnail: assets/img/comps_hr.png
+giscus_comments: true
 ---
 
 The [Comprehensive Exam](https://en.wikipedia.org/wiki/Comprehensive_examination) (more affectionately known as "comps") is a notoriously stressful milestone in the PhD journey. It is a high-stakes exam that tests the student's knowledge of their field and their ability to think critically. The format of the exam varies by departments, but usually consists of both a written and an oral component. For my doctoral program, this involved writing a research proposal laying out the plans for my dissertation research, and then defending it in front of my doctoral committee, which comprised of five faculty members from related fields.

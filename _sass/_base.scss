@@ -484,6 +484,23 @@ footer.sticky-bottom {
   color: var(--global-text-color);
 }
 
+.date-column {
+  width: 75px;
+  transform: translateX(-15px) translateY(-5px);
+}
+
+.location {
+  text-align: left;
+}
+
+@media (max-width: 576px) {
+  .row > .col-xs-2,
+  .row > .col-sm-2,
+  .row > .col-md-2 {
+    margin-bottom: -15px;
+  }
+}
+
 // Repositories
 
 @media (min-width: 768px) {

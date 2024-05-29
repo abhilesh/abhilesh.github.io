@@ -15,6 +15,16 @@
     - title: BS-MS
       institution: Indian Institute of Science Education and Research, Pune
       year: 2015
+
+- title: Experience
+  type: time_table
+  contents:
+    - title: Research Fellow
+      institution: University College London
+      year: 2022-Present
+      description:
+        - Description 1.
+        - Description 2.
 #- title: test map
 #  type: map
 #  contents:

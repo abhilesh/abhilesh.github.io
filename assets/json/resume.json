@@ -49,21 +49,52 @@
   "work": [
     {
       "name": "University College London",
-      "position": "Postdoctoral Research Fellow",
-      "url": "https://example.com",
+      "position": "Research Fellow",
+      "location": "UK",
+      "url": "https://www.ucl.ac.uk/biosciences/people/dr-abhilesh-dhawanjewar-0",
       "startDate": "2022",
       "endDate": "",
-      "summary": "Teaching at Palmer Physical Laboratory (now 302 Frist Campus Center). While not a professor at Princeton, I associated with the physics professors and continued to give lectures on campus.",
-      "highlights": ["Relativity"]
+      "summary": "Genetic basis of sexual antagonism",
+      "highlights": [
+        "Designed experimental evolution study to identify sexually antagonistic genetic variants",
+        "Developed analytical pipelines to simulate and analyze population genetic data"
+      ]
+    },
+    {
+      "name": "University of Nebraska-Lincoln",
+      "position": "Graduate Research Assistant",
+      "location": "USA",
+      "url": "https://biosci.unl.edu/",
+      "startDate": "2015",
+      "endDate": "2022",
+      "summary": "Coevolution between the mitochondrial and nuclear genomes",
+      "highlights": [
+        "Characterized the impact of a mito-nuclear incompatibility on male sterility",
+        "Developed integrative pipeline for sequence, structure and phylogenetic characterization of mitochondrial disease-causing mutations",
+        "Performed phylogenetic analysis to identify coevolutionary patterns in mammlian mitochondrial and nuclear genomes"
+      ]
+    },
+    {
+      "name": "Indian Institute of Science Education and Research, Pune",
+      "position": "Masters Thesis Researcher",
+      "location": "India",
+      "url": "https://iiserpune.ac.in/",
+      "startDate": "2014",
+      "endDate": "2015",
+      "summary": "PIZSA: Protein Interaction Z-Score Assessment",
+      "highlights": [
+        "Developed a novel scoring function for the prediction of protein-protein interactions",
+        "Implemented the method as a web-server for public use"
+      ]
     }
   ],
   "volunteer": [
     {
-      "organization": "People's Climate March",
-      "position": "Lead Organizer",
+      "organization": "Ealing Beaver Project",
+      "position": "Tech Lead",
       "url": "https://example.com",
-      "startDate": "2014-04-01",
-      "endDate": "2015-07-01",
+      "startDate": "2024",
+      "endDate": "",
       "summary": "Lead organizer for the New York City branch of the People's Climate March, the largest climate march in history.",
       "highlights": ["Awarded 'Climate Hero' award by Greenpeace for my efforts organizing the march.", "Men of the year 2014 by Time magazine"]
     }
@@ -123,25 +154,39 @@
   ],
   "publications": [
     {
-      "name": "Zur Elektrody/namik bewegter Körper",
-      "publisher": "Annalen der Physik",
-      "releaseDate": "1905-06-30",
-      "url": "https://en.wikisource.org/wiki/Translation:On_the_Electrodynamics_of_Moving_Bodies",
-      "summary": "It concerned an interpretation of the Michelson–Morley experiment and the properties of light and time. Special relativity incorporates the principle that the speed of light is the same for all inertial observers regardless of the state of motion of the source."
+      "name": "Multilevel Selection on Mitochondrial Genomes",
+      "publisher": "Current Opinion in Genetics & Development",
+      "releaseDate": "2023-06-03",
+      "url": "https://doi.org/10.1016/j.gde.2023.102050",
+      "summary": "Review article on the evolutoinary dynamics of mitochondrial genomes across multiple levels of biological organization."
     },
     {
-      "name": "Über einen die Erzeugung und Verwandlung des Lichtes betreffenden heuristischen Gesichtspunkt",
-      "publisher": "Annalen der Physik",
-      "releaseDate": "1905-03-18",
-      "url": "https://de.wikisource.org/wiki/Über_einen_die_Erzeugung_und_Verwandlung_des_Lichtes_betreffenden_heuristischen_Gesichtspunkt",
-      "summary": "In the second paper, he applied the quantum theory to light to explain the photoelectric effect. In particular, he used the idea of light quanta (photons) to explain experimental results, but stressed the importance of the experimental results. The importance of his work on the photoelectric effect earned him the Nobel Prize in Physics in 1921."
+      "name": "A Knowledge-Based Scoring Function to Assess Quaternary Associations of Proteins",
+      "publisher": "Bioinformatics",
+      "releaseDate": "2020-04-04",
+      "url": "https://doi.org/10.1093/bioinformatics/btaa207",
+      "summary": "Describes a novel scoring function for the prediction of protein-protein interactions."
     },
     {
-      "name": "Die Grundlage der allgemeinen Relativitätstheorie",
-      "publisher": "Annalen der Physik",
-      "releaseDate": "1916-03-20",
-      "url": "https://de.wikisource.org/wiki/Die_Grundlage_der_allgemeinen_Relativitätstheorie",
-      "summary": "The publication of the theory of general relativity made him internationally famous. He was professor of physics at the universities of Zurich (1909–1911) and Prague (1911–1912), before he returned to ETH Zurich (1912–1914)."
+      "name": "Temperature-Sensitive Reproduction and the Physiological and Evolutionary Potential for Mother's Curse",
+      "publisher": "Integrative and Comparative Biology",
+      "releaseDate": "2019-06-07",
+      "url": "https://doi.org/10.1093/icb/icz091",
+      "summary": "Investigates the impact of deleterious mito-nuclear interactions on the temperature sensitivity of male reproduction."
+    },
+    {
+      "name": "UNVEILing Connections between Genotype, Phenotype, and Fitness in Natural Populations",
+      "publisher": "Molecular Ecology",
+      "releaseDate": "2019-03-04",
+      "url": "https://doi.org/10.1111/mec.15067",
+      "summary": "Review article outlining the latest developments in the field of evolutionary genetics presented at the UNVEIL conference."
+    },
+    {
+      "name": "Protein Interaction Z Score Assessment (PIZSA): An Empirical Scoring Scheme for Evaluation of Protein-Protein Interactions",
+      "publisher": "Nucleic Acids Research",
+      "releaseDate": "2019-05-22",
+      "url": "https://doi.org/10.1093/nar/gkz368",
+      "summary": "Describes a novel scoring function for the prediction of protein-protein interactions implemented as a web-server for public use."
     }
   ],
   "skills": [
