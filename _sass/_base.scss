@@ -501,6 +501,14 @@ footer.sticky-bottom {
   }
 }
 
+@media (min-width: 577px) and (max-width: 767px) {
+  .row > .col-xs-2,
+  .row > .col-sm-2,
+  .row > .col-md-2 {
+    margin-bottom: -15px; // adjust this value as needed
+  }
+}
+
 // Repositories
 
 @media (min-width: 768px) {
