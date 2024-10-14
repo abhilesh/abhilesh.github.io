@@ -2,16 +2,17 @@
 layout: about
 title: About
 permalink: /
-subtitle: Evolutionary Geneticist | <a href='https://www.ucl.ac.uk/'>University College London</a>
+subtitle: <em>Evolutionary Geneticist & Bioinformatician</em> <br> <em><a href=https://www.mrc-mbu.cam.ac.uk/'>MRC Mitochondrial Biology Unit <br> University of Cambridge</a></em>
 
 profile:
   align: right
   image: abhilesh_pic.png
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p>112, Darwin Building</p>
-    <p>Gower Street</p>
-    <p>London, UK - WC1E 6BT</p>
+    <p>Room 2.2</p>
+    <p>The&nbsp;Keith&nbsp;Peters&nbsp;Building</p>
+    <p>Cambridge&nbsp;Biomedical&nbsp;Campus</p>
+    <p>Cambridge, UK - CB2 0XY</p>
 
 news: true # includes a list of news items
 latest_posts: true # includes a list of the newest posts
