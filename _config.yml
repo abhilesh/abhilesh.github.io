@@ -6,7 +6,7 @@ title: blank # the website title (if blank, full name will be used instead)
 first_name: Abhilesh
 middle_name:
 last_name: Dhawanjewar
-email: a.dhawanjewar@ucl.ac.uk
+email: ad2347@mrc-mbu.cam.ac.uk
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
   Abhilesh Dhawanjewar | Homepage. Based on [*folio](https://github.com/bogoli/-folio) design.
 footer_text: >
@@ -52,6 +52,9 @@ rss_icon: false
 
 navbar_fixed: true
 footer_fixed: false
+search_enabled: true
+socials_in_search: true
+bib_search: true
 
 # Dimensions
 max_width: 800px
@@ -118,6 +121,7 @@ contact_note: >
 # and follow the instructions for Google Sites. You will need to create a Google Analytics property and copy the Google tag ID.
 google_analytics: G-M1BWYLLR80 # your Google Analytics measurement ID (format: G-XXXXXXXXXX)
 cronitor_analytics: # cronitor RUM analytics site ID (format: XXXXXXXXX)
+pirsch_analytics: # your Pirsch analytics site ID (length 32 characters)
 
 # For Google Search Console, see https://support.google.com/webmasters/answer/9008080?hl=en#meta_tag_verification&zippy=%2Chtml-tag
 google_site_verification: _lH3zRueYRvwRbtYVH56oH7lgUs5HnrIL1SN0LAtKyY # your google-site-verification ID (Google Search Console)
@@ -166,6 +170,19 @@ disqus_shortname: al-folio # put your disqus shortname
 #external_sources:
 #  - name: medium.com
 #    rss_url: https://medium.com/@al-folio/feed
+#  - name: Google Blog
+#    posts:
+#      - url: https://blog.google/technology/ai/google-gemini-update-flash-ai-assistant-io-2024/
+#        published_date: 2024-05-14
+
+# -----------------------------------------------------------------------------
+# Newsletter
+# -----------------------------------------------------------------------------
+
+newsletter:
+  enabled: false
+  endpoint: # your loops endpoint (e.g., https://app.loops.so/api/newsletter-form/YOUR-ENDPOINT)
+  # https://loops.so/docs/forms/custom-form
 
 # -----------------------------------------------------------------------------
 # Collections
@@ -176,10 +193,10 @@ collections:
     defaults:
       layout: post
     output: true
-    permalink: /news/:path/
+    permalink: /:collection/:title/
   projects:
     output: true
-    permalink: /projects/:path/
+    permalink: /:collection/:title/
 
 announcements:
   enabled: true
@@ -214,13 +231,15 @@ exclude:
   - bin/
   - CONTRIBUTING.md
   - CUSTOMIZE.md
-  - docker-compose.yml
   - Dockerfile
+  - docker-compose.yml
+  - docker-compose-slim.yml
   - FAQ.md
   - Gemfile
   - Gemfile.lock
   - INSTALL.md
   - LICENSE
+  - lighthouse_results/
   - package.json
   - package-lock.json
   - purgecss.config.js
@@ -229,7 +248,6 @@ exclude:
 keep_files:
   - CNAME
   - .nojekyll
-  - .git
 
 # Plug-ins
 plugins:
@@ -242,6 +260,7 @@ plugins:
   - jekyll-link-attributes
   - jekyll-minifier
   - jekyll-paginate-v2
+  - jekyll-regex-replace
   - jekyll/scholar
   - jekyll-sitemap
   - jekyll-tabs
@@ -264,7 +283,7 @@ sass:
 # -----------------------------------------------------------------------------
 
 jekyll-minifier:
-  exclude: ["robots.txt"]
+  exclude: ["robots.txt", "assets/js/search/*.js", "assets/libs/**/*"]
   uglifier_args:
     harmony: true
 
@@ -309,7 +328,6 @@ scholar:
   join_strings: true
 
   details_dir: bibliography
-  #details_layout: bibtex.html
   details_link: Details
 
   query: "@*"
@@ -317,10 +335,12 @@ scholar:
   group_order: descending
 
 # Display different badges withs stats for your publications
+# Customize badge behavior in _layouts/bib.liquid
 enable_publication_badges:
-  altmetric: true # Altmetric badge (https://www.altmetric.com/products/altmetric-badges/)
-  dimensions: true # Dimensions badge (https://badge.dimensions.ai/)
+  altmetric: true # Altmetric badge (Customization options: https://badge-docs.altmetric.com/index.html)
+  dimensions: true # Dimensions badge (Customization options: https://badge.dimensions.ai/)
   google_scholar: true # Google Scholar badge (https://scholar.google.com/intl/en/scholar/citations.html)
+  inspirehep: false # Inspire HEP badge (https://help.inspirehep.net/knowledge-base/citation-metrics/)
 
 # Filter out certain bibtex entry keywords used internally from the bib output
 filtered_bibtex_keywords:
@@ -329,13 +349,16 @@ filtered_bibtex_keywords:
     abstract,
     additional_info,
     altmetric,
+    annotation,
     arxiv,
     award,
     award_name,
     bibtex_show,
     blog,
     code,
+    google_scholar_id,
     html,
+    inspirehep_id,
     pdf,
     poster,
     preview,
@@ -450,6 +473,7 @@ lazy_loading_images: true # enables lazy loading of images (recommended)
 
 enable_google_analytics: true # enables google analytics
 enable_cronitor_analytics: false # enables cronitor RUM analytics
+enable_pirsch_analytics: false # enables Pirsch analytics (https://pirsch.io/)
 enable_google_verification: true # enables google site verification
 enable_bing_verification: false # enables bing site verification
 enable_masonry: true # enables automatic project cards arrangement
@@ -559,13 +583,13 @@ third_party_libraries:
     version: "1.9.4"
   mathjax:
     integrity:
-      js: "sha256-rjmgmaB99riUNcdlrDtcAiwtLIojSxNyUFdl+Qh+rB4="
+      js: "sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="
     local:
       fonts: "output/chtml/fonts/woff-v2/"
     url:
       fonts: "https://cdn.jsdelivr.net/npm/mathjax@{{version}}/es5/output/chtml/fonts/woff-v2/"
-      js: "https://cdn.jsdelivr.net/npm/mathjax@{{version}}/es5/tex-mml-chtml.min.js"
-    version: "3.2.0"
+      js: "https://cdn.jsdelivr.net/npm/mathjax@{{version}}/es5/tex-mml-chtml.js"
+    version: "3.2.2"
   masonry:
     integrity:
       js: "sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI="

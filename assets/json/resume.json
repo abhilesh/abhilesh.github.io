@@ -3,16 +3,16 @@
     "name": "Abhilesh Dhawanjewar",
     "tagline": "Evolutionary Geneticist | Bioinformatician",
     "image": "",
-    "email": "a.dhawanjewar@ucl.ac.uk",
+    "email": "ad2347@cam.ac.uk",
     "phone": "",
     "url": "https://abhilesh.github.io/",
     "summary": "As an Integrative Researcher, I leverage my robust background in quantitative methods and analytical thinking to work effectively with diverse biological data. My passion lies in amalgamating insights from various knowledge streams, aiming to cultivate a comprehensive understanding of Life on Earth.",
     "location": {
-      "address": "112, Darwin Building, Gower Street",
-      "postalCode": "WC1E 6BT",
-      "city": "London",
+      "address": "2.2, The Keith Peters Building, Cambridge Biomedical Campus",
+      "postalCode": "CB2 0XY",
+      "city": "Cambridge",
       "countryCode": "UK",
-      "region": "London"
+      "region": "England"
     },
     "profiles": [
       {
@@ -48,16 +48,29 @@
   ],
   "work": [
     {
+      "name": "MRC Mitochondrial Biology Unit, University of Cambridge",
+      "position": "Bioinformatician",
+      "location": "UK",
+      "url": "https://www.ucl.ac.uk/biosciences/people/dr-abhilesh-dhawanjewar-0",
+      "startDate": "2024",
+      "endDate": "",
+      "summary": "Cell-type specificity of mitochondrial dysfunction",
+      "highlights": [
+        "Analyzing data from diverse sequencing technologies to identify cell-type specific mitochondrial dysfunction"
+      ]
+    },
+    {
       "name": "University College London",
       "position": "Research Fellow",
       "location": "UK",
       "url": "https://www.ucl.ac.uk/biosciences/people/dr-abhilesh-dhawanjewar-0",
       "startDate": "2022",
-      "endDate": "",
+      "endDate": "2024",
       "summary": "Genetic basis of sexual antagonism",
       "highlights": [
         "Designed experimental evolution study to identify sexually antagonistic genetic variants",
-        "Developed analytical pipelines to simulate and analyze population genetic data"
+        "Developed analytical pipelines to simulate and analyze population genetic data",
+        "Built Nextflow pipeline for processing and analyzing Pool-Seq data"
       ]
     },
     {
