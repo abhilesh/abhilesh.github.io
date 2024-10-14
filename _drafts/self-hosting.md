@@ -9,11 +9,9 @@ thumbnail: assets/img/comps_hr.png
 giscus_comments: true
 ---
 
-We live in a data-rich world and web services form the backbone of our digital lives, helping us store and manage our data as well as communicate and collaborate with others. Large data companies often provide these services for free, but we are still bound by their terms of service and privacy policies. The 
+We live in a data-rich world and web services form the backbone of our digital lives, helping us store and manage our data as well as communicate and collaborate with others. Large data companies often provide these services for free, but we are still bound by their terms of service and privacy policies. The
 
 > In a nutshell, **Self-hosting** refers to running your own servers and software, rather than relying on third-party services.
-
-
 
 ### <img src="/assets/img/posts/raspberry_pi_icon.png" alt="Icon" width="50" height="50"> Raspberry Pi
 
