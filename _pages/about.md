@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-subtitle: <em>Evolutionary Geneticist & Bioinformatician</em> <br> <em><a href=https://www.mrc-mbu.cam.ac.uk/'>MRC Mitochondrial Biology Unit <br> University of Cambridge</a></em>
+subtitle: <em>Evolutionary Geneticist & Bioinformatician</em> <br> <em><a href=https://www.mrc-mbu.cam.ac.uk/>MRC Mitochondrial Biology Unit <br> University of Cambridge</a></em>
 
 profile:
   align: right
