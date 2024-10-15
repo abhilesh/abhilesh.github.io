@@ -725,6 +725,7 @@ footer.sticky-bottom {
         width: 100%;
         min-width: 80px;
         max-width: 200px;
+        margin-bottom: 0.5rem; // Abhilesh was here
       }
 
       .abbr {
@@ -795,6 +796,7 @@ footer.sticky-bottom {
           padding-top: 0.25rem;
           padding-bottom: 0.25rem;
           margin-left: 0;
+          margin-bottom: 1rem; // Abhilesh was here
 
           &:hover {
             color: var(--global-theme-color);
