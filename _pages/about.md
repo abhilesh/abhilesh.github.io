@@ -14,10 +14,20 @@ profile:
     <p>Cambridge&nbsp;Biomedical&nbsp;Campus</p>
     <p>Cambridge, UK - CB2 0XY</p>
 
-news: true # includes a list of news items
-latest_posts: true # includes a list of the newest posts
+#news: true # includes a list of news items
+#latest_posts: true # includes a list of the newest posts
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: false # includes social icons at the bottom of the page
+
+announcements:
+  enabled: true # includes a list of news items
+  scrollable: true # adds a vertical scroll bar if there are more than 3 news items
+  limit: 5 # leave blank to include all the news in the `_news` folder
+
+latest_posts:
+  enabled: true
+  scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
+  limit: 3 # leave blank to include all the blog posts
 ---
 
 I am an Evolutionary Biologist & Bioinformatician passionate about uncovering the mechanisms driving the diversity of life. My work integrates empirical and computational approaches to develop a holistic understanding of evolutionary processes.
@@ -30,4 +40,4 @@ I earned my Ph.D. in Evolutionary Biology from the [University of Nebraska-Linco
 
 I hold an Integrated BS-MS in Bioinformatics from the [Indian Institute of Science Education and Research, Pune](https://www.iiserpune.ac.in/), where I conducted research in ecology, evolutionary biology, and structural biology. My Master’s thesis led to the development of [PIZSA](https://cospi.iiserpune.ac.in/pizsa/), a webserver for assessing higher-order protein-protein interaction stability.
 
-Beyond academia, I am the Technology Lead on [The Ealing Beaver Project](https://theealingbeaverproject.com/), an initiative reintroducing beavers to urban London to restore wetland ecosystems and mitigate flooding.  I conduct ecological surveys and investigate the use of AI technologies to enhance the analysis of ecosystem changes, including habitat restoration and water dynamics resulting from beaver activity.
+Beyond academia, I am the Technology Lead on [The Ealing Beaver Project](https://theealingbeaverproject.com/), an initiative reintroducing beavers to urban London to restore wetland ecosystems and mitigate flooding. I conduct ecological surveys and investigate the use of AI technologies to enhance the analysis of ecosystem changes, including habitat restoration and water dynamics resulting from beaver activity.

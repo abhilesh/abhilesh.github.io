@@ -46,28 +46,23 @@ To begin, start by installing Docker on your system. Docker is available for all
 
 {% tab docker-os-install MacOS %}
 
-- Download the [Docker Desktop installer](https://docs.docker.com/desktop/setup/install/mac-install/) and follow the setup instructions.
+- Download the [Docker Desktop installer for MacOS](https://docs.docker.com/desktop/setup/install/mac-install/)
+- Follow the setup instructions to install Docker.
 - Docker Desktop can now be launched by clicking the application icon.
 
 {% endtab %}
 
 {% tab docker-os-install Windows %}
 
-- Download the [Docker Desktop installer](https://docs.docker.com/desktop/setup/install/windows-install/) and follow the setup instructions.
+- Download the [Docker Desktop installer for Windows](https://docs.docker.com/desktop/setup/install/windows-install/)
+- Follow the setup instructions to install Docker.
 - Docker Desktop can now be launched by clicking the application icon.
 
 {% endtab %}
 
-{% endtabs %}
+{% tab docker-os-install Linux %}
 
-For **Windows/Macs OS**:
-
-- Download the Docker Desktop installer and follow the setup instructions.
-  - [MacOS](https://docs.docker.com/desktop/setup/install/mac-install/)
-  - [Windows](https://docs.docker.com/desktop/setup/install/windows-install/)
-- Docker Desktop can be launched by clicking the application icon.
-
-For **Linux** (assuming Debian-based systems, ex. Ubuntu):
+Assuming a Debian-based Linux distribution (e.g., Ubuntu):
 
 - Open a terminal and run the following commands
 
@@ -93,6 +88,10 @@ curl -fsSL https://get.docker.com -o get-docker.sh
 # Append --dry-run to see the commands that will be executed
 sudo sh get-docker.sh
 ```
+
+{% endtab %}
+
+{% endtabs %}
 
 To test whether Docker is installed correctly, run the following command in your terminal:
 
@@ -123,7 +122,7 @@ There are other ways to run containers, and you can experiment with these as you
    docker run -d -name samtools -v /path/to/data:/data biocontainers/samtools tail -f /dev/null
    ```
 
-### Where to find bioinformatics tools containers?
+### Finding Bioinformatics Tool Containers
 
 These registries host a large number of pre-built Docker images for bioinformatics tools:
 
@@ -131,9 +130,9 @@ These registries host a large number of pre-built Docker images for bioinformati
 
 - <img src="/assets/img/posts/docker-for-bioinformatics/biocontainers-logo.svg" width="20" height="20" style="margin-right: 5px;"> [Biocontainers](https://biocontainers.pro/)
 
-- <img src="/assets/img/posts/docker-for-bioinformatics/pegi3s-logo.svg" width="20" height="20" style="margin-right: 5px;"> [pegi3s Bioinformatics Docker Images Project](http://bdip.i3s.up.pt/)
-
 - <img src="/assets/img/posts/docker-for-bioinformatics/quayio-logo.svg" width="20" height="20" style="margin-right: 5px;"> [Quay.io](https://quay.io/organization/biocontainers)
+
+- <img src="/assets/img/posts/docker-for-bioinformatics/pegi3s-logo.svg" width="20" height="20" style="margin-right: 5px;"> [pegi3s Bioinformatics Docker Images Project](http://bdip.i3s.up.pt/)
 
 ### Other Resources
 
