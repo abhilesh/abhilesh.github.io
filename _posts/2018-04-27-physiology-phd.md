@@ -3,7 +3,7 @@ layout: post
 title: "Beats of Stress"
 date: 2018-04-27 21:01:00
 description: "A physiological perspective on my PhD exams"
-tags: PhD-journey, data-visualization
+tags: PhD-journey data-visualization
 categories: miscellany
 thumbnail: assets/img/posts/comps_hr.png
 giscus_comments: true

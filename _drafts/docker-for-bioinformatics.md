@@ -3,12 +3,13 @@ layout: post
 title: "Docker for Bioinformatics"
 date: 2025-02-27 21:01:00
 description: "Portable, Scalable and Reproducible Bioinformatics workflows"
-tags: docker, bioinformatics
+tags: docker bioinformatics
 categories: bioinformatics
 thumbnail: assets/img/posts/docker-for-bioinformatics/docker_for_bioinformatics_thumbnail.png
 giscus_comments: true
+tabs: true
 toc:
-    sidebar: left
+  sidebar: left
 ---
 
 <div class="row justify-content-center mt-3">
@@ -27,7 +28,7 @@ Imagine you're baking a cake, but every time you try, your kitchen is missing ke
 
 The **FAIR** (Findable, Accessible, Interoperable, and Reusable) principles provide practical guidelines for maximizing the value of research data by ensuring it is discoverable, accessible, compatible across systems, and usable in future studies. Docker plays a key role in aligning bioinformatics workflows with these principles:
 
-***Benefits of Using Docker in Bioinformatics (FAIR-aligned)***
+**_Benefits of Using Docker in Bioinformatics (FAIR-aligned)_**
 
 - **Findability**: Docker images can be easily found on registries like Docker Hub, with tags and descriptions facilitating discovery. This allows researchers to locate the specific software versions they need.
 
@@ -39,50 +40,103 @@ The **FAIR** (Findable, Accessible, Interoperable, and Reusable) principles prov
 
 ### Getting Started
 
-To begin, start by installing Docker on your system. Docker is available for Windows, macOS, and Linux. You can download the installer from the [official website](https://www.docker.com/get-started/).
+To begin, start by installing Docker on your system. Docker is available for all major operating systems and the installers can be downloaded from the [official website](https://www.docker.com/get-started/). The Docker Desktop application is recommended for Windows and macOS users, while Linux users can install Docker using the command line.
 
-For Windows/Macs OS:
+{% tabs docker-os-install %}
+
+{% tab docker-os-install MacOS %}
+
+- Download the [Docker Desktop installer](https://docs.docker.com/desktop/setup/install/mac-install/) and follow the setup instructions.
+- Docker Desktop can now be launched by clicking the application icon.
+
+{% endtab %}
+
+{% tab docker-os-install Windows %}
+
+- Download the [Docker Desktop installer](https://docs.docker.com/desktop/setup/install/windows-install/) and follow the setup instructions.
+- Docker Desktop can now be launched by clicking the application icon.
+
+{% endtab %}
+
+{% endtabs %}
+
+For **Windows/Macs OS**:
 
 - Download the Docker Desktop installer and follow the setup instructions.
+  - [MacOS](https://docs.docker.com/desktop/setup/install/mac-install/)
+  - [Windows](https://docs.docker.com/desktop/setup/install/windows-install/)
 - Docker Desktop can be launched by clicking the application icon.
 
-For Linux: Open a terminal and run the following commands
+For **Linux** (assuming Debian-based systems, ex. Ubuntu):
+
+- Open a terminal and run the following commands
+
+  ```bash
+  # Update package index and install docker
+  sudo apt-get update && sudo apt-get install docker.io
+  ```
+
+- Add your user to the `docker` group to run Docker commands without `sudo`
+
+  ```bash
+  sudo usermod -aG docker ${whoami}
+  ```
+
+- Log out and log back in to apply the changes
+
+> _Note:_ If you do not have `sudo` privileges, you can install Docker using the [official script](https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script).
 
 ```bash
+# Download the Docker installation script
+curl -fsSL https://get.docker.com -o get-docker.sh
+
+# Append --dry-run to see the commands that will be executed
+sudo sh get-docker.sh
 ```
 
+To test whether Docker is installed correctly, run the following command in your terminal:
 
+```bash
+# Check Docker version
+docker --version
+
+# Test with a simple hello-world container
+docker run hello-world
+```
+
+There are other ways to run containers, and you can experiment with these as you get more comfortable with Docker.
 
 ### A Simple Docker Example
 
 1. Pull a Docker Image
 
-Here, we will pull a Docker image for the popular bioinformatics tool [`samtools`](https://hub.docker.com/r/biocontainers/samtools).
+   Here, we will pull a Docker image for the popular bioinformatics tool [`samtools`](https://hub.docker.com/r/biocontainers/samtools).
 
-```bash
-docker pull biocontainers/samtools
-```
+   ```bash
+   # Pull the samtools image from Docker Hub
+   docker pull biocontainers/samtools
+   ```
 
 2. Run the Docker Container
 
-```bash
-docker run -d -name samtools -v /path/to/data:/data biocontainers/samtools tail -f /dev/null
-```
-
+   ```bash
+   docker run -d -name samtools -v /path/to/data:/data biocontainers/samtools tail -f /dev/null
+   ```
 
 ### Where to find bioinformatics tools containers?
 
 These registries host a large number of pre-built Docker images for bioinformatics tools:
 
-- <img src="{{ site.baseurl }}/assets/img/posts/docker-for-bioinformatics/docker-4.svg" width="20" height="20" style="margin-right: 5px;"> [Docker Hub](https://hub.docker.com/)
+- <img src="/assets/img/posts/docker-for-bioinformatics/docker-4.svg" width="20" height="20" style="margin-right: 5px;"> [Docker Hub](https://hub.docker.com/)
 
-- <img src="{{ site.baseurl }}/assets/img/posts/docker-for-bioinformatics/biocontainers-logo.svg" width="20" height="20" style="margin-right: 5px;"> [Biocontainers](https://biocontainers.pro/)
+- <img src="/assets/img/posts/docker-for-bioinformatics/biocontainers-logo.svg" width="20" height="20" style="margin-right: 5px;"> [Biocontainers](https://biocontainers.pro/)
 
-- <img src="{{ site.baseurl }}/assets/img/posts/docker-for-bioinformatics/pegi3s-logo.svg" width="20" height="20" style="margin-right: 5px;"> [pegi3s Bioinformatics Docker Images Project](http://bdip.i3s.up.pt/)
+- <img src="/assets/img/posts/docker-for-bioinformatics/pegi3s-logo.svg" width="20" height="20" style="margin-right: 5px;"> [pegi3s Bioinformatics Docker Images Project](http://bdip.i3s.up.pt/)
 
-- <img src="{{ site.baseurl }}/assets/img/posts/docker-for-bioinformatics/quayio-logo.svg" width="20" height="20" style="margin-right: 5px;"> [Quay.io](https://quay.io/organization/biocontainers)
+- <img src="/assets/img/posts/docker-for-bioinformatics/quayio-logo.svg" width="20" height="20" style="margin-right: 5px;"> [Quay.io](https://quay.io/organization/biocontainers)
 
 ### Other Resources
 
 If you'd like to read more about reproducible research practices, check out the following resources:
+
 - ["The Turing Way"](https://book.the-turing-way.org/) : A handbook for reporoducible, ethical and collaborative data science.

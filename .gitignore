@@ -5,6 +5,7 @@ _site
 .jekyll-metadata
 .DS_store
 .ruby-version
+.ruby-lsp
 .tweet-cache
 Gemfile.lock
 assets/libs/
