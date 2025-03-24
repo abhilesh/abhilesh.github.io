@@ -5,7 +5,7 @@ date: 2025-02-27 21:01:00
 description: "Portable, Scalable and Reproducible Bioinformatics workflows"
 tags: docker bioinformatics
 categories: bioinformatics
-thumbnail: assets/img/posts/docker-for-bioinformatics/docker_for_bioinformatics_thumbnail.png
+thumbnail: assets/img/posts/docker-for-bioinformatics/docker-for-bioinformatics-thumbnail.png
 giscus_comments: true
 tabs: true
 toc:
@@ -26,7 +26,7 @@ authors:
 
 <div class="row justify-content-center mt-3">
     <div class="col-12 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/posts/docker-for-bioinformatics/docker_for_bioinformatics_cover.png" class="img-fluid rounded z-depth-1" zoomable=false %}
+        {% include figure.liquid loading="eager" path="assets/img/posts/docker-for-bioinformatics/docker-for-bioinformatics-cover.png" class="img-fluid rounded z-depth-1" zoomable=false %}
     </div>
 </div>
 
@@ -250,3 +250,5 @@ If you'd like to read more about reproducible research practices, check out the 
 - ["The Turing Way"](https://book.the-turing-way.org/) : A handbook for reporoducible, ethical and collaborative data science.
 
 Docker is a game-changer for bioinformatics, making workflows more reproducible, scalable, and shareable. Whether you’re running a single tool or a complex pipeline, Docker ensures that your research remains reliable and accessible across different environments.
+
+Happy Dockering!
