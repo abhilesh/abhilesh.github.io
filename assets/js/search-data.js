@@ -30,7 +30,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{id: "post-beats-of-stress",
+        },{id: "post-docker-for-bioinformatics",
+      
+        title: "Docker for Bioinformatics",
+      
+      description: "Portable, Scalable and Reproducible Bioinformatics workflows",
+      section: "Posts",
+      handler: () => {
+        
+          window.location.href = "/blog/2025/docker-for-bioinformatics/";
+        
+      },
+    },{id: "post-beats-of-stress",
       
         title: "Beats of Stress",
       
@@ -41,7 +52,12 @@ ninja.data = [{
           window.location.href = "/blog/2018/physiology-phd/";
         
       },
-    },{id: "news-joined-university-college-london-s-gee-department-as-a-postdoctoral-research-fellow-to-work-with-prof-max-reuter-and-dr-aida-andres-on-sexual-antagonistic-variation-in-drosophila-melanogaster",
+    },{id: "books-the-making-of-the-atomic-bomb",
+          title: 'The Making of the Atomic Bomb',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/the-making-of-the-atomic-bomb/";
+            },},{id: "news-joined-university-college-london-s-gee-department-as-a-postdoctoral-research-fellow-to-work-with-prof-max-reuter-and-dr-aida-andres-on-sexual-antagonistic-variation-in-drosophila-melanogaster",
           title: 'Joined University College London’s GEE department as a Postdoctoral Research Fellow to work...',
           description: "",
           section: "News",},{id: "news-published-a-minireview-on-multilevel-selection-on-mtdna-in-current-opinion-in-genetics-amp-amp-development",
