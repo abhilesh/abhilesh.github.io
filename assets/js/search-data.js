@@ -30,29 +30,7 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{id: "post-docker-for-bioinformatics",
-      
-        title: "Docker for Bioinformatics",
-      
-      description: "Portable, Scalable and Reproducible Bioinformatics workflows",
-      section: "Posts",
-      handler: () => {
-        
-          window.location.href = "/blog/2025/docker-for-bioinformatics/";
-        
-      },
-    },{id: "post-beats-of-stress",
-      
-        title: "Beats of Stress",
-      
-      description: "A physiological perspective on my PhD exams",
-      section: "Posts",
-      handler: () => {
-        
-          window.location.href = "/blog/2018/physiology-phd/";
-        
-      },
-    },{id: "books-the-making-of-the-atomic-bomb",
+        },{id: "books-the-making-of-the-atomic-bomb",
           title: 'The Making of the Atomic Bomb',
           description: "",
           section: "Books",handler: () => {
