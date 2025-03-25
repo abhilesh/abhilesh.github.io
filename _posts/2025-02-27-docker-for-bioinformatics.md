@@ -50,7 +50,7 @@ The **FAIR** (Findable, Accessible, Interoperable, and Reusable) principles prov
 
 ### Getting Started
 
-To begin, start by installing Docker on your system. Docker is available for all major operating systems and the installers can be downloaded from the [official website](https://www.docker.com/get-started/). The Docker Desktop application is recommended for Windows and macOS users, and as Docker runs natively on Linux, Linux users can install Docker using the command line.
+To begin, start by installing Docker on your system. Docker is available for all major operating systems and the installers can be downloaded from the [official website](https://www.docker.com/get-started/). For Windows and macOS users, the recommended approach is to install the Docker Desktop application, while Linux users can install Docker natively for a more lightweight setup.<d-footnote>Docker Desktop creates a Linux virtual machine (VM) on Windows and macOS to run containers, whereas on a Linux machine, Docker runs natively without the need for a VM.</d-footnote>
 
 {% tabs docker-os-install %}
 

@@ -306,12 +306,12 @@ jekyll-archives:
     enabled: [year, tags, categories] # enables year, tag and category archives (remove if you need to disable one of them).
     permalinks:
       year: "/blog/:year/"
-      tags: "/blog/tag/:name/"
-      categories: "/blog/category/:name/"
+      tags: "/blog/:type/:name/"
+      categories: "/blog/:type/:name/"
   books:
     enabled: [year, tags, categories] # enables year, tag and category archives (remove if you need to disable one of them).
 
-display_tags: ["PhD-journey", "data-visualization"] # these tags will be displayed on the front page of your blog
+display_tags: ["docker", "data-visualization"] # these tags will be displayed on the front page of your blog
 display_categories: ["miscellany", "bioinformatics"] # these categories will be displayed on the front page of your blog
 
 # -----------------------------------------------------------------------------

@@ -152,6 +152,15 @@ d-appendix {
   }
 }
 
+d-footer {
+  a {
+    color: var(--global-theme-color) !important;
+    &:hover {
+      color: var(--global-hover-color) !important;
+    }
+  }
+}
+
 @media (max-width: 1024px) {
   d-article {
     d-contents {
