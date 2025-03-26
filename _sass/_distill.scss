@@ -161,6 +161,21 @@ d-footer {
   }
 }
 
+.giscus-article-layout {
+  display: grid;
+  grid-template-columns:
+    minmax(8px, 1fr) [toc] auto
+    minmax(8px, 1fr) [toc-line] 1px
+    minmax(32px, 2fr);
+  grid-column: 1 / 4;
+  align-self: start;
+  justify-self: stretch;
+  padding-left: 2em;
+  padding-right: 3em;
+  width: calc(max(70%, 300px));
+  margin: 0 auto;
+}
+
 @media (max-width: 1024px) {
   d-article {
     d-contents {
@@ -176,5 +191,11 @@ d-footer {
         grid-column: none;
       }
     }
+  }
+  .giscus-article-layout {
+    display: block;
+    padding-left: 1em;
+    padding-right: 1em;
+    width: 70%;
   }
 }

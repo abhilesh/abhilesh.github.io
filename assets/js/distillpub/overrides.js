@@ -1,6 +1,6 @@
 $(document).ready(function () {
-  // Override styles of the footnotes.
   document.querySelectorAll("d-footnote").forEach(function (footnote) {
+    console.log("Found d-footnote:", footnote);
     footnote.shadowRoot.querySelector("sup > span").setAttribute("style", "color: var(--global-theme-color);");
     footnote.shadowRoot
       .querySelector("d-hover-box")

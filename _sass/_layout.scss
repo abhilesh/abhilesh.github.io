@@ -3,7 +3,9 @@
  ******************************************************************************/
 
 body {
-  padding-bottom: 70px;
+  // This padding adds space only in the distill posts
+  // and not in the normal posts
+  padding-bottom: 0px;
   color: var(--global-text-color);
   background-color: var(--global-bg-color);
 
