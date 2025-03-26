@@ -1,4 +1,9 @@
-<div id="giscus_thread" style="max-width: {{ site.max_width }}; margin: 0 auto;">
+{% if page.layout == "post" %}
+  <div id="giscus_thread" style="max-width: {{ site.max_width }}; margin: 0 auto;">
+    <br>
+{% elsif page.layout == "distill" %}
+  <div id="giscus_thread">
+{% endif %}
   {% if site.giscus.repo %}
     <script>
       let giscusTheme = determineComputedTheme();
