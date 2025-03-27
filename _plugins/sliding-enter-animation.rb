@@ -11,6 +11,12 @@ Jekyll::Hooks.register([:pages, :posts], :post_render) do |page|
                 verbose = false
             end
 
+            # Skip animations for pages with `disable_animation: true` in front matter
+            if page.data.key?("disable_animation") && page.data["disable_animation"]
+                Jekyll.logger.info "Skipping animations for page: #{page.path}" if verbose
+                next
+            end
+
             if page.path.end_with?(".html", ".md")
                 noko = Nokogiri::HTML(page.output)
 

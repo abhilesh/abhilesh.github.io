@@ -8,6 +8,7 @@ categories: bioinformatics
 thumbnail: assets/img/posts/docker-for-bioinformatics/docker-for-bioinformatics-thumbnail.png
 giscus_comments: true
 tabs: true
+disable_animation: true
 toc:
   - name: What is Docker?
   - name: How can Docker help?
