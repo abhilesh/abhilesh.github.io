@@ -53,6 +53,8 @@ The **FAIR** (Findable, Accessible, Interoperable, and Reusable) principles prov
 
 To begin, start by installing Docker on your system. Docker is available for all major operating systems and the installers can be downloaded from the [official website](https://www.docker.com/get-started/). For Windows and macOS users, the recommended approach is to install the Docker Desktop application, while Linux users can install Docker natively for a more lightweight setup.<d-footnote>Docker Desktop creates a Linux virtual machine (VM) on Windows and macOS to run containers, whereas on a Linux machine, Docker runs natively without the need for a VM.</d-footnote>
 
+<hr style="grid-column: text; width: 100%; border: none; border-bottom: 1px solid rgba(0, 0, 0, 0.1); margin-top: 1rem; margin-bottom: 1rem;">
+
 {% tabs docker-os-install %}
 
 {% tab docker-os-install MacOS %}
@@ -90,7 +92,7 @@ Assuming a Debian-based Linux distribution (e.g., Ubuntu):
 
 - Log out and log back in to apply the changes
 
-> _Note:_ If you do not have `sudo` privileges, you can install Docker using the [official script](https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script).
+**_Note:_** If you do not have `sudo` privileges, you can install Docker using the [official script](https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script).
 
 ```bash
 # Download the Docker installation script
@@ -104,6 +106,9 @@ sudo sh get-docker.sh
 
 {% endtabs %}
 
+<hr style="grid-column: text; width: 100%; border: none; border-bottom: 1px solid rgba(0, 0, 0, 0.1); margin-top: 1rem; margin-bottom: 1rem;">
+
+<br>
 To test whether Docker is installed correctly, run the following command in your terminal:
 
 ```bash
