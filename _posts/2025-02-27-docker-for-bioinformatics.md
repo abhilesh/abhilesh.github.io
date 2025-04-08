@@ -9,20 +9,14 @@ thumbnail: assets/img/posts/docker-for-bioinformatics/docker-for-bioinformatics-
 giscus_comments: true
 tabs: true
 disable_animation: true
-toc:
-  - name: What is Docker?
-  - name: How can Docker help?
-  - name: Getting Started
-  - name: Running Bioinformatics Tools with Docker
-  - name: Finding Bioinformatics Tool Containers
-  - name: Composing Docker Workflows
-  - name: Other Resources
+toc: true
 authors:
   - name: Abhilesh Dhawanjewar
     url: "https://abhilesh.github.io"
     affiliations:
       name: University of Cambridge
       url: "https://www.cam.ac.uk/"
+bibliography: 2025-02-27-docker-for-bioinformatics.bib
 ---
 
 <div class="row justify-content-center mt-3">
@@ -33,13 +27,13 @@ authors:
 
 Bioinformatics analysis often involves complex pipelines with rapidly evolving software tools, each with their own set of dependencies. System compatibility, version mismatches and dependency conflict issues can often be a nightmare, making running and sharing bioinformatic pipelines a challenging task. These challenges not only waste valuable research time but also contribute to irreproducible workflows, where results depend as much on the computing environment as on the analysis itself. Docker offers a powerful solution by packaging software and its dependencies into portable, reproducible containers—ensuring that your bioinformatics pipelines run consistently, whether on your local machine, an HPC cluster, or the cloud.
 
-### What is Docker?
+## What is Docker?
 
 Imagine you're baking a cake, but every time you try, your kitchen is missing key ingredients or uses a different oven that bakes at the wrong temperature. Docker is like a self-contained baking kit that comes with all the right ingredients, tools, and even its own portable oven, ensuring your cake turns out exactly the same no matter where you bake it. In bioinformatics, Docker does the same for software by packaging tools, dependencies, and environments so that analyses run reliably across different computing platforms.
 
-### How can Docker help?
+## How can Docker help?
 
-The **FAIR** (Findable, Accessible, Interoperable, and Reusable) principles provide guidelines for maximizing the value of research data. Docker aligns bioinformatics workflows with these principles by ensuring software and environments are portable and reproducible:
+The **FAIR** (Findable, Accessible, Interoperable, and Reusable) principles <d-cite key="wilkinson_fair_2016"></d-cite> provide guidelines for maximizing the value of research data. Docker aligns bioinformatics workflows with these principles by ensuring software and environments are portable and reproducible:
 
 - **Findability**: Docker images can be easily found in registries like Docker Hub, with clear versioning and documentation for discovery.
 
@@ -49,7 +43,7 @@ The **FAIR** (Findable, Accessible, Interoperable, and Reusable) principles prov
 
 - **Reusability**: Pre-built images allow researchers to reuse workflows without worrying about installation issues, fostering collaboration.
 
-### Getting Started
+## Getting Started
 
 To begin, start by installing Docker on your system. Docker is available for all major operating systems and the installers can be downloaded from the [official website](https://www.docker.com/get-started/). For Windows and macOS users, the recommended approach is to install the Docker Desktop application, while Linux users can install Docker natively for a more lightweight setup.<d-footnote>Docker Desktop creates a Linux virtual machine (VM) on Windows and macOS to run containers, whereas on a Linux machine, Docker runs natively without the need for a VM.</d-footnote>
 
@@ -121,7 +115,17 @@ docker run hello-world
 
 There are other ways to run containers, and you can experiment with these as you get more comfortable with Docker.
 
-### Running Bioinformatics Tools with Docker
+## Understanding Key Docker Concepts
+
+- **Images** vs **Containers**:
+
+  A _Docker image_ is a static, read-only blueprint that includes the application and all its dependencies. A _container_ is a live, running instance created from that image. Returning to our baking analogy: the _image_ is your recipe and ingredients kit, while the _container_ is the oven actively baking the cake. You can spin up multiple containers from the same image—just like baking several cakes from one recipe.
+
+- The importance of **Volumes**:
+
+  By default, docker containers are **ephemeral** i.e. once they stop any files written inside them are lost. To effectively manage input/output tasks between the host machine and the container and to persist data, we use _volumes_. We mount a local directory on the host machine to a directory inside the container using the `-v` (or the more flexible `--mount`) flag.
+
+## Running Bioinformatics Tools with Docker
 
 We will use the popular tool [`samtools`](http://www.htslib.org/) as an example to demonstrate how to run bioinformatics tools using Docker. `samtools` is a widely used tool for working with Sequence Alignment/Map (SAM) and Binary Alignment/Map (BAM) files.
 
@@ -176,72 +180,107 @@ We will use the popular tool [`samtools`](http://www.htslib.org/) as an example 
 
    We can add `--rm` to the interactive `docker run` command to remove the container after exiting the shell.
 
-### Finding Bioinformatics Tool Containers
-
-These registries host a large number of pre-built Docker images for bioinformatics tools:
-
-- <img src="/assets/img/posts/docker-for-bioinformatics/docker-4.svg" width="20" height="20" style="margin-right: 5px;"> [Docker Hub](https://hub.docker.com/)
-
-- <img src="/assets/img/posts/docker-for-bioinformatics/biocontainers-logo.svg" width="20" height="20" style="margin-right: 5px;"> [Biocontainers](https://biocontainers.pro/)
-
-- <img src="/assets/img/posts/docker-for-bioinformatics/quayio-logo.svg" width="20" height="20" style="margin-right: 5px;"> [Quay.io](https://quay.io/organization/biocontainers)
-
-- <img src="/assets/img/posts/docker-for-bioinformatics/pegi3s-logo.svg" width="20" height="20" style="margin-right: 5px;"> [pegi3s Bioinformatics Docker Images Project](http://bdip.i3s.up.pt/)
-
-### Composing Docker Workflows
+## Composing Docker Workflows
 
 Docker's real power shines when we use it compose complex workflows with multiple tools. By chaining together containers, we can create reproducible pipelines that can be easily shared and run on different systems.
 
-**Bioinformatics Pipeline using `bash` scripts**
+Let's consider the first step of most bioinformatics workflows: quality control of sequencing reads. This step is often performed using tools like [`fastqc`](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)<d-footnote><a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/" target="_blank">FastQC</a> is a quality control tool that analyzes raw sequence data from high throughout sequencing runs</d-footnote> with results conveniently summarized using tools like [`multiqc`](https://seqera.io/multiqc/)<d-footnote><a href="https://seqera.io/multiqc/" target="_blank">MultiQC</a> aggregates results and quality metrics from multiple bioinformatics analysis reports (often including those from <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/" target="_blank">FastQC</a>) into a single, interactive summary report, facilitating comparison across numerous samples or steps.</d-footnote>. These tools can be run in a Docker container, allowing us to easily check the quality of our sequencing data.
 
-Here's an example of a pipeline that aligns reads to a reference genome using `bwa` and processes the output using `samtools`. These commands can be saved in a `bash` script for easy execution.
+To try out the pipeline with real data, we can use test FASTQC files from the [nf-core/test-datasets](https://github.com/nf-core/test-datasets) repository that are ideal for quick pipeline tests. We can run the following commands one-by-one on the command line or save them in a `bash` script to download the test data to the `~/docker-bioinf/data/raw_data` directory. You can replace this with any other directory of your choice.
 
 ```bash
-# Pull the bwa and samtools images
-docker pull biocontainers/bwa
-docker pull biocontainers/samtools
+# Create directory for test data
+mkdir -p ~/docker-bioinf/data/raw_data
+cd ~/docker-bioinf/data/raw_data
 
-# Run the bwa aligner
-docker run --rm -v /data_dir:/data biocontainers/bwa bwa mem /data/ref.fa /data/reads.fq > /data/align.sam
-
-# Run samtools to convert the SAM file to BAM
-docker run --rm -v /data_dir:/data biocontainers/samtools samtools view -bS /data/align.sam > /data/align.bam
+# Download test FASTQ files
+wget https://raw.githubusercontent.com/nf-core/test-datasets/modules/data/genomics/sarscov2/illumina/fastq/test_1.fastq.gz
+wget https://raw.githubusercontent.com/nf-core/test-datasets/modules/data/genomics/sarscov2/illumina/fastq/test_2.fastq.gz
+wget https://raw.githubusercontent.com/nf-core/test-datasets/modules/data/genomics/sarscov2/illumina/fastq/test2_1.fastq.gz
+wget https://raw.githubusercontent.com/nf-core/test-datasets/modules/data/genomics/sarscov2/illumina/fastq/test2_2.fastq.gz
 ```
 
-**Bioinformatics Pipeline using `docker compose`**
+<aside>
+  <p> 💡 <strong>Note:</strong> If <code>wget</code> is not installed on your system, you can replace it with <code>curl -O</code> in the download commands. For example, <code>wget URL</code> becomes <code>curl -O URL</code>.</p>
+</aside>
+
+Check the contents of the `~/docker-bioinf/data/raw_data` directory to confirm that the files have been downloaded successfully.
+
+```bash
+# Check the contents of the directory
+ls ~/docker-bioinf/data/raw_data
+```
+
+### Bioinformatics Pipeline using `bash` scripts
+
+We can chain together multiple docker commands to construct a lightweight, portable pipeline for quality control of sequencing reads. The following `bash` script demonstrates how to run `fastqc` on all FASTQ files in the `~/docker-bioinf/data/raw_data` directory and generate a summary report using `multiqc`. The script will create a new directory called `qc_reports` to store the output reports.
+
+```bash
+#!/bin/bash
+# Create the output directory
+mkdir -p ~/docker-bioinf/data/qc_reports
+
+# Pull the FastQC and MultiQC containers
+docker pull quay.io/biocontainers/fastqc:0.12.1--hdfd78af_0
+docker pull quay.io/biocontainers/multiqc:1.28--pyhdfd78af_0
+
+# Run FastQC on all FASTQ files in the raw_data directory
+docker run --rm -v ~/docker-bioinf/data:/data quay.io/biocontainers/fastqc:0.12.1--hdfd78af_0 \
+  bash -c 'fastqc /data/raw_data/*.fastq.gz -o /data/qc_reports'
+
+# Run MultiQC to aggregate FastQC reports
+docker run --rm -v ~/docker-bioinf/data:/data quay.io/biocontainers/multiqc:1.28--pyhdfd78af_0 \
+  multiqc /data/qc_reports -o /data/qc_reports
+```
+
+<aside> <p> 💡 <strong>Note:</strong> If your Docker installation does not have root privileges, it may not be able to create new directories inside mounted volumes. To avoid errors, <strong>manually create the <code>qc_reports</code> directory</strong> on the host system before running the pipeline: </p> <pre style="font-size: 0.85em; line-height: 1.4;"><code>mkdir -p ~/docker-bioinf/data/qc_reports</code></pre> </aside>
+
+> Note the use of `bash -c` when running the `fastqc` command which ensures that the command is executed in a shell environment thereby enabling the expansion of wildcards (e.g. _\*fastq.gz_)
+
+The `fastqc` and `multiqc` reports will be saved in the `~/docker-bioinf/data/qc_reports` directory, and you can view them using any web browser. The `fastqc` reports will be in HTML format, while the `multiqc` report will be an interactive HTML file (`multiqc_report.html`) that aggregates the results from all the `fastqc` reports.
+
+### Bioinformatics Pipeline using `docker compose`
 
 For more complex workflows, Docker Compose provides a convenient way to define and run multi-container steps with built-in dependency management. The images and commands for the bioinformatic tools can be defined in a `docker-compose.yml` file, making it easier to manage and reproduce.
 
 <aside>
-  <p>Docker compose will typically be installed alongside Docker Desktop for Windows and macOS users. Linux users can install Docker Compose plugin by following this <a href="https://docs.docker.com/compose/install/linux/" target="_blank">link</a>.</p>
+  <p> Docker compose will typically be installed alongside Docker Desktop for Windows and macOS users. Linux users can install Docker Compose plugin by following this <a href="https://docs.docker.com/compose/install/linux/" target="_blank">link</a>.</p>
 </aside>
 
-Consider the same bioinformatics task from the `bash` script example above: aligning sequencing reads and converting the resulting alignment to BAM format. The following `docker-compose.yml` file captures this workflow:
+Let's revisit the earlier bioinformatics task: running FastQC on raw FASTQ files and summarizing the results using MultiQC. Instead of invoking each tool manually with separate `docker run` commands, we can streamline the workflow using a `docker-compose.yml` file:
 
 ```yaml
 services:
-  bwa:
-    image: biocontainers/bwa
+  fastqc:
+    image: quay.io/biocontainers/fastqc:0.12.1--hdfd78af_0
     volumes:
-      - /data_dir:/data
-    command: bwa mem /data/ref.fa /data/reads.fq > /data/align.sam
-  samtools:
-    image: biocontainers/samtools
+      - ~/docker-bioinf/data:/data
+    entrypoint: bash -c
+    command: >
+      "mkdir -p /data/qc_reports &&
+      fastqc /data/raw_data/*.fastq.gz -o /data/qc_reports"
+
+  multiqc:
+    image: quay.io/biocontainers/multiqc:1.28--pyhdfd78af_0
     volumes:
-      - /data_dir:/data
-    command: samtools view -bS /data/align.sam > /data/align.bam
+      - ~/docker-bioinf/data:/data
+    command: multiqc /data/qc_reports -o /data/qc_reports
     depends_on:
-      - bwa
+      fastqc:
+        condition: service_completed_successfully
 ```
 
 This `docker-compose.yml` file defines the following key sections:
 
 - `services`: Defines the containers in our pipeline. Each service is a separate Docker container.
-- `bwa`: and `samtools`: These are our service definitions.
-  - `image`: Specifies the Docker image to use (e.g., `biocontainers/bwa`).
-  - `volumes` (same as command line `-v` flag): Mounts a local directory (`data_dir/data`) to the container's `/data` directory
+- `fastqc`: and `multiqc`: These are our service definitions.
+  - `image`: Specifies the Docker image to use (e.g., `quay.io/biocontainers/fastqc`).
+  - `volumes`: Mounts a local directory (`~/docker-bioinf/data`) to the container's `/data` directory
+  - `entrypoint`: Sets the entrypoint for the container to `bash -c`, allowing us to run multiple commands in a single container.
   - `command`: Sets the command to run within the container.
-- `depends_on`: - `bwa`: This is crucial for **dependency management**. It tells Docker Compose that the `samtools` container must wait for the `bwa` container to finish before starting. This ensures the `align.sam` file exists before `samtools` tries to use it.
+- `depends_on`: This directive is essential for managing the workflow's order of operations.
+  - `fastqc`: Indicates that the `multiqc` service relies on the output of the `fastqc` service.
+    - `condition: service_completed_successfully`: By setting this condition, we instruct Docker Compose to only initiate the `multiqc` container once the `fastqc` container has finished its job and exited with a success status. This prevents `multiqc` from running prematurely and encountering an empty or incomplete `qc_reports` directory.
 
 To run the pipeline, execute the following command in the same directory as the `docker-compose.yml` file:
 
@@ -249,11 +288,118 @@ To run the pipeline, execute the following command in the same directory as the 
 docker-compose up
 ```
 
-### Other Resources
+> 💡 Tip: If you're re-running the pipeline and want a clean start, use <code>docker compose down</code> to remove the containers, or add the <code>--force-recreate</code> flag when running up (e.g. <code> docker compose up --force-recreate</code>).
 
-If you'd like to read more about reproducible research practices, check out the following resources:
+## Beyond Pre-Built Images: Introducing Dockerfiles
 
+While pre-built Docker images are incredibly helpful, they may not always meet your specific needs. Suppose you want to install a specific version of a tool or dependency, package custom scripts along with the tools or simply that the pre-built image is not available. In such cases, you can create your own Docker images using a `Dockerfile`, which is a text file that contains instructions for building a Docker image.
+It specifies the base image, the software to install, and any configuration needed to set up the environment.
+
+We can create our own custom docker image for the same `fastqc` and `multiqc` pipeline using a `Dockerfile`. This provides us complete control to customize the environment, install additional dependencies, and package our scripts along with the tools.
+
+```dockerfile
+# Use lightweight linux base
+FROM debian:bullseye-slim
+
+# Prevent interactive prompts
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    openjdk-11-jdk \
+    python3 \
+    python3-pip \
+    bash \
+    wget \
+    unzip \
+    perl \
+    libperl-dev && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Install FastQC
+RUN wget https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.12.1.zip && \
+    unzip fastqc_v0.12.1.zip && \
+    mv FastQC /opt/fastqc && \
+    chmod +x /opt/fastqc/fastqc && \
+    ln -s /opt/fastqc/fastqc /usr/local/bin/fastqc && \
+    rm fastqc_v0.12.1.zip
+
+# Install MultiQC
+RUN pip3 install --no-cache-dir multiqc
+
+# Set working directory
+WORKDIR /data
+
+# Make shell commands easier to write
+ENTRYPOINT ["bash", "-c"]
+```
+
+The `Dockerfile` contains the instructions to build an environment with the tools and necessary dependencies for our analysis, the key sections are:
+
+- `FROM <image>`: Specifies the base image to use, this is the image we'll extend by installing our specific tools. In this case, we are using a lightweight Debian image.
+<aside><p>Explore more base image options on <a href="https://docs.docker.com/docker-hub/image-library/trusted-content/#docker-official-images" target="_blank">Docker Hub</a>.</p></aside>
+- `RUN <command>`: Executes a command in the container during the build process. We use this to install dependencies and tools.
+- `WORKDIR <directory>`: Sets the working directory inside the container. This is where the commands will be executed.
+- `ENTRYPOINT <command>`: Sets the default command to run when the container starts. In this case, we set it to `bash -c` to allow us to run multiple commands.
+
+A complete list of Dockerfile instructions can be found in the [Dockerfile reference](https://docs.docker.com/engine/reference/builder/).
+
+Next, we build the Docker image using the `docker build` command. The `-t` flag allows us to tag the image with a name (e.g., `my_fastqc_multiqc`).
+
+```bash
+# Build the Docker image
+docker build -t my_fastqc_multiqc .
+```
+
+Once the image is built, we can run it using the same commands as before. The only difference is that we will use our custom image name instead of the pre-built one.
+
+```bash
+mkdir -p ~/docker-bioinf/data/qc_reports
+
+# Run FastQC on all FASTQ files in the raw_data directory
+docker run --rm -v ~/docker-bioinf/data:/data my_fastqc_multiqc \
+  bash -c 'mkdir -p /data/qc_reports && fastqc /data/raw_data/*.fastq.gz -o /data/qc_reports'
+
+# Run MultiQC to aggregate FastQC reports
+docker run --rm -v ~/docker-bioinf/data:/data my_fastqc_multiqc \
+  multiqc /data/qc_reports -o /data/qc_reports
+```
+
+## Finding Bioinformatics Tool Containers
+
+These registries host a large number of pre-built Docker images for bioinformatics tools:
+
+- <img src="/assets/img/posts/docker-for-bioinformatics/docker-4.svg" width="20" height="20" style="margin-right: 5px;"> [Docker Hub](https://hub.docker.com/) : The default Docker registry, home to many official and community-maintained bioinformatics tool images.
+
+- <img src="/assets/img/posts/docker-for-bioinformatics/biocontainers-logo.svg" width="20" height="20" style="margin-right: 5px;"> [Biocontainers](https://biocontainers.pro/) : A community-driven project offering thousands of standardized containers for bioinformatics tools, ideal for reproducible pipelines.
+
+- <img src="/assets/img/posts/docker-for-bioinformatics/quayio-logo.svg" width="20" height="20" style="margin-right: 5px;"> [Quay.io](https://quay.io/organization/biocontainers) : Another major container registry, widely used by the BioContainers project to host their images.
+
+- <img src="/assets/img/posts/docker-for-bioinformatics/pegi3s-logo.svg" width="20" height="20" style="margin-right: 5px;"> [pegi3s Bioinformatics Docker Images Project](http://bdip.i3s.up.pt/) : A curated collection of Docker images focused on reproducibility and ease of use.
+
+- <img src="/assets/img/posts/docker-for-bioinformatics/rocker-logo.svg" width="20" height="20" style="margin-right: 5px;"> [Rocker Project](https://rocker-project.org/) : Docker images tailored for R and RStudio users, commonly used in data science and bioinformatics research.
+
+## Resources and Further Reading
+
+**Docker Essentials and Learning:**
+
+- [Getting Started with Docker](https://docs.docker.com/get-started/) : A beginner-friendly guide to Docker, covering installation and basic commands.
+- [Docker Documentation](https://docs.docker.com/) : The official Docker documentation is a comprehensive resource for all things Docker.
+- [Docker Compose Documentation](https://docs.docker.com/compose/) : A guide to using Docker Compose for multi-container applications.
+- [Docker CLI CheatSheet](https://docs.docker.com/get-started/docker_cheatsheet.pdf) : A quick reference guide for common Docker commands.
+
+**Guided Lessons:**
+
+- [Software Carpentries: Introduction to Docker](https://carpentries-incubator.github.io/docker-introduction/) : A hands-on lesson designed for researchers new to containers.
+
+**Reproducibility in Research Practices:**
+
+- [The FAIR Guiding Principles](https://www.nature.com/articles/sdata201618)<d-cite key="wilkinson_fair_2016"></d-cite>: The original paper outlining the FAIR principles
+- [Ten Simple Rules for Reproducible Computational Research](https://doi.org/10.1371/journal.pcbi.1000424)<d-cite key="sandve_ten_2013"></d-cite> : A paper outlining ten simple rules for reproducible research in computational biology.
 - ["The Turing Way"](https://book.the-turing-way.org/) : A handbook for reporoducible, ethical and collaborative data science.
+- [The Open Science Manual](https://arca-dpss.github.io/manual-open-science/): A guide to open science practices, including reproducibility and data sharing.
+
+## Conclusion
 
 Docker is a game-changer for bioinformatics, making workflows more reproducible, scalable, and shareable. Whether you’re running a single tool or a complex pipeline, Docker ensures that your research remains reliable and accessible across different environments.
 
