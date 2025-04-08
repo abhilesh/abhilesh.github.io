@@ -113,12 +113,21 @@ d-article {
       }
       ul {
         padding-left: 1em;
-        margin-top: 0;
-        margin-bottom: 6px;
+        margin-top: 0.8em;
+        margin-bottom: 0.8em;
         list-style-type: none;
         li {
-          margin-bottom: 0.25em;
+          margin-bottom: 0.8em;
         }
+      }
+      ul.section-nav {
+        padding-left: 0;
+      }
+      li.toc-entry.toc-h2 a {
+        font-weight: 800;
+      }
+      li.toc-entry.toc-h3 a {
+        font-weight: 400;
       }
     }
     .figcaption {
