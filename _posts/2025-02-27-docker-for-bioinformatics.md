@@ -7,6 +7,7 @@ tags: docker bioinformatics
 categories: bioinformatics
 thumbnail: assets/img/posts/docker-for-bioinformatics/docker-for-bioinformatics-thumbnail.png
 giscus_comments: true
+#disqus_comments: true
 tabs: true
 disable_animation: true
 toc: true
@@ -25,7 +26,7 @@ bibliography: 2025-02-27-docker-for-bioinformatics.bib
     </div>
 </div>
 
-Bioinformatics analysis often involves complex pipelines with rapidly evolving software tools, each with their own set of dependencies. System compatibility, version mismatches and dependency conflict issues can often be a nightmare, making running and sharing bioinformatic pipelines a challenging task. These challenges not only waste valuable research time but also contribute to irreproducible workflows, where results depend as much on the computing environment as on the analysis itself. Docker offers a powerful solution by packaging software and its dependencies into portable, reproducible containers—ensuring that your bioinformatics pipelines run consistently, whether on your local machine, an HPC cluster, or the cloud.
+Bioinformatics analysis often involves complex pipelines with rapidly evolving software tools, each with their own set of dependencies. System compatibility, version mismatches and dependency conflict issues can often be a nightmare, making running and sharing bioinformatic pipelines a challenging task. These challenges not only waste valuable research time but also contribute to irreproducible workflows, where results depend as much on the computing environment as on the analysis itself. Docker offers a powerful solution by packaging software and its dependencies into portable, reproducible containers, ensuring that your bioinformatics pipelines run consistently, whether on your local machine, an HPC cluster, or the cloud.
 
 ## What is Docker?
 
@@ -113,7 +114,11 @@ docker --version
 docker run hello-world
 ```
 
-There are other ways to run containers, and you can experiment with these as you get more comfortable with Docker.
+<aside>
+  <p>💡 <strong>Tip:</strong> Running <code>docker --help</code> will display a list of available commands and options.</p>
+</aside>
+
+If installed correctly, these commands will print the version of Docker installed on your system and fetch the image and run the `hello-world` container, which prints a message confirming that Docker is working.
 
 ## Understanding Key Docker Concepts
 
@@ -365,6 +370,22 @@ docker run --rm -v ~/docker-bioinf/data:/data my_fastqc_multiqc \
   multiqc /data/qc_reports -o /data/qc_reports
 ```
 
+## Best Practices for Docker in Bioinformatics
+
+1. **Always Use Specific Image Versions**:
+
+   Use a versioned image tag (like `quay.io/biocontainers/fastqc:0.12.1--hdfd78af_0`) instead of the `latest` tag. This ensures your workflow always uses the exact same version of the tool every time it's run and avoids unexpected changes in behavior, guaranteeing reproducibility.
+
+2. **Leverage Biocontainers**:
+
+   Before searching elsewhere or attempting to build an image, check repositories like [Quay.io/biocontainers](https://quay.io/organization/biocontainers). Utilizing these standardized, pre-built images for common bioinformatics tools saves significant effort and aligns your workflow with community standards.
+
+3. **Handle Data Appropriately**:
+
+   - Separate data from the container: Use volumes to mount data directories from the host system into the container, rather than copying it to the container's filesystem. This keeps the container immutable and promotes reusability with different datasets.
+   - Mount reference data as read-only volumes to prevent accidental modifications.
+   - Use named volumes for persisting data between container runs and to share data between multiple containers.
+
 ## Finding Bioinformatics Tool Containers
 
 These registries host a large number of pre-built Docker images for bioinformatics tools:
@@ -384,23 +405,26 @@ These registries host a large number of pre-built Docker images for bioinformati
 **Docker Essentials and Learning:**
 
 - [Getting Started with Docker](https://docs.docker.com/get-started/) : A beginner-friendly guide to Docker, covering installation and basic commands.
+- [Docker CLI CheatSheet](https://docs.docker.com/get-started/docker_cheatsheet.pdf) : A quick reference guide for common Docker commands.
 - [Docker Documentation](https://docs.docker.com/) : The official Docker documentation is a comprehensive resource for all things Docker.
 - [Docker Compose Documentation](https://docs.docker.com/compose/) : A guide to using Docker Compose for multi-container applications.
-- [Docker CLI CheatSheet](https://docs.docker.com/get-started/docker_cheatsheet.pdf) : A quick reference guide for common Docker commands.
+- [BioContainers Best Practices](https://biocontainers-edu.readthedocs.io/en/latest/best_practices.html): A guide to best practices for using BioContainers in bioinformatics workflows.
 
 **Guided Lessons:**
 
 - [Software Carpentries: Introduction to Docker](https://carpentries-incubator.github.io/docker-introduction/) : A hands-on lesson designed for researchers new to containers.
+- [Linux containers in scientific environments (CBG PhD Course)](https://biocorecrg.github.io/PhD_course_containers_2021/): Short hands-on practicum on how to start working using Linux containers.
 
 **Reproducibility in Research Practices:**
 
 - [The FAIR Guiding Principles](https://www.nature.com/articles/sdata201618)<d-cite key="wilkinson_fair_2016"></d-cite>: The original paper outlining the FAIR principles
 - [Ten Simple Rules for Reproducible Computational Research](https://doi.org/10.1371/journal.pcbi.1000424)<d-cite key="sandve_ten_2013"></d-cite> : A paper outlining ten simple rules for reproducible research in computational biology.
+- [Recommendations for the packaging and containerizing of bioinformatics software](https://f1000research.com/articles/7-742/v2)<d-cite key="gruening_recommendations_2019"></d-cite> : A paper discussing best practices for packaging and containerizing bioinformatics software to ensure reproducibility.
 - ["The Turing Way"](https://book.the-turing-way.org/) : A handbook for reporoducible, ethical and collaborative data science.
 - [The Open Science Manual](https://arca-dpss.github.io/manual-open-science/): A guide to open science practices, including reproducibility and data sharing.
 
 ## Conclusion
 
-Docker is a game-changer for bioinformatics, making workflows more reproducible, scalable, and shareable. Whether you’re running a single tool or a complex pipeline, Docker ensures that your research remains reliable and accessible across different environments.
+Bioinformatic workflows often suffer from "dependency hell", wherein conflicts between software libraries, incompatible versions and platform-specific quirks can make setting up and running analyses a frustrating experience. Containerization technologies like Docker provide a powerful solution by encapsulating the software and it's dependencies along with any necessary configurations into a single, portable package. This ensures that the analysis runs consistently across different environments, making the workflows more reproducible, scalable, and shareable. Whether you're running a single tool or a complex pipeline, Docker ensures that your research remains reliable and accessible across different environments.
 
 Happy Dockering!
