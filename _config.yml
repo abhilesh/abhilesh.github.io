@@ -395,7 +395,7 @@ lazy_loading_images: true # enables lazy loading of images (recommended)
 animation:
   delay: 90ms # delay before each consecutive animation starts
   enabled: true # enables fade in animation of elements
-  max_elements: -1 # maximum number of elements to animate (set to -1 or delete it to animate all elements)
+  max_elements: 30 # maximum number of elements to animate (set to -1 or delete it to animate all elements)
 
 # -----------------------------------------------------------------------------
 # WebP Generator for Jekyll
@@ -569,7 +569,7 @@ third_party_libraries:
     version: "2.11.5"
   mathjax:
     integrity:
-      js: "sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="
+      js: "sha256-qF6qU5kTY5jf4hgs0vrVP18n4V2AyF/Xw3jOo0K6yCU="
     local:
       fonts: "output/chtml/fonts/woff-v2/"
     url:

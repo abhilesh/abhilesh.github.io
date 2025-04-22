@@ -26,6 +26,10 @@ bibliography: 2025-02-27-docker-for-bioinformatics.bib
     </div>
 </div>
 
+<div class="caption text-start" id="image-credits">
+    <b>Credit:</b> Composite image by <a href="https://abhilesh.github.io/">Abhilesh Dhawanjewar</a> featuring models by <a href="https://www.seankenney.com/docker-logo/">Sean Kenney (Docker whale)</a> and <a href="https://ideas.lego.com/projects/d2e31e3f-f63f-46a4-b0de-84a3c90ecbee">CaptainVerbalCelery (DNA helix, via LEGO IDEAS)</a>, with background from <a href="https://stock.adobe.com/images/genome-sciences-background-of-fluorescent-dna-bands/509054252">Adobe Stock</a>.
+</div>
+
 Bioinformatics analysis often involves complex pipelines with rapidly evolving software tools, each with their own set of dependencies. System compatibility, version mismatches and dependency conflict issues can often be a nightmare, making running and sharing bioinformatic pipelines a challenging task. These challenges not only waste valuable research time but also contribute to irreproducible workflows, where results depend as much on the computing environment as on the analysis itself. Docker offers a powerful solution by packaging software and its dependencies into portable, reproducible containers, ensuring that your bioinformatics pipelines run consistently, whether on your local machine, an HPC cluster, or the cloud.
 
 ## What is Docker?
