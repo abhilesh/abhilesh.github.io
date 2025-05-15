@@ -7,17 +7,23 @@ first_name: Abhilesh
 middle_name:
 last_name: Dhawanjewar
 email: ad2347@mrc-mbu.cam.ac.uk
-description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  Abhilesh Dhawanjewar | Homepage. Based on [*folio](https://github.com/bogoli/-folio) design.
+description: >- # the ">" symbol means to ignore newlines until "footer_text:"
+  Personal Website of Abhilesh Dhawanjewar
+website_headline: Abhilesh Dhawanjewar | Evolutionary Geneticist & Bioinformatician
+person_description: >-
+  Dr. Abhilesh Dhawanjewar is an Evolutionary Geneticist and Bioinformatician at the MRC Mitochondrial Biology Unit, University of Cambridge. He specializes in the evolutionary genetics of mitochondrial DNA and its implications for human health and disease.
+jobTitle: Bioinformatician
+affiliation: MRC Mitochondrial Biology Unit, University of Cambridge
+affiliation_url: https://www.mrc-mbu.cam.ac.uk/
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
-keywords: jekyll, jekyll-theme, academic-website, portfolio-website # add your own keywords or leave empty
+keywords: Bioinformatics, Mitochondrial Biology, Evolutionary Genetics # add your own keywords or leave empty
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: favicon-32x32.png # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
 url: https://abhilesh.github.io # the base hostname & protocol for your site
-baseurl: # the subpath of your site, e.g. /blog/
+baseurl: "" # the subpath of your site, e.g. /blog/
 last_updated: false # set to true if you want to display last updated in the footer
 impressum_path: # set to path to include impressum link in the footer, use the same path as permalink in a page, helps to conform with EU GDPR
 back_to_top: true # set to false to disable the back to top button
@@ -65,8 +71,8 @@ max_width: 800px
 # Open Graph & Schema.org
 # -----------------------------------------------------------------------------
 # Display links to the page with a preview object on social media.
-serve_og_meta: false # Include Open Graph meta tags in the HTML head
-serve_schema_org: false # Include Schema.org in the HTML head
+serve_og_meta: true # Include Open Graph meta tags in the HTML head
+serve_schema_org: true # Include Schema.org in the HTML head
 og_image: # The site-wide (default for all links) Open Graph preview image
 
 # -----------------------------------------------------------------------------
@@ -152,8 +158,7 @@ collections:
   books:
     output: false
   news:
-    defaults:
-      layout: post
+    layout: post
     output: true
     permalink: /:collection/:title/
   projects:

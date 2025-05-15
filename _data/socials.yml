@@ -2,6 +2,12 @@
 # the commented lines are the default social media links supported by the template
 # the socials will be displayed in the order they are defined here
 
+display_in_header:
+  - email
+  - scholar_userid
+  - github_username
+  - linkedin_username
+
 email: ad2347@cam.ac.uk # your email address
 scholar_userid: KmALIboAAAAJ # your Google Scholar ID
 github_username: abhilesh # your GitHub user name
@@ -16,7 +22,7 @@ linkedin_username: abhilesh-dhawanjewar # your LinkedIn user name
 # gitlab_username: # your GitLab user name
 # ieee_id: # your ieeexplore.ieee.org/author/id
 # inspirehep_id: # Inspire HEP author ID
-# instagram_id: # your instagram id
+instagram_id: abhilesh7 # your instagram id
 # kaggle_id: # your kaggle id
 # keybase_username: # your keybase user name
 # lastfm_id: # your lastfm id
@@ -24,12 +30,12 @@ linkedin_username: abhilesh-dhawanjewar # your LinkedIn user name
 # leetcode_id: # your LeetCode id
 # mastodon_username: # your mastodon instance+username in the format instance.tld/@username
 # medium_username: # your Medium username
-# orcid_id: # your ORCID ID
+orcid_id: 0000-0001-7827-1255 # your ORCID ID
 # osf_id: # your OSF ID
 # pinterest_id: # your pinterest id
 # publons_id: # your ID on Publons
 # quora_username: # your Quora username
-# research_gate_profile: # your profile on ResearchGate
+research_gate_profile: Abhilesh-Dhawanjewar-2 # your profile on ResearchGate
 # rss_icon: false # set to true to show the RSS icon
 # scopus_id: # your profile on Scopus
 # semanticscholar_id: # your Semantic Scholar ID
@@ -42,7 +48,7 @@ linkedin_username: abhilesh-dhawanjewar # your LinkedIn user name
 # wikidata_id: # your wikidata id
 # wikipedia_id: # your wikipedia id (Case sensitive)
 # work_url: # work page URL
-# x_username: # your X handle
+x_username: abhilesh7 # your X handle
 # youtube_id: # your youtube channel id (youtube.com/@<youtube_id>)
 # zotero_username: # your zotero username
 #custom_social: # can be any name here other than the ones already defined above
