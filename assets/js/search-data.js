@@ -51,6 +51,13 @@ ninja.data = [{
           title: 'Joined the MRC Mitochondrial Biology Unit at the University of Cambridge as a...',
           description: "",
           section: "News",},{
+        id: 'social-display_in_header',
+        title: 'Display_in_header',
+        section: 'Socials',
+        handler: () => {
+          window.open("", "_blank");
+        },
+      },{
         id: 'social-email',
         title: 'email',
         section: 'Socials',
@@ -77,6 +84,34 @@ ninja.data = [{
         section: 'Socials',
         handler: () => {
           window.open("https://www.linkedin.com/in/abhilesh-dhawanjewar", "_blank");
+        },
+      },{
+        id: 'social-instagram',
+        title: 'Instagram',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://instagram.com/abhilesh7", "_blank");
+        },
+      },{
+        id: 'social-orcid',
+        title: 'ORCID',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://orcid.org/0000-0001-7827-1255", "_blank");
+        },
+      },{
+        id: 'social-researchgate',
+        title: 'ResearchGate',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://www.researchgate.net/profile/Abhilesh-Dhawanjewar-2/", "_blank");
+        },
+      },{
+        id: 'social-x',
+        title: 'X',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://twitter.com/abhilesh7", "_blank");
         },
       },{
       id: 'light-theme',
