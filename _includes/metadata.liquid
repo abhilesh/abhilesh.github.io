@@ -227,6 +227,41 @@
   -->
 
   <script type="application/ld+json">
+    {% if page.url == '/' %}
+
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": {{ author_name | jsonify }},
+      "url": {{ page.url | prepend: site.baseurl | prepend: site.url | remove_first: 'index.html' | jsonify }},
+      {% if site.jobTitle %}
+        "jobTitle": {{ site.jobTitle | jsonify }},
+      {% endif %}
+      {% if site.person_description %}
+        "description": {{ site.person_description | strip_html | strip_newlines |  escape | jsonify }}
+      {% else %}
+        "description": {{ site.description | strip_html | strip_newlines | escape | jsonify }}
+      {% endif %},
+      {% if site.affiliation %}
+        "affiliation": {
+          "@type": "Organization",
+          "name": {{ site.affiliation | jsonify }}
+          {% if site.affiliation_url %}
+          ,"url": {{ site.affiliation_url | jsonify }}
+          {% endif %}
+        },
+      {% endif %}
+      {% if sameaslinks.size > 0 %}
+        "sameAs": {{ sameas_json_output_string }},
+      {% endif %}
+      "image": {
+          "@type": "ImageObject",
+          "url": "{{ site.avatar | absolute_url }}"
+        }
+    }
+
+    {% else %}
+
     {
       "@context": "https://schema.org",
       "@type": "{% if is_blog_post %}BlogPosting{% else %}WebSite{% endif %}",
@@ -307,5 +342,6 @@
         {% endif %}
       {% endif %}
     }
+    {% endif %}
   </script>
 {% endif %}
