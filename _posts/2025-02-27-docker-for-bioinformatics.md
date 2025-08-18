@@ -385,7 +385,6 @@ docker run --rm -v ~/docker-bioinf/data:/data my_fastqc_multiqc \
    Before searching elsewhere or attempting to build an image, check repositories like [Quay.io/biocontainers](https://quay.io/organization/biocontainers). Utilizing these standardized, pre-built images for common bioinformatics tools saves significant effort and aligns your workflow with community standards.
 
 3. **Handle Data Appropriately**:
-
    - Separate data from the container: Use volumes to mount data directories from the host system into the container, rather than copying it to the container's filesystem. This keeps the container immutable and promotes reusability with different datasets.
    - Mount reference data as read-only volumes to prevent accidental modifications.
    - Use named volumes for persisting data between container runs and to share data between multiple containers.
