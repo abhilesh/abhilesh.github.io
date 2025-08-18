@@ -86,6 +86,20 @@ ninja.data = [{
           window.open("https://www.linkedin.com/in/abhilesh-dhawanjewar", "_blank");
         },
       },{
+        id: 'social-blogger',
+        title: 'Blogger',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://neuroscience.cam.ac.uk/member/ad2347/", "_blank");
+        },
+      },{
+        id: 'social-dblp',
+        title: 'DBLP',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://theealingbeaverproject.com/team/abhilesh-dhawanjewar/", "_blank");
+        },
+      },{
         id: 'social-instagram',
         title: 'Instagram',
         section: 'Socials',
@@ -105,6 +119,13 @@ ninja.data = [{
         section: 'Socials',
         handler: () => {
           window.open("https://www.researchgate.net/profile/Abhilesh-Dhawanjewar-2/", "_blank");
+        },
+      },{
+        id: 'social-work',
+        title: 'Work',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://www.mrc-mbu.cam.ac.uk/mbu-postdoctoral-society/postdocs/abhilesh-dhawanjewar", "_blank");
         },
       },{
         id: 'social-x',

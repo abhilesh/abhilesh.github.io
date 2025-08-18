@@ -1,28 +1,238 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://abhilesh.github.io/feed.xml" rel="self" type="application/atom+xml"/><link href="https://abhilesh.github.io/" rel="alternate" type="text/html" hreflang="en"/><updated>2025-08-05T12:46:45+00:00</updated><id>https://abhilesh.github.io/feed.xml</id><title type="html">blank</title><subtitle>Personal Website of Abhilesh Dhawanjewar</subtitle><entry><title type="html">Docker for Bioinformatics</title><link href="https://abhilesh.github.io/blog/2025/docker-for-bioinformatics/" rel="alternate" type="text/html" title="Docker for Bioinformatics"/><published>2025-02-27T21:01:00+00:00</published><updated>2025-02-27T21:01:00+00:00</updated><id>https://abhilesh.github.io/blog/2025/docker-for-bioinformatics</id><content type="html" xml:base="https://abhilesh.github.io/blog/2025/docker-for-bioinformatics/"><![CDATA[<div class="row justify-content-center mt-3"> <div class="col-12 mt-3 mt-md-0"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/posts/docker-for-bioinformatics/docker-for-bioinformatics-cover-480.webp 480w,/assets/img/posts/docker-for-bioinformatics/docker-for-bioinformatics-cover-800.webp 800w,/assets/img/posts/docker-for-bioinformatics/docker-for-bioinformatics-cover-1400.webp 1400w," type="image/webp" sizes="95vw"/> <img src="/assets/img/posts/docker-for-bioinformatics/docker-for-bioinformatics-cover.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"/> </picture> </figure> </div> </div> <div class="caption text-start" id="image-credits"> <b>Credit:</b> Composite image by <a href="https://abhilesh.github.io/">Abhilesh Dhawanjewar</a> featuring models by <a href="https://www.seankenney.com/docker-logo/">Sean Kenney (Docker whale)</a> and <a href="https://ideas.lego.com/projects/d2e31e3f-f63f-46a4-b0de-84a3c90ecbee">CaptainVerbalCelery (DNA helix, via LEGO IDEAS)</a>, with background from <a href="https://stock.adobe.com/images/genome-sciences-background-of-fluorescent-dna-bands/509054252">Adobe Stock</a>. </div> <p>Bioinformatics analysis often involves complex pipelines with rapidly evolving software tools, each with their own set of dependencies. System compatibility, version mismatches and dependency conflict issues can often be a nightmare, making running and sharing bioinformatic pipelines a challenging task. These challenges not only waste valuable research time but also contribute to irreproducible workflows, where results depend as much on the computing environment as on the analysis itself. Docker offers a powerful solution by packaging software and its dependencies into portable, reproducible containers, ensuring that your bioinformatics pipelines run consistently, whether on your local machine, an HPC cluster, or the cloud.</p> <h2 id="what-is-docker">What is Docker?</h2> <p>Imagine you’re baking a cake, but every time you try, your kitchen is missing key ingredients or uses a different oven that bakes at the wrong temperature. Docker is like a self-contained baking kit that comes with all the right ingredients, tools, and even its own portable oven, ensuring your cake turns out exactly the same no matter where you bake it. In bioinformatics, Docker does the same for software by packaging tools, dependencies, and environments so that analyses run reliably across different computing platforms.</p> <h2 id="how-can-docker-help">How can Docker help?</h2> <p>The <strong>FAIR</strong> (Findable, Accessible, Interoperable, and Reusable) principles <d-cite key="wilkinson_fair_2016"></d-cite> provide guidelines for maximizing the value of research data. Docker aligns bioinformatics workflows with these principles by ensuring software and environments are portable and reproducible:</p> <ul> <li> <p><strong>Findability</strong>: Docker images can be easily found in registries like Docker Hub, with clear versioning and documentation for discovery.</p> </li> <li> <p><strong>Accessibility</strong>: Anyone with internet access and Docker installed can retrieve and use containerized tools, promoting open science.</p> </li> <li> <p><strong>Interoperability</strong>: Docker containers provide a consistent runtime environment across different systems, preventing dependency conflicts.</p> </li> <li> <p><strong>Reusability</strong>: Pre-built images allow researchers to reuse workflows without worrying about installation issues, fostering collaboration.</p> </li> </ul> <h2 id="getting-started">Getting Started</h2> <p>To begin, start by installing Docker on your system. Docker is available for all major operating systems and the installers can be downloaded from the <a href="https://www.docker.com/get-started/">official website</a>. For Windows and macOS users, the recommended approach is to install the Docker Desktop application, while Linux users can install Docker natively for a more lightweight setup.<d-footnote>Docker Desktop creates a Linux virtual machine (VM) on Windows and macOS to run containers, whereas on a Linux machine, Docker runs natively without the need for a VM.</d-footnote></p> <hr style="grid-column: text; width: 100%; border: none; border-bottom: 1px solid rgba(0, 0, 0, 0.1); margin-top: 1rem; margin-bottom: 1rem;"/> <ul id="docker-os-install" class="tab" data-tab="2d16de15-ccc8-4002-a64a-7a466d547331" data-name="docker-os-install"> <li class="active" id="docker-os-install-macos"> <a href="#">MacOS </a> </li> <li id="docker-os-install-windows"> <a href="#">Windows </a> </li> <li id="docker-os-install-linux"> <a href="#">Linux </a> </li> </ul> <ul class="tab-content" id="2d16de15-ccc8-4002-a64a-7a466d547331" data-name="docker-os-install"> <li class="active"> <ul> <li>Download the <a href="https://docs.docker.com/desktop/setup/install/mac-install/">Docker Desktop installer for MacOS</a></li> <li>Follow the setup instructions to install Docker.</li> <li>Docker Desktop can now be launched by clicking the application icon.</li> </ul> </li> <li> <ul> <li>Download the <a href="https://docs.docker.com/desktop/setup/install/windows-install/">Docker Desktop installer for Windows</a></li> <li>Follow the setup instructions to install Docker.</li> <li>Docker Desktop can now be launched by clicking the application icon.</li> </ul> </li> <li> <p>Assuming a Debian-based Linux distribution (e.g., Ubuntu):</p> <ul> <li> <p>Open a terminal and run the following commands</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Update package index and install docker</span>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://abhilesh.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://abhilesh.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-08-18T15:14:22+00:00</updated><id>https://abhilesh.github.io/feed.xml</id><title type="html">blank</title><subtitle>Personal Website of Abhilesh Dhawanjewar</subtitle><entry><title type="html">Docker for Bioinformatics</title><link href="https://abhilesh.github.io/blog/2025/docker-for-bioinformatics/" rel="alternate" type="text/html" title="Docker for Bioinformatics" /><published>2025-02-27T21:01:00+00:00</published><updated>2025-02-27T21:01:00+00:00</updated><id>https://abhilesh.github.io/blog/2025/docker-for-bioinformatics</id><content type="html" xml:base="https://abhilesh.github.io/blog/2025/docker-for-bioinformatics/"><![CDATA[<div class="row justify-content-center mt-3">
+    <div class="col-12 mt-3 mt-md-0">
+        
+
+
+
+<figure>
+  <picture>
+    <!-- Auto scaling with imagemagick -->
+    <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
+    
+      
+        <source class="responsive-img-srcset" srcset="/assets/img/posts/docker-for-bioinformatics/docker-for-bioinformatics-cover-480.webp 480w,/assets/img/posts/docker-for-bioinformatics/docker-for-bioinformatics-cover-800.webp 800w,/assets/img/posts/docker-for-bioinformatics/docker-for-bioinformatics-cover-1400.webp 1400w," type="image/webp" sizes="95vw" />
+      
+    
+    <img src="/assets/img/posts/docker-for-bioinformatics/docker-for-bioinformatics-cover.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+  </picture>
+
+  
+</figure>
+
+    </div>
+</div>
+
+<div class="caption text-start" id="image-credits">
+    <b>Credit:</b> Composite image by <a href="https://abhilesh.github.io/">Abhilesh Dhawanjewar</a> featuring models by <a href="https://www.seankenney.com/docker-logo/">Sean Kenney (Docker whale)</a> and <a href="https://ideas.lego.com/projects/d2e31e3f-f63f-46a4-b0de-84a3c90ecbee">CaptainVerbalCelery (DNA helix, via LEGO IDEAS)</a>, with background from <a href="https://stock.adobe.com/images/genome-sciences-background-of-fluorescent-dna-bands/509054252">Adobe Stock</a>.
+</div>
+
+<p>Bioinformatics analysis often involves complex pipelines with rapidly evolving software tools, each with their own set of dependencies. System compatibility, version mismatches and dependency conflict issues can often be a nightmare, making running and sharing bioinformatic pipelines a challenging task. These challenges not only waste valuable research time but also contribute to irreproducible workflows, where results depend as much on the computing environment as on the analysis itself. Docker offers a powerful solution by packaging software and its dependencies into portable, reproducible containers, ensuring that your bioinformatics pipelines run consistently, whether on your local machine, an HPC cluster, or the cloud.</p>
+
+<h2 id="what-is-docker">What is Docker?</h2>
+
+<p>Imagine you’re baking a cake, but every time you try, your kitchen is missing key ingredients or uses a different oven that bakes at the wrong temperature. Docker is like a self-contained baking kit that comes with all the right ingredients, tools, and even its own portable oven, ensuring your cake turns out exactly the same no matter where you bake it. In bioinformatics, Docker does the same for software by packaging tools, dependencies, and environments so that analyses run reliably across different computing platforms.</p>
+
+<h2 id="how-can-docker-help">How can Docker help?</h2>
+
+<p>The <strong>FAIR</strong> (Findable, Accessible, Interoperable, and Reusable) principles <d-cite key="wilkinson_fair_2016"></d-cite> provide guidelines for maximizing the value of research data. Docker aligns bioinformatics workflows with these principles by ensuring software and environments are portable and reproducible:</p>
+
+<ul>
+  <li>
+    <p><strong>Findability</strong>: Docker images can be easily found in registries like Docker Hub, with clear versioning and documentation for discovery.</p>
+  </li>
+  <li>
+    <p><strong>Accessibility</strong>: Anyone with internet access and Docker installed can retrieve and use containerized tools, promoting open science.</p>
+  </li>
+  <li>
+    <p><strong>Interoperability</strong>: Docker containers provide a consistent runtime environment across different systems, preventing dependency conflicts.</p>
+  </li>
+  <li>
+    <p><strong>Reusability</strong>: Pre-built images allow researchers to reuse workflows without worrying about installation issues, fostering collaboration.</p>
+  </li>
+</ul>
+
+<h2 id="getting-started">Getting Started</h2>
+
+<p>To begin, start by installing Docker on your system. Docker is available for all major operating systems and the installers can be downloaded from the <a href="https://www.docker.com/get-started/">official website</a>. For Windows and macOS users, the recommended approach is to install the Docker Desktop application, while Linux users can install Docker natively for a more lightweight setup.<d-footnote>Docker Desktop creates a Linux virtual machine (VM) on Windows and macOS to run containers, whereas on a Linux machine, Docker runs natively without the need for a VM.</d-footnote></p>
+
+<hr style="grid-column: text; width: 100%; border: none; border-bottom: 1px solid rgba(0, 0, 0, 0.1); margin-top: 1rem; margin-bottom: 1rem;" />
+
+<ul id="docker-os-install" class="tab" data-tab="e446ba5a-c016-4475-a66b-0904aaf15e5a" data-name="docker-os-install">
+  
+      <li class="active" id="docker-os-install-macos">
+          <a href="#">MacOS </a>
+      </li>
+  
+      <li id="docker-os-install-windows">
+          <a href="#">Windows </a>
+      </li>
+  
+      <li id="docker-os-install-linux">
+          <a href="#">Linux </a>
+      </li>
+  
+</ul>
+<ul class="tab-content" id="e446ba5a-c016-4475-a66b-0904aaf15e5a" data-name="docker-os-install">
+  
+      <li class="active">
+<ul>
+  <li>Download the <a href="https://docs.docker.com/desktop/setup/install/mac-install/">Docker Desktop installer for MacOS</a></li>
+  <li>Follow the setup instructions to install Docker.</li>
+  <li>Docker Desktop can now be launched by clicking the application icon.</li>
+</ul>
+
+</li>
+  
+      <li>
+<ul>
+  <li>Download the <a href="https://docs.docker.com/desktop/setup/install/windows-install/">Docker Desktop installer for Windows</a></li>
+  <li>Follow the setup instructions to install Docker.</li>
+  <li>Docker Desktop can now be launched by clicking the application icon.</li>
+</ul>
+
+</li>
+  
+      <li>
+<p>Assuming a Debian-based Linux distribution (e.g., Ubuntu):</p>
+
+<ul>
+  <li>
+    <p>Open a terminal and run the following commands</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Update package index and install docker</span>
 <span class="nb">sudo </span>apt-get update <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>apt-get <span class="nb">install </span>docker.io
-</code></pre></div> </div> </li> <li> <p>Add your user to the <code class="language-plaintext highlighter-rouge">docker</code> group to run Docker commands without <code class="language-plaintext highlighter-rouge">sudo</code></p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>usermod <span class="nt">-aG</span> docker <span class="k">${</span><span class="nv">whoami</span><span class="k">}</span>
-</code></pre></div> </div> </li> <li> <p>Log out and log back in to apply the changes</p> </li> </ul> <p><strong><em>Note:</em></strong> If you do not have <code class="language-plaintext highlighter-rouge">sudo</code> privileges, you can install Docker using the <a href="https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script">official script</a>.</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Download the Docker installation script</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Add your user to the <code class="language-plaintext highlighter-rouge">docker</code> group to run Docker commands without <code class="language-plaintext highlighter-rouge">sudo</code></p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>usermod <span class="nt">-aG</span> docker <span class="k">${</span><span class="nv">whoami</span><span class="k">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Log out and log back in to apply the changes</p>
+  </li>
+</ul>
+
+<p><strong><em>Note:</em></strong> If you do not have <code class="language-plaintext highlighter-rouge">sudo</code> privileges, you can install Docker using the <a href="https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script">official script</a>.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Download the Docker installation script</span>
 curl <span class="nt">-fsSL</span> https://get.docker.com <span class="nt">-o</span> get-docker.sh
 
 <span class="c"># Append --dry-run to see the commands that will be executed</span>
 <span class="nb">sudo </span>sh get-docker.sh
-</code></pre></div></div> </li> </ul> <hr style="grid-column: text; width: 100%; border: none; border-bottom: 1px solid rgba(0, 0, 0, 0.1); margin-top: 1rem; margin-bottom: 1rem;"/> <p><br/> To test whether Docker is installed correctly, run the following command in your terminal:</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Check Docker version</span>
+</code></pre></div></div>
+
+</li>
+  
+</ul>
+
+<hr style="grid-column: text; width: 100%; border: none; border-bottom: 1px solid rgba(0, 0, 0, 0.1); margin-top: 1rem; margin-bottom: 1rem;" />
+
+<p><br />
+To test whether Docker is installed correctly, run the following command in your terminal:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Check Docker version</span>
 docker <span class="nt">--version</span>
 
 <span class="c"># Test with a simple hello-world container</span>
 docker run hello-world
-</code></pre></div></div> <aside> <p>💡 <strong>Tip:</strong> Running <code>docker --help</code> will display a list of available commands and options.</p> </aside> <p>If installed correctly, these commands will print the version of Docker installed on your system and fetch the image and run the <code class="language-plaintext highlighter-rouge">hello-world</code> container, which prints a message confirming that Docker is working.</p> <h2 id="understanding-key-docker-concepts">Understanding Key Docker Concepts</h2> <ul> <li> <p><strong>Images</strong> vs <strong>Containers</strong>:</p> <p>A <em>Docker image</em> is a static, read-only blueprint that includes the application and all its dependencies. A <em>container</em> is a live, running instance created from that image. Returning to our baking analogy: the <em>image</em> is your recipe and ingredients kit, while the <em>container</em> is the oven actively baking the cake. You can spin up multiple containers from the same image—just like baking several cakes from one recipe.</p> </li> <li> <p>The importance of <strong>Volumes</strong>:</p> <p>By default, docker containers are <strong>ephemeral</strong> i.e. once they stop any files written inside them are lost. To effectively manage input/output tasks between the host machine and the container and to persist data, we use <em>volumes</em>. We mount a local directory on the host machine to a directory inside the container using the <code class="language-plaintext highlighter-rouge">-v</code> (or the more flexible <code class="language-plaintext highlighter-rouge">--mount</code>) flag.</p> </li> </ul> <h2 id="running-bioinformatics-tools-with-docker">Running Bioinformatics Tools with Docker</h2> <p>We will use the popular tool <a href="http://www.htslib.org/"><code class="language-plaintext highlighter-rouge">samtools</code></a> as an example to demonstrate how to run bioinformatics tools using Docker. <code class="language-plaintext highlighter-rouge">samtools</code> is a widely used tool for working with Sequence Alignment/Map (SAM) and Binary Alignment/Map (BAM) files.</p> <ol> <li> <p><strong>Pull a Docker Image</strong></p> <p>Here, we will pull a Docker image for <a href="https://hub.docker.com/r/biocontainers/samtools"><code class="language-plaintext highlighter-rouge">samtools</code></a> from Docker Hub.</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Pull the samtools image from Docker Hub</span>
+</code></pre></div></div>
+
+<aside>
+  <p>💡 <strong>Tip:</strong> Running <code>docker --help</code> will display a list of available commands and options.</p>
+</aside>
+
+<p>If installed correctly, these commands will print the version of Docker installed on your system and fetch the image and run the <code class="language-plaintext highlighter-rouge">hello-world</code> container, which prints a message confirming that Docker is working.</p>
+
+<h2 id="understanding-key-docker-concepts">Understanding Key Docker Concepts</h2>
+
+<ul>
+  <li>
+    <p><strong>Images</strong> vs <strong>Containers</strong>:</p>
+
+    <p>A <em>Docker image</em> is a static, read-only blueprint that includes the application and all its dependencies. A <em>container</em> is a live, running instance created from that image. Returning to our baking analogy: the <em>image</em> is your recipe and ingredients kit, while the <em>container</em> is the oven actively baking the cake. You can spin up multiple containers from the same image—just like baking several cakes from one recipe.</p>
+  </li>
+  <li>
+    <p>The importance of <strong>Volumes</strong>:</p>
+
+    <p>By default, docker containers are <strong>ephemeral</strong> i.e. once they stop any files written inside them are lost. To effectively manage input/output tasks between the host machine and the container and to persist data, we use <em>volumes</em>. We mount a local directory on the host machine to a directory inside the container using the <code class="language-plaintext highlighter-rouge">-v</code> (or the more flexible <code class="language-plaintext highlighter-rouge">--mount</code>) flag.</p>
+  </li>
+</ul>
+
+<h2 id="running-bioinformatics-tools-with-docker">Running Bioinformatics Tools with Docker</h2>
+
+<p>We will use the popular tool <a href="http://www.htslib.org/"><code class="language-plaintext highlighter-rouge">samtools</code></a> as an example to demonstrate how to run bioinformatics tools using Docker. <code class="language-plaintext highlighter-rouge">samtools</code> is a widely used tool for working with Sequence Alignment/Map (SAM) and Binary Alignment/Map (BAM) files.</p>
+
+<ol>
+  <li>
+    <p><strong>Pull a Docker Image</strong></p>
+
+    <p>Here, we will pull a Docker image for <a href="https://hub.docker.com/r/biocontainers/samtools"><code class="language-plaintext highlighter-rouge">samtools</code></a> from Docker Hub.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Pull the samtools image from Docker Hub</span>
 docker pull biocontainers/samtools
-</code></pre></div> </div> <p>This command will download the <code class="language-plaintext highlighter-rouge">samtools</code> image and its dependencies to your local machine. We can then use the image to create containers.</p> </li> <li> <p><strong>Run a single command non-interactively</strong></p> <p>We will use <code class="language-plaintext highlighter-rouge">samtools</code> to view the first few lines of a BAM file. Replace <code class="language-plaintext highlighter-rouge">/data_dir</code> with the path to the folder containing your BAM file (<code class="language-plaintext highlighter-rouge">align.bam</code>)</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Run samtools view on a BAM file</span>
+</code></pre></div>    </div>
+
+    <p>This command will download the <code class="language-plaintext highlighter-rouge">samtools</code> image and its dependencies to your local machine. We can then use the image to create containers.</p>
+  </li>
+  <li>
+    <p><strong>Run a single command non-interactively</strong></p>
+
+    <p>We will use <code class="language-plaintext highlighter-rouge">samtools</code> to view the first few lines of a BAM file. Replace <code class="language-plaintext highlighter-rouge">/data_dir</code> with the path to the folder containing your BAM file (<code class="language-plaintext highlighter-rouge">align.bam</code>)</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Run samtools view on a BAM file</span>
 docker run <span class="nt">--rm</span> biocontainers/samtools <span class="nt">-v</span> /data_dir:/data samtools view /data/align.bam | <span class="nb">head</span>
-</code></pre></div> </div> <ul> <li><code class="language-plaintext highlighter-rouge">--rm</code>: Removes the container after execution</li> <li><code class="language-plaintext highlighter-rouge">-v /data_dir:/data</code>: Mounts the local directory <code class="language-plaintext highlighter-rouge">/data_dir</code> to the container directory <code class="language-plaintext highlighter-rouge">/data</code></li> </ul> <p>This command is useful for running single commands without needing an interactive shell. The <code class="language-plaintext highlighter-rouge">--rm</code> flag ensures that the container is removed after the command finishes.</p> </li> <li> <p><strong>Run a command interactively</strong></p> <p>We can also run an interactive shell within the container to execute multiple commands.</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Start an interactive shell in the samtools container</span>
+</code></pre></div>    </div>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">--rm</code>: Removes the container after execution</li>
+      <li><code class="language-plaintext highlighter-rouge">-v /data_dir:/data</code>: Mounts the local directory <code class="language-plaintext highlighter-rouge">/data_dir</code> to the container directory <code class="language-plaintext highlighter-rouge">/data</code></li>
+    </ul>
+
+    <p>This command is useful for running single commands without needing an interactive shell. The <code class="language-plaintext highlighter-rouge">--rm</code> flag ensures that the container is removed after the command finishes.</p>
+  </li>
+  <li>
+    <p><strong>Run a command interactively</strong></p>
+
+    <p>We can also run an interactive shell within the container to execute multiple commands.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Start an interactive shell in the samtools container</span>
 docker run <span class="nt">-it</span> <span class="nt">--name</span> samtools_container biocontainers/samtools <span class="nt">-v</span> /data_dir:/data /bin/bash
-</code></pre></div> </div> <ul> <li><code class="language-plaintext highlighter-rouge">-it</code>: Starts an interactive terminal session</li> <li><code class="language-plaintext highlighter-rouge">/bin/bash</code>: Launches the bash shell in the container</li> </ul> <p>Here, we also used the <code class="language-plaintext highlighter-rouge">--name</code> flag to give the container a name (<code class="language-plaintext highlighter-rouge">samtools_container</code>) for easy reference.</p> <p>We can now run multiple <code class="language-plaintext highlighter-rouge">samtools</code> commands within the container:</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Check samtools version</span>
+</code></pre></div>    </div>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">-it</code>: Starts an interactive terminal session</li>
+      <li><code class="language-plaintext highlighter-rouge">/bin/bash</code>: Launches the bash shell in the container</li>
+    </ul>
+
+    <p>Here, we also used the <code class="language-plaintext highlighter-rouge">--name</code> flag to give the container a name (<code class="language-plaintext highlighter-rouge">samtools_container</code>) for easy reference.</p>
+
+    <p>We can now run multiple <code class="language-plaintext highlighter-rouge">samtools</code> commands within the container:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Check samtools version</span>
 samtools <span class="nt">--version</span>
 
 <span class="c"># Index a reference genome</span>
 samtools faidx /data/ref.fa
-</code></pre></div> </div> <p>We can add <code class="language-plaintext highlighter-rouge">--rm</code> to the interactive <code class="language-plaintext highlighter-rouge">docker run</code> command to remove the container after exiting the shell.</p> </li> </ol> <h2 id="composing-docker-workflows">Composing Docker Workflows</h2> <p>Docker’s real power shines when we use it compose complex workflows with multiple tools. By chaining together containers, we can create reproducible pipelines that can be easily shared and run on different systems.</p> <p>Let’s consider the first step of most bioinformatics workflows: quality control of sequencing reads. This step is often performed using tools like <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/"><code class="language-plaintext highlighter-rouge">fastqc</code></a><d-footnote><a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/" target="_blank">FastQC</a> is a quality control tool that analyzes raw sequence data from high throughout sequencing runs</d-footnote> with results conveniently summarized using tools like <a href="https://seqera.io/multiqc/"><code class="language-plaintext highlighter-rouge">multiqc</code></a><d-footnote><a href="https://seqera.io/multiqc/" target="_blank">MultiQC</a> aggregates results and quality metrics from multiple bioinformatics analysis reports (often including those from <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/" target="_blank">FastQC</a>) into a single, interactive summary report, facilitating comparison across numerous samples or steps.</d-footnote>. These tools can be run in a Docker container, allowing us to easily check the quality of our sequencing data.</p> <p>To try out the pipeline with real data, we can use test FASTQC files from the <a href="https://github.com/nf-core/test-datasets">nf-core/test-datasets</a> repository that are ideal for quick pipeline tests. We can run the following commands one-by-one on the command line or save them in a <code class="language-plaintext highlighter-rouge">bash</code> script to download the test data to the <code class="language-plaintext highlighter-rouge">~/docker-bioinf/data/raw_data</code> directory. You can replace this with any other directory of your choice.</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Create directory for test data</span>
+</code></pre></div>    </div>
+
+    <p>We can add <code class="language-plaintext highlighter-rouge">--rm</code> to the interactive <code class="language-plaintext highlighter-rouge">docker run</code> command to remove the container after exiting the shell.</p>
+  </li>
+</ol>
+
+<h2 id="composing-docker-workflows">Composing Docker Workflows</h2>
+
+<p>Docker’s real power shines when we use it compose complex workflows with multiple tools. By chaining together containers, we can create reproducible pipelines that can be easily shared and run on different systems.</p>
+
+<p>Let’s consider the first step of most bioinformatics workflows: quality control of sequencing reads. This step is often performed using tools like <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/"><code class="language-plaintext highlighter-rouge">fastqc</code></a><d-footnote><a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/" target="_blank">FastQC</a> is a quality control tool that analyzes raw sequence data from high throughout sequencing runs</d-footnote> with results conveniently summarized using tools like <a href="https://seqera.io/multiqc/"><code class="language-plaintext highlighter-rouge">multiqc</code></a><d-footnote><a href="https://seqera.io/multiqc/" target="_blank">MultiQC</a> aggregates results and quality metrics from multiple bioinformatics analysis reports (often including those from <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/" target="_blank">FastQC</a>) into a single, interactive summary report, facilitating comparison across numerous samples or steps.</d-footnote>. These tools can be run in a Docker container, allowing us to easily check the quality of our sequencing data.</p>
+
+<p>To try out the pipeline with real data, we can use test FASTQC files from the <a href="https://github.com/nf-core/test-datasets">nf-core/test-datasets</a> repository that are ideal for quick pipeline tests. We can run the following commands one-by-one on the command line or save them in a <code class="language-plaintext highlighter-rouge">bash</code> script to download the test data to the <code class="language-plaintext highlighter-rouge">~/docker-bioinf/data/raw_data</code> directory. You can replace this with any other directory of your choice.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Create directory for test data</span>
 <span class="nb">mkdir</span> <span class="nt">-p</span> ~/docker-bioinf/data/raw_data
 <span class="nb">cd</span> ~/docker-bioinf/data/raw_data
 
@@ -31,9 +241,23 @@ wget https://raw.githubusercontent.com/nf-core/test-datasets/modules/data/genomi
 wget https://raw.githubusercontent.com/nf-core/test-datasets/modules/data/genomics/sarscov2/illumina/fastq/test_2.fastq.gz
 wget https://raw.githubusercontent.com/nf-core/test-datasets/modules/data/genomics/sarscov2/illumina/fastq/test2_1.fastq.gz
 wget https://raw.githubusercontent.com/nf-core/test-datasets/modules/data/genomics/sarscov2/illumina/fastq/test2_2.fastq.gz
-</code></pre></div></div> <aside> <p> 💡 <strong>Note:</strong> If <code>wget</code> is not installed on your system, you can replace it with <code>curl -O</code> in the download commands. For example, <code>wget URL</code> becomes <code>curl -O URL</code>.</p> </aside> <p>Check the contents of the <code class="language-plaintext highlighter-rouge">~/docker-bioinf/data/raw_data</code> directory to confirm that the files have been downloaded successfully.</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Check the contents of the directory</span>
+</code></pre></div></div>
+
+<aside>
+  <p> 💡 <strong>Note:</strong> If <code>wget</code> is not installed on your system, you can replace it with <code>curl -O</code> in the download commands. For example, <code>wget URL</code> becomes <code>curl -O URL</code>.</p>
+</aside>
+
+<p>Check the contents of the <code class="language-plaintext highlighter-rouge">~/docker-bioinf/data/raw_data</code> directory to confirm that the files have been downloaded successfully.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Check the contents of the directory</span>
 <span class="nb">ls</span> ~/docker-bioinf/data/raw_data
-</code></pre></div></div> <h3 id="bioinformatics-pipeline-using-bash-scripts">Bioinformatics Pipeline using <code class="language-plaintext highlighter-rouge">bash</code> scripts</h3> <p>We can chain together multiple docker commands to construct a lightweight, portable pipeline for quality control of sequencing reads. The following <code class="language-plaintext highlighter-rouge">bash</code> script demonstrates how to run <code class="language-plaintext highlighter-rouge">fastqc</code> on all FASTQ files in the <code class="language-plaintext highlighter-rouge">~/docker-bioinf/data/raw_data</code> directory and generate a summary report using <code class="language-plaintext highlighter-rouge">multiqc</code>. The script will create a new directory called <code class="language-plaintext highlighter-rouge">qc_reports</code> to store the output reports.</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+</code></pre></div></div>
+
+<h3 id="bioinformatics-pipeline-using-bash-scripts">Bioinformatics Pipeline using <code class="language-plaintext highlighter-rouge">bash</code> scripts</h3>
+
+<p>We can chain together multiple docker commands to construct a lightweight, portable pipeline for quality control of sequencing reads. The following <code class="language-plaintext highlighter-rouge">bash</code> script demonstrates how to run <code class="language-plaintext highlighter-rouge">fastqc</code> on all FASTQ files in the <code class="language-plaintext highlighter-rouge">~/docker-bioinf/data/raw_data</code> directory and generate a summary report using <code class="language-plaintext highlighter-rouge">multiqc</code>. The script will create a new directory called <code class="language-plaintext highlighter-rouge">qc_reports</code> to store the output reports.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
 <span class="c"># Create the output directory</span>
 <span class="nb">mkdir</span> <span class="nt">-p</span> ~/docker-bioinf/data/qc_reports
 
@@ -48,7 +272,27 @@ docker run <span class="nt">--rm</span> <span class="nt">-v</span> ~/docker-bioi
 <span class="c"># Run MultiQC to aggregate FastQC reports</span>
 docker run <span class="nt">--rm</span> <span class="nt">-v</span> ~/docker-bioinf/data:/data quay.io/biocontainers/multiqc:1.28--pyhdfd78af_0 <span class="se">\</span>
   multiqc /data/qc_reports <span class="nt">-o</span> /data/qc_reports
-</code></pre></div></div> <aside> <p> 💡 <strong>Note:</strong> If your Docker installation does not have root privileges, it may not be able to create new directories inside mounted volumes. To avoid errors, <strong>manually create the <code>qc_reports</code> directory</strong> on the host system before running the pipeline: </p> <pre style="font-size: 0.85em; line-height: 1.4;"><code>mkdir -p ~/docker-bioinf/data/qc_reports</code></pre> </aside> <blockquote> <p>Note the use of <code class="language-plaintext highlighter-rouge">bash -c</code> when running the <code class="language-plaintext highlighter-rouge">fastqc</code> command which ensures that the command is executed in a shell environment thereby enabling the expansion of wildcards (e.g. <em>*fastq.gz</em>)</p> </blockquote> <p>The <code class="language-plaintext highlighter-rouge">fastqc</code> and <code class="language-plaintext highlighter-rouge">multiqc</code> reports will be saved in the <code class="language-plaintext highlighter-rouge">~/docker-bioinf/data/qc_reports</code> directory, and you can view them using any web browser. The <code class="language-plaintext highlighter-rouge">fastqc</code> reports will be in HTML format, while the <code class="language-plaintext highlighter-rouge">multiqc</code> report will be an interactive HTML file (<code class="language-plaintext highlighter-rouge">multiqc_report.html</code>) that aggregates the results from all the <code class="language-plaintext highlighter-rouge">fastqc</code> reports.</p> <h3 id="bioinformatics-pipeline-using-docker-compose">Bioinformatics Pipeline using <code class="language-plaintext highlighter-rouge">docker compose</code></h3> <p>For more complex workflows, Docker Compose provides a convenient way to define and run multi-container steps with built-in dependency management. The images and commands for the bioinformatic tools can be defined in a <code class="language-plaintext highlighter-rouge">docker-compose.yml</code> file, making it easier to manage and reproduce.</p> <aside> <p> Docker compose will typically be installed alongside Docker Desktop for Windows and macOS users. Linux users can install Docker Compose plugin by following this <a href="https://docs.docker.com/compose/install/linux/" target="_blank">link</a>.</p> </aside> <p>Let’s revisit the earlier bioinformatics task: running FastQC on raw FASTQ files and summarizing the results using MultiQC. Instead of invoking each tool manually with separate <code class="language-plaintext highlighter-rouge">docker run</code> commands, we can streamline the workflow using a <code class="language-plaintext highlighter-rouge">docker-compose.yml</code> file:</p> <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">services</span><span class="pi">:</span>
+</code></pre></div></div>
+
+<aside> <p> 💡 <strong>Note:</strong> If your Docker installation does not have root privileges, it may not be able to create new directories inside mounted volumes. To avoid errors, <strong>manually create the <code>qc_reports</code> directory</strong> on the host system before running the pipeline: </p> <pre style="font-size: 0.85em; line-height: 1.4;"><code>mkdir -p ~/docker-bioinf/data/qc_reports</code></pre> </aside>
+
+<blockquote>
+  <p>Note the use of <code class="language-plaintext highlighter-rouge">bash -c</code> when running the <code class="language-plaintext highlighter-rouge">fastqc</code> command which ensures that the command is executed in a shell environment thereby enabling the expansion of wildcards (e.g. <em>*fastq.gz</em>)</p>
+</blockquote>
+
+<p>The <code class="language-plaintext highlighter-rouge">fastqc</code> and <code class="language-plaintext highlighter-rouge">multiqc</code> reports will be saved in the <code class="language-plaintext highlighter-rouge">~/docker-bioinf/data/qc_reports</code> directory, and you can view them using any web browser. The <code class="language-plaintext highlighter-rouge">fastqc</code> reports will be in HTML format, while the <code class="language-plaintext highlighter-rouge">multiqc</code> report will be an interactive HTML file (<code class="language-plaintext highlighter-rouge">multiqc_report.html</code>) that aggregates the results from all the <code class="language-plaintext highlighter-rouge">fastqc</code> reports.</p>
+
+<h3 id="bioinformatics-pipeline-using-docker-compose">Bioinformatics Pipeline using <code class="language-plaintext highlighter-rouge">docker compose</code></h3>
+
+<p>For more complex workflows, Docker Compose provides a convenient way to define and run multi-container steps with built-in dependency management. The images and commands for the bioinformatic tools can be defined in a <code class="language-plaintext highlighter-rouge">docker-compose.yml</code> file, making it easier to manage and reproduce.</p>
+
+<aside>
+  <p> Docker compose will typically be installed alongside Docker Desktop for Windows and macOS users. Linux users can install Docker Compose plugin by following this <a href="https://docs.docker.com/compose/install/linux/" target="_blank">link</a>.</p>
+</aside>
+
+<p>Let’s revisit the earlier bioinformatics task: running FastQC on raw FASTQ files and summarizing the results using MultiQC. Instead of invoking each tool manually with separate <code class="language-plaintext highlighter-rouge">docker run</code> commands, we can streamline the workflow using a <code class="language-plaintext highlighter-rouge">docker-compose.yml</code> file:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">services</span><span class="pi">:</span>
   <span class="na">fastqc</span><span class="pi">:</span>
     <span class="na">image</span><span class="pi">:</span> <span class="s">quay.io/biocontainers/fastqc:0.12.1--hdfd78af_0</span>
     <span class="na">volumes</span><span class="pi">:</span>
@@ -66,8 +310,48 @@ docker run <span class="nt">--rm</span> <span class="nt">-v</span> ~/docker-bioi
     <span class="na">depends_on</span><span class="pi">:</span>
       <span class="na">fastqc</span><span class="pi">:</span>
         <span class="na">condition</span><span class="pi">:</span> <span class="s">service_completed_successfully</span>
-</code></pre></div></div> <p>This <code class="language-plaintext highlighter-rouge">docker-compose.yml</code> file defines the following key sections:</p> <ul> <li><code class="language-plaintext highlighter-rouge">services</code>: Defines the containers in our pipeline. Each service is a separate Docker container.</li> <li><code class="language-plaintext highlighter-rouge">fastqc</code>: and <code class="language-plaintext highlighter-rouge">multiqc</code>: These are our service definitions. <ul> <li><code class="language-plaintext highlighter-rouge">image</code>: Specifies the Docker image to use (e.g., <code class="language-plaintext highlighter-rouge">quay.io/biocontainers/fastqc</code>).</li> <li><code class="language-plaintext highlighter-rouge">volumes</code>: Mounts a local directory (<code class="language-plaintext highlighter-rouge">~/docker-bioinf/data</code>) to the container’s <code class="language-plaintext highlighter-rouge">/data</code> directory</li> <li><code class="language-plaintext highlighter-rouge">entrypoint</code>: Sets the entrypoint for the container to <code class="language-plaintext highlighter-rouge">bash -c</code>, allowing us to run multiple commands in a single container.</li> <li><code class="language-plaintext highlighter-rouge">command</code>: Sets the command to run within the container.</li> </ul> </li> <li><code class="language-plaintext highlighter-rouge">depends_on</code>: This directive is essential for managing the workflow’s order of operations. <ul> <li><code class="language-plaintext highlighter-rouge">fastqc</code>: Indicates that the <code class="language-plaintext highlighter-rouge">multiqc</code> service relies on the output of the <code class="language-plaintext highlighter-rouge">fastqc</code> service. <ul> <li><code class="language-plaintext highlighter-rouge">condition: service_completed_successfully</code>: By setting this condition, we instruct Docker Compose to only initiate the <code class="language-plaintext highlighter-rouge">multiqc</code> container once the <code class="language-plaintext highlighter-rouge">fastqc</code> container has finished its job and exited with a success status. This prevents <code class="language-plaintext highlighter-rouge">multiqc</code> from running prematurely and encountering an empty or incomplete <code class="language-plaintext highlighter-rouge">qc_reports</code> directory.</li> </ul> </li> </ul> </li> </ul> <p>To run the pipeline, execute the following command in the same directory as the <code class="language-plaintext highlighter-rouge">docker-compose.yml</code> file:</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker-compose up
-</code></pre></div></div> <blockquote> <p>💡 Tip: If you’re re-running the pipeline and want a clean start, use <code>docker compose down</code> to remove the containers, or add the <code>--force-recreate</code> flag when running up (e.g. <code> docker compose up --force-recreate</code>).</p> </blockquote> <h2 id="beyond-pre-built-images-introducing-dockerfiles">Beyond Pre-Built Images: Introducing Dockerfiles</h2> <p>While pre-built Docker images are incredibly helpful, they may not always meet your specific needs. Suppose you want to install a specific version of a tool or dependency, package custom scripts along with the tools or simply that the pre-built image is not available. In such cases, you can create your own Docker images using a <code class="language-plaintext highlighter-rouge">Dockerfile</code>, which is a text file that contains instructions for building a Docker image. It specifies the base image, the software to install, and any configuration needed to set up the environment.</p> <p>We can create our own custom docker image for the same <code class="language-plaintext highlighter-rouge">fastqc</code> and <code class="language-plaintext highlighter-rouge">multiqc</code> pipeline using a <code class="language-plaintext highlighter-rouge">Dockerfile</code>. This provides us complete control to customize the environment, install additional dependencies, and package our scripts along with the tools.</p> <div class="language-dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Use lightweight linux base</span>
+</code></pre></div></div>
+
+<p>This <code class="language-plaintext highlighter-rouge">docker-compose.yml</code> file defines the following key sections:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">services</code>: Defines the containers in our pipeline. Each service is a separate Docker container.</li>
+  <li><code class="language-plaintext highlighter-rouge">fastqc</code>: and <code class="language-plaintext highlighter-rouge">multiqc</code>: These are our service definitions.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">image</code>: Specifies the Docker image to use (e.g., <code class="language-plaintext highlighter-rouge">quay.io/biocontainers/fastqc</code>).</li>
+      <li><code class="language-plaintext highlighter-rouge">volumes</code>: Mounts a local directory (<code class="language-plaintext highlighter-rouge">~/docker-bioinf/data</code>) to the container’s <code class="language-plaintext highlighter-rouge">/data</code> directory</li>
+      <li><code class="language-plaintext highlighter-rouge">entrypoint</code>: Sets the entrypoint for the container to <code class="language-plaintext highlighter-rouge">bash -c</code>, allowing us to run multiple commands in a single container.</li>
+      <li><code class="language-plaintext highlighter-rouge">command</code>: Sets the command to run within the container.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">depends_on</code>: This directive is essential for managing the workflow’s order of operations.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">fastqc</code>: Indicates that the <code class="language-plaintext highlighter-rouge">multiqc</code> service relies on the output of the <code class="language-plaintext highlighter-rouge">fastqc</code> service.
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">condition: service_completed_successfully</code>: By setting this condition, we instruct Docker Compose to only initiate the <code class="language-plaintext highlighter-rouge">multiqc</code> container once the <code class="language-plaintext highlighter-rouge">fastqc</code> container has finished its job and exited with a success status. This prevents <code class="language-plaintext highlighter-rouge">multiqc</code> from running prematurely and encountering an empty or incomplete <code class="language-plaintext highlighter-rouge">qc_reports</code> directory.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>To run the pipeline, execute the following command in the same directory as the <code class="language-plaintext highlighter-rouge">docker-compose.yml</code> file:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker-compose up
+</code></pre></div></div>
+
+<blockquote>
+  <p>💡 Tip: If you’re re-running the pipeline and want a clean start, use <code>docker compose down</code> to remove the containers, or add the <code>--force-recreate</code> flag when running up (e.g. <code> docker compose up --force-recreate</code>).</p>
+</blockquote>
+
+<h2 id="beyond-pre-built-images-introducing-dockerfiles">Beyond Pre-Built Images: Introducing Dockerfiles</h2>
+
+<p>While pre-built Docker images are incredibly helpful, they may not always meet your specific needs. Suppose you want to install a specific version of a tool or dependency, package custom scripts along with the tools or simply that the pre-built image is not available. In such cases, you can create your own Docker images using a <code class="language-plaintext highlighter-rouge">Dockerfile</code>, which is a text file that contains instructions for building a Docker image.
+It specifies the base image, the software to install, and any configuration needed to set up the environment.</p>
+
+<p>We can create our own custom docker image for the same <code class="language-plaintext highlighter-rouge">fastqc</code> and <code class="language-plaintext highlighter-rouge">multiqc</code> pipeline using a <code class="language-plaintext highlighter-rouge">Dockerfile</code>. This provides us complete control to customize the environment, install additional dependencies, and package our scripts along with the tools.</p>
+
+<div class="language-dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Use lightweight linux base</span>
 <span class="k">FROM</span><span class="s"> debian:bullseye-slim</span>
 
 <span class="c"># Prevent interactive prompts</span>
@@ -101,9 +385,31 @@ docker run <span class="nt">--rm</span> <span class="nt">-v</span> ~/docker-bioi
 
 <span class="c"># Make shell commands easier to write</span>
 <span class="k">ENTRYPOINT</span><span class="s"> ["bash", "-c"]</span>
-</code></pre></div></div> <p>The <code class="language-plaintext highlighter-rouge">Dockerfile</code> contains the instructions to build an environment with the tools and necessary dependencies for our analysis, the key sections are:</p> <ul> <li><code class="language-plaintext highlighter-rouge">FROM &lt;image&gt;</code>: Specifies the base image to use, this is the image we’ll extend by installing our specific tools. In this case, we are using a lightweight Debian image.</li> </ul> <aside><p>Explore more base image options on <a href="https://docs.docker.com/docker-hub/image-library/trusted-content/#docker-official-images" target="_blank">Docker Hub</a>.</p></aside> <ul> <li><code class="language-plaintext highlighter-rouge">RUN &lt;command&gt;</code>: Executes a command in the container during the build process. We use this to install dependencies and tools.</li> <li><code class="language-plaintext highlighter-rouge">WORKDIR &lt;directory&gt;</code>: Sets the working directory inside the container. This is where the commands will be executed.</li> <li><code class="language-plaintext highlighter-rouge">ENTRYPOINT &lt;command&gt;</code>: Sets the default command to run when the container starts. In this case, we set it to <code class="language-plaintext highlighter-rouge">bash -c</code> to allow us to run multiple commands.</li> </ul> <p>A complete list of Dockerfile instructions can be found in the <a href="https://docs.docker.com/engine/reference/builder/">Dockerfile reference</a>.</p> <p>Next, we build the Docker image using the <code class="language-plaintext highlighter-rouge">docker build</code> command. The <code class="language-plaintext highlighter-rouge">-t</code> flag allows us to tag the image with a name (e.g., <code class="language-plaintext highlighter-rouge">my_fastqc_multiqc</code>).</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Build the Docker image</span>
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">Dockerfile</code> contains the instructions to build an environment with the tools and necessary dependencies for our analysis, the key sections are:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">FROM &lt;image&gt;</code>: Specifies the base image to use, this is the image we’ll extend by installing our specific tools. In this case, we are using a lightweight Debian image.</li>
+</ul>
+<aside><p>Explore more base image options on <a href="https://docs.docker.com/docker-hub/image-library/trusted-content/#docker-official-images" target="_blank">Docker Hub</a>.</p></aside>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">RUN &lt;command&gt;</code>: Executes a command in the container during the build process. We use this to install dependencies and tools.</li>
+  <li><code class="language-plaintext highlighter-rouge">WORKDIR &lt;directory&gt;</code>: Sets the working directory inside the container. This is where the commands will be executed.</li>
+  <li><code class="language-plaintext highlighter-rouge">ENTRYPOINT &lt;command&gt;</code>: Sets the default command to run when the container starts. In this case, we set it to <code class="language-plaintext highlighter-rouge">bash -c</code> to allow us to run multiple commands.</li>
+</ul>
+
+<p>A complete list of Dockerfile instructions can be found in the <a href="https://docs.docker.com/engine/reference/builder/">Dockerfile reference</a>.</p>
+
+<p>Next, we build the Docker image using the <code class="language-plaintext highlighter-rouge">docker build</code> command. The <code class="language-plaintext highlighter-rouge">-t</code> flag allows us to tag the image with a name (e.g., <code class="language-plaintext highlighter-rouge">my_fastqc_multiqc</code>).</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Build the Docker image</span>
 docker build <span class="nt">-t</span> my_fastqc_multiqc <span class="nb">.</span>
-</code></pre></div></div> <p>Once the image is built, we can run it using the same commands as before. The only difference is that we will use our custom image name instead of the pre-built one.</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> ~/docker-bioinf/data/qc_reports
+</code></pre></div></div>
+
+<p>Once the image is built, we can run it using the same commands as before. The only difference is that we will use our custom image name instead of the pre-built one.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> ~/docker-bioinf/data/qc_reports
 
 <span class="c"># Run FastQC on all FASTQ files in the raw_data directory</span>
 docker run <span class="nt">--rm</span> <span class="nt">-v</span> ~/docker-bioinf/data:/data my_fastqc_multiqc <span class="se">\</span>
@@ -112,4 +418,131 @@ docker run <span class="nt">--rm</span> <span class="nt">-v</span> ~/docker-bioi
 <span class="c"># Run MultiQC to aggregate FastQC reports</span>
 docker run <span class="nt">--rm</span> <span class="nt">-v</span> ~/docker-bioinf/data:/data my_fastqc_multiqc <span class="se">\</span>
   multiqc /data/qc_reports <span class="nt">-o</span> /data/qc_reports
-</code></pre></div></div> <h2 id="best-practices-for-docker-in-bioinformatics">Best Practices for Docker in Bioinformatics</h2> <ol> <li> <p><strong>Always Use Specific Image Versions</strong>:</p> <p>Use a versioned image tag (like <code class="language-plaintext highlighter-rouge">quay.io/biocontainers/fastqc:0.12.1--hdfd78af_0</code>) instead of the <code class="language-plaintext highlighter-rouge">latest</code> tag. This ensures your workflow always uses the exact same version of the tool every time it’s run and avoids unexpected changes in behavior, guaranteeing reproducibility.</p> </li> <li> <p><strong>Leverage Biocontainers</strong>:</p> <p>Before searching elsewhere or attempting to build an image, check repositories like <a href="https://quay.io/organization/biocontainers">Quay.io/biocontainers</a>. Utilizing these standardized, pre-built images for common bioinformatics tools saves significant effort and aligns your workflow with community standards.</p> </li> <li> <p><strong>Handle Data Appropriately</strong>:</p> <ul> <li>Separate data from the container: Use volumes to mount data directories from the host system into the container, rather than copying it to the container’s filesystem. This keeps the container immutable and promotes reusability with different datasets.</li> <li>Mount reference data as read-only volumes to prevent accidental modifications.</li> <li>Use named volumes for persisting data between container runs and to share data between multiple containers.</li> </ul> </li> </ol> <h2 id="finding-bioinformatics-tool-containers">Finding Bioinformatics Tool Containers</h2> <p>These registries host a large number of pre-built Docker images for bioinformatics tools:</p> <ul> <li> <p><img src="/assets/img/posts/docker-for-bioinformatics/docker-4.svg" width="20" height="20" style="margin-right: 5px;"/> <a href="https://hub.docker.com/">Docker Hub</a> : The default Docker registry, home to many official and community-maintained bioinformatics tool images.</p> </li> <li> <p><img src="/assets/img/posts/docker-for-bioinformatics/biocontainers-logo.svg" width="20" height="20" style="margin-right: 5px;"/> <a href="https://biocontainers.pro/">Biocontainers</a> : A community-driven project offering thousands of standardized containers for bioinformatics tools, ideal for reproducible pipelines.</p> </li> <li> <p><img src="/assets/img/posts/docker-for-bioinformatics/quayio-logo.svg" width="20" height="20" style="margin-right: 5px;"/> <a href="https://quay.io/organization/biocontainers">Quay.io</a> : Another major container registry, widely used by the BioContainers project to host their images.</p> </li> <li> <p><img src="/assets/img/posts/docker-for-bioinformatics/pegi3s-logo.svg" width="20" height="20" style="margin-right: 5px;"/> <a href="http://bdip.i3s.up.pt/">pegi3s Bioinformatics Docker Images Project</a> : A curated collection of Docker images focused on reproducibility and ease of use.</p> </li> <li> <p><img src="/assets/img/posts/docker-for-bioinformatics/rocker-logo.svg" width="20" height="20" style="margin-right: 5px;"/> <a href="https://rocker-project.org/">Rocker Project</a> : Docker images tailored for R and RStudio users, commonly used in data science and bioinformatics research.</p> </li> </ul> <h2 id="resources-and-further-reading">Resources and Further Reading</h2> <p><strong>Docker Essentials and Learning:</strong></p> <ul> <li><a href="https://docs.docker.com/get-started/">Getting Started with Docker</a> : A beginner-friendly guide to Docker, covering installation and basic commands.</li> <li><a href="https://docs.docker.com/get-started/docker_cheatsheet.pdf">Docker CLI CheatSheet</a> : A quick reference guide for common Docker commands.</li> <li><a href="https://docs.docker.com/">Docker Documentation</a> : The official Docker documentation is a comprehensive resource for all things Docker.</li> <li><a href="https://docs.docker.com/compose/">Docker Compose Documentation</a> : A guide to using Docker Compose for multi-container applications.</li> <li><a href="https://biocontainers-edu.readthedocs.io/en/latest/best_practices.html">BioContainers Best Practices</a>: A guide to best practices for using BioContainers in bioinformatics workflows.</li> </ul> <p><strong>Guided Lessons:</strong></p> <ul> <li><a href="https://carpentries-incubator.github.io/docker-introduction/">Software Carpentries: Introduction to Docker</a> : A hands-on lesson designed for researchers new to containers.</li> <li><a href="https://biocorecrg.github.io/PhD_course_containers_2021/">Linux containers in scientific environments (CBG PhD Course)</a>: Short hands-on practicum on how to start working using Linux containers.</li> </ul> <p><strong>Reproducibility in Research Practices:</strong></p> <ul> <li><a href="https://www.nature.com/articles/sdata201618">The FAIR Guiding Principles</a><d-cite key="wilkinson_fair_2016"></d-cite>: The original paper outlining the FAIR principles</li> <li><a href="https://doi.org/10.1371/journal.pcbi.1000424">Ten Simple Rules for Reproducible Computational Research</a><d-cite key="sandve_ten_2013"></d-cite> : A paper outlining ten simple rules for reproducible research in computational biology.</li> <li><a href="https://f1000research.com/articles/7-742/v2">Recommendations for the packaging and containerizing of bioinformatics software</a><d-cite key="gruening_recommendations_2019"></d-cite> : A paper discussing best practices for packaging and containerizing bioinformatics software to ensure reproducibility.</li> <li><a href="https://book.the-turing-way.org/">“The Turing Way”</a> : A handbook for reporoducible, ethical and collaborative data science.</li> <li><a href="https://arca-dpss.github.io/manual-open-science/">The Open Science Manual</a>: A guide to open science practices, including reproducibility and data sharing.</li> </ul> <h2 id="conclusion">Conclusion</h2> <p>Bioinformatic workflows often suffer from “dependency hell”, wherein conflicts between software libraries, incompatible versions and platform-specific quirks can make setting up and running analyses a frustrating experience. Containerization technologies like Docker provide a powerful solution by encapsulating the software and it’s dependencies along with any necessary configurations into a single, portable package. This ensures that the analysis runs consistently across different environments, making the workflows more reproducible, scalable, and shareable. Whether you’re running a single tool or a complex pipeline, Docker ensures that your research remains reliable and accessible across different environments.</p> <p>Happy Dockering!</p>]]></content><author><name>Abhilesh Dhawanjewar</name></author><category term="bioinformatics"/><category term="docker"/><category term="bioinformatics"/><summary type="html"><![CDATA[Portable, Scalable and Reproducible Bioinformatics workflows]]></summary></entry><entry><title type="html">Beats of Stress</title><link href="https://abhilesh.github.io/blog/2018/physiology-phd/" rel="alternate" type="text/html" title="Beats of Stress"/><published>2018-04-27T21:01:00+00:00</published><updated>2018-04-27T21:01:00+00:00</updated><id>https://abhilesh.github.io/blog/2018/physiology-phd</id><content type="html" xml:base="https://abhilesh.github.io/blog/2018/physiology-phd/"><![CDATA[<p>The <a href="https://en.wikipedia.org/wiki/Comprehensive_examination">Comprehensive Exam</a> (more affectionately known as “comps”) is a notoriously stressful milestone in the PhD journey. It is a high-stakes exam that tests the student’s knowledge of their field and their ability to think critically. The format of the exam varies by departments, but usually consists of both a written and an oral component. For my doctoral program, this involved writing a research proposal laying out the plans for my dissertation research, and then defending it in front of my doctoral committee, which comprised of five faculty members from related fields.</p> <p>As a competitive cyclist during my PhD, I regularly used heart rate metrics to track my training and recovery. As exam anxiety started mounting in the days leading up to the exam, my curiosity piqued about how my body would respond physiologically to this gruelling ordeal. To explore this, I decided to wear my heart rate monitor to the exam to gather some data.</p> <p>Now, onto the data: the physiological profile of my heart was quite revealing. As the exam commenced, my heart rate spiked sharply to 140 bpm, well within the fat-burning zone as I stood before my doctoral committee with my presentation behind me. This was a clear sign of the pre-exam jitters. The anticipation of the questions, the intimidating presence of the professors, the sheer weight of the moment - all acting as conductors in this orchestra of anxiety.</p> <div class="row justify-content-center mt-3"> <div class="col-12 mt-3 mt-md-0"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/posts/comps_hr-480.webp 480w,/assets/img/posts/comps_hr-800.webp 800w,/assets/img/posts/comps_hr-1400.webp 1400w," type="image/webp" sizes="95vw"/> <img src="/assets/img/posts/comps_hr.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" data-zoomable="" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"/> </picture> </figure> </div> <div class="caption"> Beat by beat, the heart tells the story of my PhD exam. </div> </div> <p>Fortunately, my professors proved to be a compassionate and supportive group, helping to ease my nerves. As I answered their challenging questions with accuracy (or at least confidence), I felt my heart begin to ease, reflected in the gradual decline of my heart rate. Yet, there were still notable spikes, likely triggered by especially tough inquiries, sending my pulse racing once more.</p> <p>As my heart rate stabilized towards the end of the exam, the ultimate trial loomed: the verdict. They ask you to step outside the room, while the examiners debate your fate. My heart rate surged dramatically again, doing a pole vault during those agonizing moments spent in anticipation outside the room.</p> <p>In the end, I survived the comps, my dissertation proposal was met with positive enthusiasm and the examiners’ insights helped sharpen and refine the questions I was going to explore in my doctoral work. In retrospect, the PhD oral exam, viewed through the lens of a heart rate monitor revealed the physiological response of the body to this intellectual pressure. This curious experiment was a welcome distraction, and though I wouldn’t advocate it as a fat-burning regime, it undoubtedly added a unique dimension to my academic odyssey.</p> <p><ins>Notes:</ins></p> <ul> <li>My resting heart rate during this period was around 45 bpm, while my average heart rate during the exam was 84 bpm, a significant increase.</li> <li>Used the <a href="https://uk.wahoofitness.com/devices/running/heart-rate-monitors/tickr-buy">Wahoo TICKR</a> heart rate monitor to capture the data, exported using the <a href="https://play.google.com/store/apps/details?id=com.wahoofitness.fitness&amp;hl=en_US">Wahoo app</a>, cleaned up the data and plotted the graph in <a href="https://www.r-project.org/">R</a>. Code for the plot available on my <a href="https://github.com/abhilesh/Miscellaneous_scripts/tree/master/PhD_Comps_HR">GitHub</a>.</li> </ul>]]></content><author><name></name></author><category term="miscellany"/><category term="PhD-journey"/><category term="data-visualization"/><summary type="html"><![CDATA[A physiological perspective on my PhD exams]]></summary></entry></feed>
+</code></pre></div></div>
+
+<h2 id="best-practices-for-docker-in-bioinformatics">Best Practices for Docker in Bioinformatics</h2>
+
+<ol>
+  <li>
+    <p><strong>Always Use Specific Image Versions</strong>:</p>
+
+    <p>Use a versioned image tag (like <code class="language-plaintext highlighter-rouge">quay.io/biocontainers/fastqc:0.12.1--hdfd78af_0</code>) instead of the <code class="language-plaintext highlighter-rouge">latest</code> tag. This ensures your workflow always uses the exact same version of the tool every time it’s run and avoids unexpected changes in behavior, guaranteeing reproducibility.</p>
+  </li>
+  <li>
+    <p><strong>Leverage Biocontainers</strong>:</p>
+
+    <p>Before searching elsewhere or attempting to build an image, check repositories like <a href="https://quay.io/organization/biocontainers">Quay.io/biocontainers</a>. Utilizing these standardized, pre-built images for common bioinformatics tools saves significant effort and aligns your workflow with community standards.</p>
+  </li>
+  <li>
+    <p><strong>Handle Data Appropriately</strong>:</p>
+    <ul>
+      <li>Separate data from the container: Use volumes to mount data directories from the host system into the container, rather than copying it to the container’s filesystem. This keeps the container immutable and promotes reusability with different datasets.</li>
+      <li>Mount reference data as read-only volumes to prevent accidental modifications.</li>
+      <li>Use named volumes for persisting data between container runs and to share data between multiple containers.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="finding-bioinformatics-tool-containers">Finding Bioinformatics Tool Containers</h2>
+
+<p>These registries host a large number of pre-built Docker images for bioinformatics tools:</p>
+
+<ul>
+  <li>
+    <p><img src="/assets/img/posts/docker-for-bioinformatics/docker-4.svg" width="20" height="20" style="margin-right: 5px;" /> <a href="https://hub.docker.com/">Docker Hub</a> : The default Docker registry, home to many official and community-maintained bioinformatics tool images.</p>
+  </li>
+  <li>
+    <p><img src="/assets/img/posts/docker-for-bioinformatics/biocontainers-logo.svg" width="20" height="20" style="margin-right: 5px;" /> <a href="https://biocontainers.pro/">Biocontainers</a> : A community-driven project offering thousands of standardized containers for bioinformatics tools, ideal for reproducible pipelines.</p>
+  </li>
+  <li>
+    <p><img src="/assets/img/posts/docker-for-bioinformatics/quayio-logo.svg" width="20" height="20" style="margin-right: 5px;" /> <a href="https://quay.io/organization/biocontainers">Quay.io</a> : Another major container registry, widely used by the BioContainers project to host their images.</p>
+  </li>
+  <li>
+    <p><img src="/assets/img/posts/docker-for-bioinformatics/pegi3s-logo.svg" width="20" height="20" style="margin-right: 5px;" /> <a href="http://bdip.i3s.up.pt/">pegi3s Bioinformatics Docker Images Project</a> : A curated collection of Docker images focused on reproducibility and ease of use.</p>
+  </li>
+  <li>
+    <p><img src="/assets/img/posts/docker-for-bioinformatics/rocker-logo.svg" width="20" height="20" style="margin-right: 5px;" /> <a href="https://rocker-project.org/">Rocker Project</a> : Docker images tailored for R and RStudio users, commonly used in data science and bioinformatics research.</p>
+  </li>
+</ul>
+
+<h2 id="resources-and-further-reading">Resources and Further Reading</h2>
+
+<p><strong>Docker Essentials and Learning:</strong></p>
+
+<ul>
+  <li><a href="https://docs.docker.com/get-started/">Getting Started with Docker</a> : A beginner-friendly guide to Docker, covering installation and basic commands.</li>
+  <li><a href="https://docs.docker.com/get-started/docker_cheatsheet.pdf">Docker CLI CheatSheet</a> : A quick reference guide for common Docker commands.</li>
+  <li><a href="https://docs.docker.com/">Docker Documentation</a> : The official Docker documentation is a comprehensive resource for all things Docker.</li>
+  <li><a href="https://docs.docker.com/compose/">Docker Compose Documentation</a> : A guide to using Docker Compose for multi-container applications.</li>
+  <li><a href="https://biocontainers-edu.readthedocs.io/en/latest/best_practices.html">BioContainers Best Practices</a>: A guide to best practices for using BioContainers in bioinformatics workflows.</li>
+</ul>
+
+<p><strong>Guided Lessons:</strong></p>
+
+<ul>
+  <li><a href="https://carpentries-incubator.github.io/docker-introduction/">Software Carpentries: Introduction to Docker</a> : A hands-on lesson designed for researchers new to containers.</li>
+  <li><a href="https://biocorecrg.github.io/PhD_course_containers_2021/">Linux containers in scientific environments (CBG PhD Course)</a>: Short hands-on practicum on how to start working using Linux containers.</li>
+</ul>
+
+<p><strong>Reproducibility in Research Practices:</strong></p>
+
+<ul>
+  <li><a href="https://www.nature.com/articles/sdata201618">The FAIR Guiding Principles</a><d-cite key="wilkinson_fair_2016"></d-cite>: The original paper outlining the FAIR principles</li>
+  <li><a href="https://doi.org/10.1371/journal.pcbi.1000424">Ten Simple Rules for Reproducible Computational Research</a><d-cite key="sandve_ten_2013"></d-cite> : A paper outlining ten simple rules for reproducible research in computational biology.</li>
+  <li><a href="https://f1000research.com/articles/7-742/v2">Recommendations for the packaging and containerizing of bioinformatics software</a><d-cite key="gruening_recommendations_2019"></d-cite> : A paper discussing best practices for packaging and containerizing bioinformatics software to ensure reproducibility.</li>
+  <li><a href="https://book.the-turing-way.org/">“The Turing Way”</a> : A handbook for reporoducible, ethical and collaborative data science.</li>
+  <li><a href="https://arca-dpss.github.io/manual-open-science/">The Open Science Manual</a>: A guide to open science practices, including reproducibility and data sharing.</li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Bioinformatic workflows often suffer from “dependency hell”, wherein conflicts between software libraries, incompatible versions and platform-specific quirks can make setting up and running analyses a frustrating experience. Containerization technologies like Docker provide a powerful solution by encapsulating the software and it’s dependencies along with any necessary configurations into a single, portable package. This ensures that the analysis runs consistently across different environments, making the workflows more reproducible, scalable, and shareable. Whether you’re running a single tool or a complex pipeline, Docker ensures that your research remains reliable and accessible across different environments.</p>
+
+<p>Happy Dockering!</p>]]></content><author><name>Abhilesh Dhawanjewar</name></author><category term="bioinformatics" /><category term="docker" /><category term="bioinformatics" /><summary type="html"><![CDATA[Portable, Scalable and Reproducible Bioinformatics workflows]]></summary></entry><entry><title type="html">Beats of Stress</title><link href="https://abhilesh.github.io/blog/2018/physiology-phd/" rel="alternate" type="text/html" title="Beats of Stress" /><published>2018-04-27T21:01:00+00:00</published><updated>2018-04-27T21:01:00+00:00</updated><id>https://abhilesh.github.io/blog/2018/physiology-phd</id><content type="html" xml:base="https://abhilesh.github.io/blog/2018/physiology-phd/"><![CDATA[<p>The <a href="https://en.wikipedia.org/wiki/Comprehensive_examination">Comprehensive Exam</a> (more affectionately known as “comps”) is a notoriously stressful milestone in the PhD journey. It is a high-stakes exam that tests the student’s knowledge of their field and their ability to think critically. The format of the exam varies by departments, but usually consists of both a written and an oral component. For my doctoral program, this involved writing a research proposal laying out the plans for my dissertation research, and then defending it in front of my doctoral committee, which comprised of five faculty members from related fields.</p>
+
+<p>As a competitive cyclist during my PhD, I regularly used heart rate metrics to track my training and recovery. As exam anxiety started mounting in the days leading up to the exam, my curiosity piqued about how my body would respond physiologically to this gruelling ordeal. To explore this, I decided to wear my heart rate monitor to the exam to gather some data.</p>
+
+<p>Now, onto the data: the physiological profile of my heart was quite revealing. As the exam commenced, my heart rate spiked sharply to 140 bpm, well within the fat-burning zone as I stood before my doctoral committee with my presentation behind me. This was a clear sign of the pre-exam jitters. The anticipation of the questions, the intimidating presence of the professors, the sheer weight of the moment - all acting as conductors in this orchestra of anxiety.</p>
+
+<div class="row justify-content-center mt-3">
+    <div class="col-12 mt-3 mt-md-0">
+        
+
+
+
+<figure>
+  <picture>
+    <!-- Auto scaling with imagemagick -->
+    <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
+    
+      
+        <source class="responsive-img-srcset" srcset="/assets/img/posts/comps_hr-480.webp 480w,/assets/img/posts/comps_hr-800.webp 800w,/assets/img/posts/comps_hr-1400.webp 1400w," type="image/webp" sizes="95vw" />
+      
+    
+    <img src="/assets/img/posts/comps_hr.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" data-zoomable="" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+  </picture>
+
+  
+</figure>
+
+    </div>
+<div class="caption">
+    Beat by beat, the heart tells the story of my PhD exam.
+</div>
+</div>
+
+<p>Fortunately, my professors proved to be a compassionate and supportive group, helping to ease my nerves. As I answered their challenging questions with accuracy (or at least confidence), I felt my heart begin to ease, reflected in the gradual decline of my heart rate. Yet, there were still notable spikes, likely triggered by especially tough inquiries, sending my pulse racing once more.</p>
+
+<p>As my heart rate stabilized towards the end of the exam, the ultimate trial loomed: the verdict. They ask you to step outside the room, while the examiners debate your fate. My heart rate surged dramatically again, doing a pole vault during those agonizing moments spent in anticipation outside the room.</p>
+
+<p>In the end, I survived the comps, my dissertation proposal was met with positive enthusiasm and the examiners’ insights helped sharpen and refine the questions I was going to explore in my doctoral work. In retrospect, the PhD oral exam, viewed through the lens of a heart rate monitor revealed the physiological response of the body to this intellectual pressure. This curious experiment was a welcome distraction, and though I wouldn’t advocate it as a fat-burning regime, it undoubtedly added a unique dimension to my academic odyssey.</p>
+
+<p><ins>Notes:</ins></p>
+
+<ul>
+  <li>My resting heart rate during this period was around 45 bpm, while my average heart rate during the exam was 84 bpm, a significant increase.</li>
+  <li>Used the <a href="https://uk.wahoofitness.com/devices/running/heart-rate-monitors/tickr-buy">Wahoo TICKR</a> heart rate monitor to capture the data, exported using the <a href="https://play.google.com/store/apps/details?id=com.wahoofitness.fitness&amp;hl=en_US">Wahoo app</a>, cleaned up the data and plotted the graph in <a href="https://www.r-project.org/">R</a>. Code for the plot available on my <a href="https://github.com/abhilesh/Miscellaneous_scripts/tree/master/PhD_Comps_HR">GitHub</a>.</li>
+</ul>]]></content><author><name></name></author><category term="miscellany" /><category term="PhD-journey" /><category term="data-visualization" /><summary type="html"><![CDATA[A physiological perspective on my PhD exams]]></summary></entry></feed>
