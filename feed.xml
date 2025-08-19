@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://abhilesh.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://abhilesh.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-08-18T15:14:22+00:00</updated><id>https://abhilesh.github.io/feed.xml</id><title type="html">blank</title><subtitle>Personal Website of Abhilesh Dhawanjewar</subtitle><entry><title type="html">Docker for Bioinformatics</title><link href="https://abhilesh.github.io/blog/2025/docker-for-bioinformatics/" rel="alternate" type="text/html" title="Docker for Bioinformatics" /><published>2025-02-27T21:01:00+00:00</published><updated>2025-02-27T21:01:00+00:00</updated><id>https://abhilesh.github.io/blog/2025/docker-for-bioinformatics</id><content type="html" xml:base="https://abhilesh.github.io/blog/2025/docker-for-bioinformatics/"><![CDATA[<div class="row justify-content-center mt-3">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://abhilesh.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://abhilesh.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-08-19T13:38:32+00:00</updated><id>https://abhilesh.github.io/feed.xml</id><title type="html">blank</title><subtitle>Personal Website of Abhilesh Dhawanjewar</subtitle><entry><title type="html">Docker for Bioinformatics</title><link href="https://abhilesh.github.io/blog/2025/docker-for-bioinformatics/" rel="alternate" type="text/html" title="Docker for Bioinformatics" /><published>2025-02-27T21:01:00+00:00</published><updated>2025-02-27T21:01:00+00:00</updated><id>https://abhilesh.github.io/blog/2025/docker-for-bioinformatics</id><content type="html" xml:base="https://abhilesh.github.io/blog/2025/docker-for-bioinformatics/"><![CDATA[<div class="row justify-content-center mt-3">
     <div class="col-12 mt-3 mt-md-0">
         
 
@@ -60,7 +60,7 @@
 
 <hr style="grid-column: text; width: 100%; border: none; border-bottom: 1px solid rgba(0, 0, 0, 0.1); margin-top: 1rem; margin-bottom: 1rem;" />
 
-<ul id="docker-os-install" class="tab" data-tab="e446ba5a-c016-4475-a66b-0904aaf15e5a" data-name="docker-os-install">
+<ul id="docker-os-install" class="tab" data-tab="bf52a33c-9e22-4382-8218-66e9841ad9fa" data-name="docker-os-install">
   
       <li class="active" id="docker-os-install-macos">
           <a href="#">MacOS </a>
@@ -75,7 +75,7 @@
       </li>
   
 </ul>
-<ul class="tab-content" id="e446ba5a-c016-4475-a66b-0904aaf15e5a" data-name="docker-os-install">
+<ul class="tab-content" id="bf52a33c-9e22-4382-8218-66e9841ad9fa" data-name="docker-os-install">
   
       <li class="active">
 <ul>
