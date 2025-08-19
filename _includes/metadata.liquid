@@ -309,7 +309,7 @@
         {% if site.avatar %}
         "image": {
             "@type": "ImageObject",
-            "url": "{{ site.avatar | absolute_url | jsonify }}",
+            "url": "{{ site.avatar | absolute_url }}",
             "height": "200",
             "width": "200"
         }
