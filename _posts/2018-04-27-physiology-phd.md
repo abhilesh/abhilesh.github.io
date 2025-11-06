@@ -17,7 +17,7 @@ Now, onto the data: the physiological profile of my heart was quite revealing. A
 
 <div class="row justify-content-center mt-3">
     <div class="col-12 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/posts/comps_hr.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+        {% include figure.liquid loading="eager" path="assets/img/posts/physiology-phd/comps_hr.png" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
 <div class="caption">
     Beat by beat, the heart tells the story of my PhD exam.
