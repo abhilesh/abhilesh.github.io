@@ -5,7 +5,7 @@ date: 2018-04-27 21:01:00
 description: "Taking back privacy"
 tags: self-hosting
 categories: tech
-thumbnail: assets/img/comps_hr.png
+thumbnail:
 giscus_comments: true
 ---
 
