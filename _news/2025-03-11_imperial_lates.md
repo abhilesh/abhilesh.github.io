@@ -11,7 +11,7 @@ images:
 
 The ["Imperial Lates"](https://www.imperial.ac.uk/be-inspired/lates/) are a wonderful series of ree, adults-only, after-work public engagement events hosted by Imperial College London. These social evenings allow the public to interact with the latest scientific research and developments through creative workshops, live demonstrations, interactive experiments, art installations, talks, and discussions.
 
-The _[Future Cities](https://www.imperial.ac.uk/events/181891/imperial-lates-future-cities/)_ edition focused on how urban environments can evolve to become more sustainable, resilient, and nature-positive. I represented the [Ealing Beaver Project](https://www.ealingbeaverproject.org/) at the event, helping to run the outreach stand and joining a panel discussion on **urban rewilding** — exploring how beavers can contribute to ecological restoration, flood resilience, and biodiversity in London’s parks.
+The _[Future Cities](https://www.imperial.ac.uk/events/181891/imperial-lates-future-cities/)_ edition focused on how urban environments can evolve to become more sustainable, resilient, and nature-positive. I represented the [Ealing Beaver Project](https://www.ealingbeaverproject.com) at the event, helping to run the outreach stand and joining a panel discussion on **urban rewilding** — exploring how beavers can contribute to ecological restoration, flood resilience, and biodiversity in London’s parks.
 
 Our stand featured updates from **Paradise Fields in Greenford**, the site of the UK's first urban beaver reintroduction, and engaged visitors with conversations about how these ecosystem engineers are transforming local landscapes. It was inspiring to connect with so many people interested in urban ecology and the future of greener cities.
 
@@ -38,4 +38,4 @@ Our stand featured updates from **Paradise Fields in Greenford**, the site of th
     Click images to view in full size. Photos by <a href="https://www.brendanfosterphotography.com/">Brendan Foster Photography</a> for Imperial Lates: Future Cities event.
 </div>
 
-Learn more about the project’s ongoing work at [The Ealing Beaver Project's website](https://www.theealingbeaverproject.org/).
+Learn more about the project’s ongoing work at [The Ealing Beaver Project's website](https://www.theealingbeaverproject.com).
