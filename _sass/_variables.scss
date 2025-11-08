@@ -5,6 +5,9 @@
 
 @use "sass:color";
 
+// Layout
+$max-content-width: 900px !default;
+
 // Colors
 //$red-color: #ff3636 !default;
 $red-color: #d45453 !default; // Radix red

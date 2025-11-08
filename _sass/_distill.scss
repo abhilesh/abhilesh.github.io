@@ -2,6 +2,8 @@
  * Style overrides for distill blog posts.
  ******************************************************************************/
 
+@use "variables" as *;
+
 d-byline {
   border-top-color: var(--global-divider-color) !important;
 }

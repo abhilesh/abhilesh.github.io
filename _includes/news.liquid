@@ -22,13 +22,14 @@
                 {{ item.content | remove: '<p>' | remove: '</p>' | emojify }}
               {% else %}
                 <a class="news-title" href="{{ item.url | relative_url }}">{{ item.title }}</a>
+                {% if item.description %}
+                  <p class="news-description mb-0">{{ item.description }}</p>
+                {% endif %}
               {% endif %}
             </td>
           </tr>
         {% endfor %}
       </table>
     </div>
-  {% else %}
-    <p>No news so far...</p>
   {% endif %}
 </div>

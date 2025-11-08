@@ -1,13 +1,19 @@
+@use "variables" as *;
+@use "functions" as *;
+@use "mixins" as *;
+
 // specific icon class definition
 // -------------------------
 
 /* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
 readers do not read off random characters that represent icons */
 
+@use "sass:string";
+
 @each $name, $icon in $fa-icons {
   .#{$fa-css-prefix}-#{$name} {
-    #{$fa-icon-property}: unquote("\"#{ $icon }\"");
-    #{$fa-duotone-icon-property}: unquote("\"#{$icon}#{$icon}\"");
+    #{$fa-icon-property}: string.unquote("\"#{ $icon }\"");
+    #{$fa-duotone-icon-property}: string.unquote("\"#{$icon}#{$icon}\"");
   }
 }
 
