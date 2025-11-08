@@ -50,7 +50,12 @@ ninja.data = [{
           section: "News",},{id: "news-joined-the-mrc-mitochondrial-biology-unit-at-the-university-of-cambridge-as-a-bioinformatician-i-ll-be-working-with-dr-jelle-van-den-ameele-prof-rita-horvath-and-prof-patrick-chinnery-on-analyzing-mitochondrial-heteroplasmy-and-its-role-in-human-mitochondrial-diseases",
           title: 'Joined the MRC Mitochondrial Biology Unit at the University of Cambridge as a...',
           description: "",
-          section: "News",},{
+          section: "News",},{id: "news-ealing-beaver-project-at-imperial-lates-future-cities",
+          title: 'Ealing Beaver Project at Imperial Lates: Future Cities',
+          description: "Led outreach and joined a panel discussion on rewilding and nature-based urban design.",
+          section: "News",handler: () => {
+              window.location.href = "/news/2025-03-11_imperial_lates/";
+            },},{
         id: 'social-display_in_header',
         title: 'Display_in_header',
         section: 'Socials',
