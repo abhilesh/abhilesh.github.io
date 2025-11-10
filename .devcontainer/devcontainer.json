@@ -12,6 +12,18 @@
     "ghcr.io/devcontainers-extra/features/prettier:1": {}
   },
 
+  // Forward and expose port 4000
+  "forwardPorts": [4000],
+  "appPort": ["4000:4000"],
+
+  "portsAttributes": {
+    "4000": {
+      "label": "Jekyll Server",
+      "onAutoForward": "notify",
+      "protocol": "http"
+    }
+  },
+
   // Optionally: run jekyll serve automatically on container entering using the Docker entrypoint
   "postAttachCommand": "./bin/entry_point.sh",
 

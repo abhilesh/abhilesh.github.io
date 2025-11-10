@@ -1,12 +1,13 @@
 ---
 layout: post
 title: "A Bioinformatician's Toolkit"
-date: 2025-05-20 10:01:00
+date: 2025-07-20 10:01:00
 description: "Essential tools for a bioinformatician"
 tags: bioinformatics software-tools
 categories: bioinformatics
-thumbnail: assets/img/posts/bioinformaticians-toolkit/bioinformaticians-toolkit-thumbnail.png
+thumbnail: assets/img/posts/bioinformaticians-toolkit/bioinformaticians-toolkit-thumbnail.webp
 giscus_comments: true
+disable_animation: true
 ---
 
 <style>
@@ -35,7 +36,7 @@ html[data-theme="dark"] .tool-icon[alt="GitHub logo"] {
 
 <div class="row justify-content-center mt-3">
     <div class="col-12 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/posts/bioinformaticians-toolkit/bioinformaticians-toolkit-cover.png" class="img-fluid rounded z-depth-1" zoomable=false %}
+        {% include figure.liquid loading="eager" path="assets/img/posts/bioinformaticians-toolkit/bioinformaticians-toolkit-cover.webp" class="img-fluid rounded z-depth-1" zoomable=false %}
     </div>
 </div>
 
@@ -96,6 +97,8 @@ Git, GitHub and Data Version Control (DVC) have been life-savers.
 ### Lab Notebook (and data syncing)
 
 ---
+
+Documenting ideas, observations and critically the decisions made during analysis is an essential part of bioinformatic workflows.
 
 My daily notes are a mix of text blocks, to-do lists, code snippets and links to papers. Working on multiple projects simultaneously adds to the complexity of managing documentation.
 

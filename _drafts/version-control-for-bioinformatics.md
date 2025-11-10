@@ -1,9 +1,9 @@
 ---
 layout: distill
 title: "Version Control for Bioinformatics"
-date: 2025-02-27 21:01:00
-description: "Portable, Scalable and Reproducible Bioinformatics workflows"
-tags: docker bioinformatics
+date: 2025-05-15 21:01:00
+description: "Tracking changes, collaborating and ensuring reproducibility"
+tags: git bioinformatics
 categories: bioinformatics
 thumbnail:
 giscus_comments: true
@@ -19,6 +19,12 @@ authors:
       url: "https://www.cam.ac.uk/"
 bibliography: 2025-02-27-docker-for-bioinformatics.bib
 ---
+
+<div class="row justify-content-center mt-3">
+    <div class="col-12 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/posts/version-control-for-bioinformatics/version-control-for-bioinformatics-cover.jpg" class="img-fluid rounded z-depth-1" zoomable=false %}
+    </div>
+</div>
 
 Bioinformatics workflows are often iterative, involving multiple steps of data processing, analysis, and visualization. As these workflows evolve, it becomes crucial to maintain a record of changes, collaborate with others, and ensure reproducibility. Version control systems (VCS) like Git provide a robust solution to these challenges.
 
