@@ -5,7 +5,7 @@ date: 2025-02-27 21:01:00
 description: "Portable, Scalable and Reproducible Bioinformatics workflows"
 tags: docker bioinformatics
 categories: bioinformatics
-thumbnail: assets/img/posts/docker-for-bioinformatics/docker-for-bioinformatics-thumbnail.png
+thumbnail: assets/img/posts/docker-for-bioinformatics/docker-for-bioinformatics-thumbnail.webp
 giscus_comments: true
 #disqus_comments: true
 tabs: true
@@ -22,7 +22,7 @@ bibliography: 2025-02-27-docker-for-bioinformatics.bib
 
 <div class="row justify-content-center mt-3">
     <div class="col-12 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/posts/docker-for-bioinformatics/docker-for-bioinformatics-cover.png" class="img-fluid rounded z-depth-1" zoomable=false %}
+        {% include figure.liquid loading="eager" path="assets/img/posts/docker-for-bioinformatics/docker-for-bioinformatics-cover.webp" class="img-fluid rounded z-depth-1" zoomable=false %}
     </div>
 </div>
 
