@@ -2,7 +2,7 @@
 layout: post
 title: "A Bioinformatician's Toolkit"
 date: 2025-07-20 10:01:00
-description: "Essential tools for a bioinformatician"
+description: "Tools that power my daily bioinformatics workflow"
 tags: bioinformatics software-tools
 categories: bioinformatics
 thumbnail: assets/img/posts/bioinformaticians-toolkit/bioinformaticians-toolkit-thumbnail.webp
@@ -85,6 +85,8 @@ Bioinformatics analyses always start with data exploration and involve a lot of 
 </span>
 
 Git is the backbone of modern version control. It allows you to track changes to your codebase and maintain multiple simulataneous versions (branches) for experimentation.
+
+I now initialize a Git repository for every project I start and commit changes frequently with meaningful messages. This encourages me to follow a deliberate rhythm of coding, testing and documenting changes while supercharging my ability to "time travel" and trace back to previous versions of my code when needed.
 
 > **💡 Pro Tip**
 >
