@@ -5,7 +5,7 @@ date: 2018-04-27 21:01:00
 description: "A physiological perspective on my PhD exams"
 tags: PhD-journey data-visualization
 categories: miscellany
-thumbnail: assets/img/posts/physiology-phd/comps_hr.png
+thumbnail: assets/img/posts/physiology-phd/beats-of-stress-thumbnail.webp
 giscus_comments: true
 ---
 
