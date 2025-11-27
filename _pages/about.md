@@ -27,7 +27,7 @@ announcements:
 latest_posts:
   enabled: true
   scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
-  limit: 3 # leave blank to include all the blog posts
+  limit: 5 # leave blank to include all the blog posts
 ---
 
 I am an Evolutionary Biologist & Bioinformatician passionate about uncovering the mechanisms driving the diversity of life. My work integrates empirical and computational approaches to develop a holistic understanding of evolutionary processes.

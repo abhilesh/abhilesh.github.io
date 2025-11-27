@@ -21,16 +21,25 @@ Our stand featured updates from **Paradise Fields in Greenford**, the site of th
             <a class="spotlight" href="/assets/img/news/2025_03_11_imperial_lates/imperial-lates-future-cities-1.webp">
                 <img src="/assets/img/news/2025_03_11_imperial_lates/imperial-lates-future-cities-1.webp" alt="Urban rewilding discussion at Imperial Lates" class="img-fluid rounded z-depth-1" />
             </a>
+            <div class="caption mt-2">
+                Discussing the ecological impact of urban beavers on flood resilience and biodiversity.
+            </div>
         </div>
         <div class="col-sm-4 mt-3 mt-md-0">
             <a class="spotlight" href="/assets/img/news/2025_03_11_imperial_lates/imperial-lates-future-cities-2.webp">
                 <img src="/assets/img/news/2025_03_11_imperial_lates/imperial-lates-future-cities-2.webp" alt="The panel discussing the role of rewilding in our Future Cities" class="img-fluid rounded z-depth-1" />
             </a>
+            <div class="caption mt-2">
+                The panel exploring strategies for nature-positive urban design and rewilding.
+            </div>
         </div>
         <div class="col-sm-4 mt-3 mt-md-0">
             <a class="spotlight" href="/assets/img/news/2025_03_11_imperial_lates/imperial-lates-future-cities-3.webp">
                 <img src="/assets/img/news/2025_03_11_imperial_lates/imperial-lates-future-cities-3.webp" alt="Nadya Mirochnitchenko sharing the project with the visitors" class="img-fluid rounded z-depth-1" />
             </a>
+            <div class="caption mt-2">
+                Ealing Beaver Project's Ecologist, Nadya Mirochnitchenko, engaging with visitors at our outreach stand.
+            </div>
         </div>
     </div>
 </div>
