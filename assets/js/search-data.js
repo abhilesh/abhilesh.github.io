@@ -58,6 +58,9 @@ ninja.data = [{
             },},{id: "news-attended-the-embo-febs-lecture-course-the-evolving-role-of-mitochondria-in-metabolism-in-belgrade-serbia-presented-my-work-on-the-statistical-modeling-of-a-somatic-mtdna-bottleneck-from-our-recent-mtdna-smfish-study-and-served-as-a-panelist-on-equality-diversity-and-inclusion-the-conference-highlighted-technical-advances-and-was-full-of-stimulating-discussions-on-the-evolving-landscape-of-mitochondrial-biology",
           title: 'Attended the EMBO|FEBS Lecture Course: The Evolving Role of Mitochondria in Metabolism in...',
           description: "",
+          section: "News",},{id: "news-co-organized-the-4th-annual-cells-within-cells-within-cambridge-symposium-at-the-department-of-pathology-university-of-cambridge-the-symposium-brought-together-local-researchers-working-on-the-broad-theme-of-cells-within-cells-featuring-talks-and-discussions-ranging-from-intracellular-organelles-and-organisms-to-symbiotic-relationships-in-superorganisms",
+          title: 'Co-organized the 4th annual Cells within Cells within Cambridge Symposium at the Department...',
+          description: "",
           section: "News",},{
         id: 'social-display_in_header',
         title: 'Display_in_header',
