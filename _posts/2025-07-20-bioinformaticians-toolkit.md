@@ -40,9 +40,9 @@ html[data-theme="dark"] .tool-icon[alt="GitHub logo"] {
     </div>
 </div>
 
-A bioinformatician's daily workflow often involves wrangling large datasets, writing and debugging analysis scripts, managing development environments, and documenting analytical decisions and pipelines for reproducibility.
+A bioinformatician's daily workflow is rarely a straight line. It's a messy loop that often involves wrangling large datasets, writing and debugging analysis scripts, managing development environments, and documenting analytical decisions and pipelines for reproducibility.
 
-Over the years, I've assembled a toolkit of software that has dramatically improved my productivity and the reproducibility of my work. These aren't just tools—they've become essential parts of my daily workflow. Here are the ones I can't imagine working without.
+Over the years, I've assembled a toolkit of software that has dramatically improved both my productivity and the reproducibility of my work. These tools have been an essential infrastructure of my daily workflow, helping keep things organized and efficient.
 
 ### Integrated Development Environments (IDEs)
 
@@ -59,9 +59,7 @@ If you've started your programming journey with R or Python, you may already hav
 
 Visual Studio Code truly is the swiss army knife of IDEs. Its rich ecosystem of extensions supports multiple programming languages, integrates with version control systems and terminals and offers powerful code editing and navigation features. The modularity of the extension system also means that you can tailor the IDE to your specific needs.
 
-> **💡 Pro Tip**
->
-> Some of my most used VSCode extensions include:
+> **💡 Pro Tip** <br><br>Some of my most used VSCode extensions include:<br><br>
 >
 > **[Remote Server](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh)**: Connect to HPC clusters via SSH and work directly on remote files. Makes project management on remote systems seamless.
 >
@@ -72,6 +70,30 @@ Visual Studio Code truly is the swiss army knife of IDEs. Its rich ecosystem of 
 > **[Quarto](https://marketplace.visualstudio.com/items?itemName=quarto.quarto)**: Quarto language support for authoring documents and reports.
 >
 > **[Claude Code for VSCode](https://marketplace.visualstudio.com/items?itemName=anthropic.claude-code)**: Integrate the Claude AI assistant directly into VSCode for code generation and assistance.
+
+### AI-Assisted Programming
+
+---
+
+The transformation that AI-assisted tools have had in our lives needs no introduction. Agentic Large Language Models (LLMs) have significantly altered the way we code, debug and learn new programming concepts.
+
+<span class="tool">
+<img src="/assets/img/posts/bioinformaticians-toolkit/claude.svg" class="tool-icon" alt="Claude logo">
+<a href="https://claude.ai/" target="_blank" rel="noopener">Claude</a>
+</span>
+
+Anthropic's Claude Code excels at working with large and messy codebases. I use it to understand old code, refactor code and generate documentation. It's like having a patient code reviewer when debugging or revisiting code I wrote months ago.
+
+<span class="tool">
+<img src="/assets/img/posts/bioinformaticians-toolkit/gemini-color.svg" class="tool-icon" alt="Google Gemini logo">
+<a href="https://gemini.google.com/" target="_blank" rel="noopener">Google Gemini</a>
+</span>
+
+Google's Gemini is great at exploring alternative ideas, translating code between languages and general prototyping of analyses.
+
+Relying on these tools has replaced the satisfaction of solving a complex logic puzzle with the more passive role of a code reviewer, but I've found that they can be powerful allies in streamlining the mundane bits. Although the accuracy and reliability of these models has improved significantly, they still make occasional missteps that need careful review. I use them primarily to find code snippets across large projects, add documentation to existing codebases and suggest improvements to my code. As this landscape is rapidly evolving, I often combine multiple LLMs to cross-validate suggestions and ensure accuracy.
+
+> **💡 Pro Tip** <br><br> Use the <b>"Project Instructions"</b> section (typically defined via a markdown file) to specify the desired behavior from the LLMs. Incorporating specific instructions like <i>"Be critical and objective; Refactor the code minimally preserving logic; provide short answers unless specifically asked"</i> help refine the LLM's outputs<br><br> Integrating these tools directly with VSCode via extensions ([Claude](https://marketplace.visualstudio.com/items?itemName=anthropic.claude-code) and [Gemini](https://marketplace.visualstudio.com/items?itemName=Google.geminicodeassist)), makes it extremely powerful and convenient due to the ability to share the codebase and get context-aware suggestions without leaving the IDE.
 
 ### Version Control
 
@@ -84,13 +106,11 @@ Bioinformatics analyses always start with data exploration and involve a lot of 
 <a href="https://git-scm.com/" target="_blank" rel="noopener">Git</a>
 </span>
 
-Git is the backbone of modern version control. It allows you to track changes to your codebase and maintain multiple simulataneous versions (branches) for experimentation.
+Git is the backbone of modern version control. It allows you to track changes to your codebase and maintain multiple simultaneous versions (branches) for experimentation. Think of it like a sophisticated "undo" button that works across your entire history.
 
 I now initialize a Git repository for every project I start and commit changes frequently with meaningful messages. This encourages me to follow a deliberate rhythm of coding, testing and documenting changes while supercharging my ability to "time travel" and trace back to previous versions of my code when needed.
 
-> **💡 Pro Tip**
->
-> `git` is natively supported in VSCode, but the [Git Graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph) extension is an easy way to familiarize yourself with version control concepts by providing a visual interface to manage commits, branches and merges.
+> **💡 Pro Tip** <br><br> `git` is natively supported in VSCode, but the [Git Graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph) extension is an easy way to familiarize yourself with version control concepts by providing a visual interface to manage commits, branches and merges.
 
 <span class="tool">
     <img src="/assets/img/posts/bioinformaticians-toolkit/github.svg" class="tool-icon" alt="GitHub logo">
@@ -106,11 +126,11 @@ GitHub extends Git's capabilities by providing a cloud-based collaboration platf
 
 While Git excels at tracking code, bioinformatics workflows involve large data and intermediate files that can quickly balloon repository sizes into the gigabytes or terabytes. We often need to version control not just our scripts, but also datasets, model files, and results. Data Version Control (DVC) is a powerful extension to Git that allows the tracking of large files, datasets, and analysis versions. DVC works by storing metadata about large files in Git enabling the precise versioning of data alongside code.
 
-### Lab Notebook (and notes syncing)
+### Lab Notebook (and syncing notes)
 
 ---
 
-Documenting ideas, observations and critically the decisions made during analysis is an essential part of bioinformatic workflows. Add to that the notes from meetings, literature summaries and to-do lists, and a mountain of unorganized notes accumulates in no time. While a traditional pen-and-paper note taking system has its charms, I quickly realized that effective recall was the bottleneck in my note-taking process. I still see so many colleagues using MS Word to take notes, a tool ill-suited for this purpose, while several modern alternatives exist.
+Documenting ideas, observations and critically the decisions made during analysis is an essential part of bioinformatic workflows. Add to that the notes from meetings, literature summaries and to-do lists, and a mountain of unorganized notes accumulates in no time. While a traditional pen-and-paper note taking system has its charms, I realized early on that effective recall was the bottleneck in my note-taking process. I still see so many colleagues using MS Word to take notes, a tool ill-suited for this purpose, while several modern alternatives exist.
 
 <span class="tool">
     <img src="/assets/img/posts/bioinformaticians-toolkit/logseq.svg" class="tool-icon" alt="Logseq logo">
@@ -119,11 +139,7 @@ Documenting ideas, observations and critically the decisions made during analysi
 
 Logseq is a powerful knowledge management and note-taking tool that uses a local folder of plain text Markdown files. It supports bi-directional linking, making it easy to connect related notes and ideas. Its outliner format is perfect for organizing thoughts hierarchically, and the ability to embed code blocks allows me to keep track of analysis snippets directly within my notes.
 
-> **💡 Pro Tip**
->
-> Logseq is an outliner at its core, meaning that every note is structured as a series of nested bullet points. When you first open Logseq, you are greated with a _daily journal_ page. For me, this reduces the friction of having to think where to put my notes. Everything is jotted on the daily page with the relevant projects and topics linked as needed. Over time, a web of interconnected notes builds up that is easily searchable.
->
-> If you prefer a folder-based organization system that plays well with long-form writing, [Obsidian](https://obsidian.md/) is another excellent alternative with similar features.
+> **💡 Pro Tip** <br><br>Logseq is an outliner at its core, meaning that every note is structured as a series of nested bullet points. When you first open Logseq, you are greated with a _daily journal_ page. For me, this reduces the friction of having to think where to put my notes. Everything is jotted on the daily page with the relevant projects and topics linked as needed. Over time, a web of interconnected notes builds up that is easily searchable. <br><br>If you prefer a folder-based organization system that plays well with long-form writing, [Obsidian](https://obsidian.md/) is another excellent alternative with similar features.
 
 Often times, I am working across devices: laptop, home server and a mobile device. Having access to my notes wherever I am has made data recall a seamless process.
 
@@ -151,14 +167,14 @@ I loved the flexibility of R Markdown and Jupyter Notebooks to document my analy
 
 ---
 
-"Dependency hell" is a term that will resonate with any bioinformatician piping together multiple tools for their analysis. Troubleshooting package conflicts and managing different software versions can become a major timesink.
+"Dependency hell" is a rite of passage for any bioinformatician piping together multiple tools for their analysis. Troubleshooting package conflicts and managing different software versions usually becomes a massive timesink.
 
 <span class="tool">
     <img src="/assets/img/posts/bioinformaticians-toolkit/homebrew.svg" class="tool-icon" alt="Homebrew logo">
     <a href="https://brew.sh/" target="_blank" rel="noopener">Homebrew</a>
 </span>
 
-Homebrew is a package manager for macOS and Linux, operating systems that I've used predominantly for the last decade. It simplifies the installation and management of software libraries and tools from the command line.
+Homebrew is a package manager for macOS and Linux, operating systems that I've used predominantly. It's become my go-to package manager ever since I switched to macOS over a decade ago. It makes installing and managing command-line tools and libraries delightfully simple
 
 <span class="tool">
     <img src="/assets/img/posts/bioinformaticians-toolkit/anaconda.svg" class="tool-icon" alt="Anaconda logo">
@@ -167,9 +183,7 @@ Homebrew is a package manager for macOS and Linux, operating systems that I've u
 
 Anaconda is a powerful environment manager for Python and R that allows the creation of isolated environments with specific package versions. This is particularly useful when working on multiple projects that often require specific library versions.
 
-> **💡 Pro Tip**
->
-> For environments where system-level access is restricted such as HPC clusters, Anaconda is a really useful tool to manage project-specific dependencies enabling the use of up-to-date versions as needed.
+> **💡 Pro Tip** <br><br> For environments where system-level access is restricted such as HPC clusters, Anaconda is a really useful tool to manage project-specific dependencies enabling the use of up-to-date versions as needed.
 
 Anaconda has often been blamed for bloated environments and slower performance. For those concerned with Anaconda's footprint, [Miniconda](https://www.anaconda.com/docs/getting-started/miniconda/main) offers a lighter base install. Furthermore, other package managers like [`mamba`](https://github.com/mamba-org/mamba) and [`pixi`](https://pixi.sh/latest/) can be used as drop-in replacements for `conda` to speed up package installations. [Pip](https://pypi.org/project/pip/) and [`venv`](https://docs.python.org/3/library/venv.html) are alternative Python-only package and environment management tools.
 
@@ -234,14 +248,13 @@ Zotero is my reference manager of choice. It works seamlessly across different o
 
 ---
 
-While each of these tools is a powerful solution on its own, they truly shine when integrated into a cohesive workflow:
+While each of these tools is a powerful solution in isolation, they truly shine when woven into a cohesive workflow.
 
-- The git and remote SSH integration in VScode enables me to script directly on local machines and remote HPC clusters while keeping my code versioned and backed up on GitHub.
-- Logseq takes care of my daily note-taking needs with the bi-directional linking making it easy to connect ideas and retrieve pertinent information easily. It also integrates with Zotero directly to import references into my notebook and annotate them directly.
-- Quarto allows me to document my analyses in a coherent report combining code, analysis documentation and visualizations, producing beautiful outputs that can be shared directly with collaborators.
-- Package management tools and containerization solutions have saved me countless hours from dependency conflicts and environment inconsistencies.
+VSCode serves as the central interface for my work. Its Remote SSH integrations bridge the gap between local development and remote HPC clusters, allowing me to edit code on a supercomputer as if it were on my laptop. Simultaneously, Git ensures every change is reliably versioned and backed up. When I encounter an interesting paper or need to document a critical decision, Logseq becomes its digital home. Its bi-directional linking keeps projects organized, and the Zotero integration allows me to annotate papers and link them directly to my notes without breaking context.
 
-The tools listed here might not be the best in their class, and many alternatives do exist. I've found these tools to have good documentation and active communities which makes setting up and troubleshooting any issues inadvertently encountered much easier. I am also an ardent supporter of the spirit of open source, and wherever possible I try to incorporate open-source tools into my workflow.
+Once the analysis is complete, I rely on Quarto to transform raw scripts and messy exploration into polished, reproducible reports that collaborators can actually use. Supporting all of this, package managers and containerization solutions act as the silent infrastructure in the background. They eliminate the "dependency hell" that used to consume days of my time.
+
+The tools listed here might not be the "best" in their class and many alternatives do exist. However, I have found this specific combination to offer the best balance of robust documentation and active community support. These traits make troubleshooting significantly easier when issues inevitably arise. I'm also an ardent supporter of open-source software, and wherever possible I try to incorporate open-source tools into my workflow.
 
 ### What's in Your Toolkit?
 

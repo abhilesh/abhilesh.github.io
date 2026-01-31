@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Ditch the Cloud: Self-hosting"
-date: 2018-04-27 21:01:00
+date: 2020-08-17 21:01:00
 description: "Taking back privacy"
 tags: self-hosting
 categories: tech
@@ -63,3 +63,57 @@ While the Pi was perfectly capable and handled most simple tasks well, as the st
 </span>
 
 My current self-hosting setup is on an Apple Mac Mini M1
+
+Important pre-requisites
+
+<span class="tool">
+    <img src="/assets/img/posts/bioinformaticians-toolkit/docker.svg" class="tool-icon" alt="Docker logo">
+    <a href="https://github.com/" target="_blank" rel="noopener">Docker</a>
+</span>
+
+<span class="tool">
+    <img src="/assets/img/posts/ditch-the-cloud/cloudflare.svg" class="tool-icon" alt="Cloudflare logo">
+    <a href="https://github.com/" target="_blank" rel="noopener">Cloudflare</a>
+</span>
+
+<span class="tool">
+    <img src="/assets/img/posts/ditch-the-cloud/nginxproxymanager.svg" class="tool-icon" alt="Nginx Proxy Manager logo">
+    <a href="https://github.com/" target="_blank" rel="noopener">Ngnix Proxy Manager</a>
+</span>
+
+<span class="tool">
+    <img src="/assets/img/posts/ditch-the-cloud/tailscale.svg" class="tool-icon" alt="Tailscale logo">
+    <a href="https://github.com/" target="_blank" rel="noopener">Tailscale</a>
+</span>
+
+Some of the self-hosted services that've become a part of my daily workflow include:
+
+<span class="tool">
+    <img src="/assets/img/posts/ditch-the-cloud/immich.svg" class="tool-icon" alt="Immich logo">
+    <a href="https://github.com/" target="_blank" rel="noopener">Immich</a>
+</span>
+
+<span class="tool">
+    <img src="/assets/img/posts/ditch-the-cloud/karakeep.svg" class="tool-icon" alt="Karakeep logo">
+    <a href="https://github.com/" target="_blank" rel="noopener">Karakeep</a>
+</span>
+
+<span class="tool">
+    <img src="/assets/img/posts/ditch-the-cloud/nextcloud.svg" class="tool-icon" alt="Nextcloud logo">
+    <a href="https://github.com/" target="_blank" rel="noopener">Nextcloud</a>
+</span>
+
+<span class="tool">
+    <img src="/assets/img/posts/ditch-the-cloud/paperlessngx.svg" class="tool-icon" alt="Paperless-NGX logo">
+    <a href="https://github.com/" target="_blank" rel="noopener">Paperless-NGX</a>
+</span>
+
+<span class="tool">
+    <img src="/assets/img/posts/ditch-the-cloud/vaultwarden-light.svg" class="tool-icon" alt="Vaultwarden logo">
+    <a href="https://github.com/" target="_blank" rel="noopener">Vaultwarden</a>
+</span>
+
+<span class="tool">
+    <img src="/assets/img/posts/ditch-the-cloud/vikunja.svg" class="tool-icon" alt="Vikunja logo">
+    <a href="https://github.com/" target="_blank" rel="noopener">Vikunja</a>
+</span>
