@@ -97,6 +97,13 @@ ninja.data = [{
           window.open("https://www.linkedin.com/in/abhilesh-dhawanjewar", "_blank");
         },
       },{
+        id: 'social-wikidata',
+        title: 'Wikidata',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://www.wikidata.org/wiki/Q138675621", "_blank");
+        },
+      },{
         id: 'social-blogger',
         title: 'Blogger',
         section: 'Socials',
