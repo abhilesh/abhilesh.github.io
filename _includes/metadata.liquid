@@ -228,36 +228,65 @@
 
   <script type="application/ld+json">
     {% if page.url == '/' %}
-
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "name": {{ author_name | jsonify }},
+      {% if site.alternate_names %}
+      "alternateName": {{ site.alternate_names | jsonify }},
+      {% endif %}
+      {% if site.titles_academic %}
+      "honorificPrefix": {{ site.titles_academic | jsonify }},
+      {% endif %}
       "url": {{ page.url | prepend: site.baseurl | prepend: site.url | remove_first: 'index.html' | jsonify }},
       {% if site.jobTitle %}
-        "jobTitle": {{ site.jobTitle | jsonify }},
+      "jobTitle": {{ site.jobTitle | jsonify }},
       {% endif %}
-      {% if site.person_description %}
-        "description": {{ site.person_description | strip_html | strip_newlines |  escape | jsonify }}
-      {% else %}
-        "description": {{ site.description | strip_html | strip_newlines | escape | jsonify }}
-      {% endif %},
-      {% if site.affiliation %}
-        "affiliation": {
+      "description": {% if site.person_description %}{{ site.person_description | strip_html | strip_newlines | escape | jsonify }}{% else %}{{ site.description | strip_html | strip_newlines | escape | jsonify }}{% endif %},
+      "affiliation": [
+        {
           "@type": "Organization",
           "name": {{ site.affiliation | jsonify }}
-          {% if site.affiliation_url %}
-          ,"url": {{ site.affiliation_url | jsonify }}
-          {% endif %}
+          {% if site.affiliation_url %},"url": {{ site.affiliation_url | jsonify }}{% endif %}
         },
-      {% endif %}
+        {
+          "@type": "Project",
+          "name": "The Ealing Beaver Project",
+          "url": "https://theealingbeaverproject.com/"
+        },
+        {
+          "@type": "Organization",
+          "name": "Ealing Wildlife Group",
+          "url": "https://ealingwildlifegroup.com/",
+          "sameAs": "https://www.wikidata.org/wiki/Q119621824"
+        }
+      ],
+      "alumniOf": [
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "University of Nebraska-Lincoln",
+          "sameAs": "https://www.wikidata.org/wiki/Q1353679"
+        },
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "Indian Institute of Science Education and Research, Pune",
+          "sameAs": "https://www.wikidata.org/wiki/Q12443996"
+        }
+      ],
+      "identifier": [
+        {
+          "@type": "PropertyValue",
+          "propertyID": "ORCID",
+          "value": "0000-0001-7827-1255"
+        }
+      ],
       {% if sameaslinks.size > 0 %}
         "sameAs": {{ sameas_json_output_string }},
       {% endif %}
       "image": {
-          "@type": "ImageObject",
-          "url": "{{ site.avatar | absolute_url }}"
-        }
+        "@type": "ImageObject",
+        "url": "{{ site.avatar | absolute_url }}"
+      }
     }
 
     {% else %}

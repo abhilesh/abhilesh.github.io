@@ -7,15 +7,18 @@ first_name: Abhilesh
 middle_name:
 last_name: Dhawanjewar
 email: ad2347@mrc-mbu.cam.ac.uk
+titles_academic: "Dr."
+alternate_names: ["Abhilesh S. Dhawanjewar", "A. S. Dhawanjewar", "Abhilesh S Dhawanjewar"]
+website_headline: Abhilesh Dhawanjewar | Evolutionary Geneticist & Bioinformatician
 description: >- # the ">" symbol means to ignore newlines until "footer_text:"
   Personal Website of Abhilesh Dhawanjewar
-avatar: /assets/img/abhilesh_pic.png
-website_headline: Abhilesh Dhawanjewar | Evolutionary Geneticist & Bioinformatician
+jobTitle: "Bioinformatician & Evolutionary Geneticist"
+affiliation: "MRC Mitochondrial Biology Unit, University of Cambridge"
+affiliation_url: "https://www.mrc-mbu.cam.ac.uk/"
 person_description: >-
-  Dr. Abhilesh Dhawanjewar is an Evolutionary Geneticist and Bioinformatician at the MRC Mitochondrial Biology Unit, University of Cambridge. He specializes in the evolutionary genetics of mitochondrial DNA and its implications for human health and disease.
-jobTitle: Bioinformatician
-affiliation: MRC Mitochondrial Biology Unit, University of Cambridge
-affiliation_url: https://www.mrc-mbu.cam.ac.uk/
+  Dr. Abhilesh Dhawanjewar is an Evolutionary Geneticist and Bioinformatician at the University of Cambridge.
+  He specializes in mitochondrial DNA evolutionary genetics and serves as Technology Lead for the Ealing Beaver Project.
+avatar: /assets/img/abhilesh_pic.png
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.

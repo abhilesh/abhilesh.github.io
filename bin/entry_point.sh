@@ -15,9 +15,13 @@ manage_gemfile_lock() {
         else
             echo "Gemfile.lock is not tracked by git, removing it"
             rm Gemfile.lock
+            # Re-run bundle install after removing Gemfile.lock to re-checkout git sources
+            echo "Re-running bundle install to restore git-sourced gems..."
+            bundle install
         fi
     fi
 }
+
 
 start_jekyll() {
     manage_gemfile_lock

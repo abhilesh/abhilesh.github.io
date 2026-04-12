@@ -10,9 +10,15 @@ giscus_comments: true
 ---
 
 <style>
+.tool-icon-large {
+  height: 70px;
+  width: 100px;
+  vertical-align: text-bottom;
+  margin-right: 8px;
+}
 .tool-icon {
-  height: 45px;
-  width: 45px;
+  height: 32px;
+  width: 32px;
   vertical-align: text-bottom;
   margin-right: 8px;
 }
@@ -43,22 +49,26 @@ We live in a data-rich world and web services form the backbone of our digital l
 
 > In a nutshell, **Self-hosting** refers to running your own servers and software, rather than relying on third-party services.
 
+### My Self-hosting journey
+
+Through the years, I've experimented with different hardware and software stacks for self-hosting, each with its own set of advantages and challenges.
+
 <span class="tool">
-    <img src="/assets/img/posts/ditch-the-cloud/raspberry_pi_icon.png" class="tool-icon" alt="Raspberry Pi image">
+    <img src="/assets/img/posts/ditch-the-cloud/RPi_4.png" class="tool-icon-large" alt="Raspberry Pi image" style="width: 80px; height: auto;">
     <a href="https://code.visualstudio.com/" target="_blank" rel="noopener">Raspberry Pi 4B</a>
 </span>
 
-I started my self-hosting journey with a Raspberry Pi 4 Model B, a small, affordable and energy-efficient computer. The Raspberry Pi immediately became my sandboxing tool allowing me to experiment with various environments without risking my systems. The Pi ecosystem had matured by this time so that I did not have to be restricted to the official OS, Raspbian, but could install full-blown Ubuntu Server and get experimenting.
+I started my self-hosting journey with a Raspberry Pi 4 Model B, a small, affordable and energy-efficient computer. The Raspberry Pi immediately became my sandboxing tool allowing me to experiment with various environments without risking my systems. The Pi ecosystem had matured by this time so that I did not have to be restricted to the official OS, Raspbian, but could install full-blown Ubuntu Server and get experimenting. It served as the perfect learning environment as I still faced a lot of hiccups along the way surrounding compatibility issues with the ARM-based architecture and the limitations of the 32-bit OS that the Pi could support at the time.
 
 <span class="tool">
-    <img src="/assets/img/posts/ditch-the-cloud/hp_elitedesk.png" class="tool-icon" alt="HP EliteDesk 800 image">
+    <img src="/assets/img/posts/ditch-the-cloud/HP_EliteDesk_1.png" class="tool-icon-large" alt="HP EliteDesk 800 image" style="width: 80px; height: auto;">
     <a href="https://code.visualstudio.com/" target="_blank" rel="noopener">HP EliteDesk 800</a>
 </span>
 
-While the Pi was perfectly capable and handled most simple tasks well, as the stack of my self-hosted services grew, I found the Pi quite limiting.
+While the Pi was perfectly capable and handled most simple tasks well on my local network, as the stack of my self-hosted services grew, I found the Pi quite limiting. The ARM-based architecture meant that sometimes I had to build ARM-compatible versions of software myself and even after the release of a 64-bit OS for the Pi, the Pi's hardware limitations were still a bottleneck for some of the more resource-intensive services I wanted to run. I soon upgraded my setup to a used HP EliteDesk 800 with an Intel i5 processor and 32 GB of RAM. I could install a hypervisor like Proxmox to run multiple virtual machines, testing out different OSes and container orchestration tools. The presence of an integrated GPU meant media processing was also much faster than on the Pi, especially pertinent for remote connections.
 
 <span class="tool">
-    <img src="/assets/img/posts/ditch-the-cloud/apple_mac_mini.png" class="tool-icon" alt="Apple Mac Mini M1 image">
+    <img src="/assets/img/posts/ditch-the-cloud/Mac_Mini_M1.png" class="tool-icon-large" alt="Apple Mac Mini M1 image" style="width: 80px; height: auto;">
     <a href="https://code.visualstudio.com/" target="_blank" rel="noopener">Apple Mac Mini M1</a>
 </span>
 

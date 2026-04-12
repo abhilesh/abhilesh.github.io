@@ -7,10 +7,17 @@
   // Features to add to the dev container. More info: https://containers.dev/features.
   "features": {
     "ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
-      "packages": "build-essential,imagemagick,inotify-tools,jupyter-nbconvert,procps,ruby-full,zlib1g-dev,python3-pygments,python3-ipython"
+      // Removed ruby-full to prevent conflicts with the container's built-in RVM Ruby
+      "packages": "build-essential,imagemagick,inotify-tools,jupyter-nbconvert,procps,zlib1g-dev,python3-pygments,python3-ipython"
     },
-    "ghcr.io/devcontainers-extra/features/prettier:1": {}
+    "ghcr.io/devcontainers-extra/features/prettier:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
   },
+
+  "postCreateCommand": {
+    "bundle-install": "bash -l -c 'bundle install'"
+  },
+  "postAttachCommand": "bash -l -c './bin/entry_point.sh'",
 
   // Forward and expose port 4000
   "forwardPorts": [4000],
@@ -23,9 +30,6 @@
       "protocol": "http"
     }
   },
-
-  // Optionally: run jekyll serve automatically on container entering using the Docker entrypoint
-  "postAttachCommand": "./bin/entry_point.sh",
 
   "customizations": {
     "vscode": {
