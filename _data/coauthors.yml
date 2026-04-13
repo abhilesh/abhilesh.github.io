@@ -1,14 +1,14 @@
 "camus":
   - firstname: ["Flo", "Florencia", "Florencia M", "M. Florencia"]
-    url: https://www.ucl.ac.uk/biosciences/people/dr-florencia-camus
+    url: https://scholar.google.com/citations?hl=en&user=K3YtK_4AAAAJ
 
 "montooth":
   - firstname: ["Kristi L", "Kristi"]
-    url: https://biosci.unl.edu/kristi-montooth
+    url: https://scholar.google.com/citations?hl=en&user=yHuTw8AAAAAJ
 
 "meiklejohn":
   - firstname: ["Colin D", "Colin"]
-    url: https://biosci.unl.edu/colin-meiklejohn
+    url: https://scholar.google.com/citations?hl=en&user=EOpxqqYAAAAJ
 
 "roy":
   - firstname: ["Ankit", "Ankit A"]
@@ -20,20 +20,68 @@
 
 "sharma":
   - firstname: ["Parichit"]
-    url: https://parichitsharma.com/
+    url: https://scholar.google.com/citations?hl=en&user=IMuiAGIAAAAJ
 
 "nelson":
   - firstname: ["Thomas C"]
-    url: https://www.thomnelson.com/
+    url: https://scholar.google.com/citations?hl=en&user=KTxhLVIAAAAJ
 
 "jones":
   - firstname: ["Matthew R"]
-    url: https://scholar.google.com/citations?user=XtTUlvIAAAAJ&hl=en
+    url: https://scholar.google.com/citations?hl=en&user=XtTUlvIAAAAJ
 
 "velotta":
   - firstname: ["Jonathan P"]
-    url: https://science.du.edu/about/faculty-directory/jonathan-velotta
+    url: https://scholar.google.com/citations?hl=en&user=dlY19c4AAAAJ
 
 "schweizer":
   - firstname: ["Rena M"]
-    url: https://renaschweizer.org/
+    url: https://scholar.google.com/citations?hl=en&user=cO4lHTsAAAAJ
+
+"burr":
+  - firstname: ["Stephen P.", "Stephen P", "Stephen"]
+    url: https://scholar.google.com/citations?hl=en&user=KFdm5kUAAAAJ
+
+"auckland":
+  - firstname: ["Kathryn"]
+    url: https://scholar.google.com/scholar?q=Kathryn+Auckland
+
+"glynos":
+  - firstname: ["Angelos"]
+    url: https://scholar.google.com/citations?hl=en&user=hSVYBFcAAAAJ
+
+"ryall":
+  - firstname: ["Cameron"]
+    url: https://scholar.google.com/citations?hl=en&user=-u3TwDAAAAAJ
+
+"wei":
+  - firstname: ["Wei"]
+    url: https://scholar.google.com/citations?hl=en&user=88IB_W4AAAAJ
+
+"hynes-allen":
+  - firstname: ["Antony"]
+    url: https://scholar.google.com/scholar?q=Antony+Hynes-Allen
+
+"prater":
+  - firstname: ["Malwina"]
+    url: https://scholar.google.com/scholar?q=Malwina+Prater
+
+"sczaniecka-clift":
+  - firstname: ["Matylda"]
+    url: https://scholar.google.com/scholar?q=Matylda+Sczaniecka-Clift
+
+"prudent":
+  - firstname: ["Julien"]
+    url: https://scholar.google.com/citations?hl=en&user=NacLEE8AAAAJ
+
+"chinnery":
+  - firstname: ["Patrick F.", "Patrick F", "Patrick"]
+    url: https://scholar.google.com/citations?hl=en&user=bLzED9kAAAAJ
+
+"van den ameele":
+  - firstname: ["Jelle"]
+    url: https://scholar.google.com/citations?hl=en&user=tLUm330AAAAJ
+
+"singh":
+  - firstname: ["Gulzar"]
+    url: https://scholar.google.com/scholar?q=Gulzar+Singh

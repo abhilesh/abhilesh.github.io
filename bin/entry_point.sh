@@ -22,10 +22,9 @@ manage_gemfile_lock() {
     fi
 }
 
-
 start_jekyll() {
     manage_gemfile_lock
-    bundle exec jekyll serve --watch --port=8080 --host=0.0.0.0 --livereload --verbose --trace --force_polling &
+    bundle exec jekyll serve --watch --port=4000 --host=0.0.0.0 --livereload --force_polling --drafts &
 }
 
 start_jekyll
