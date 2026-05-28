@@ -59,7 +59,7 @@
     url: https://scholar.google.com/citations?hl=en&user=88IB_W4AAAAJ
 
 "hynes-allen":
-  - firstname: ["Antony"]
+  - firstname: ["Antony", "Antony M", "Antony M."]
     url: https://scholar.google.com/scholar?q=Antony+Hynes-Allen
 
 "prater":
@@ -85,3 +85,35 @@
 "singh":
   - firstname: ["Gulzar"]
     url: https://scholar.google.com/scholar?q=Gulzar+Singh
+
+"chandrasegaram":
+  - firstname: ["Rajini"]
+    url: https://scholar.google.com/scholar?q=Rajini+Chandrasegaram
+
+"gottardo":
+  - firstname: ["Sara"]
+    url: https://scholar.google.com/scholar?q=Sara+Gottardo+mitochondria
+
+"gao":
+  - firstname: ["Beitong"]
+    url: https://scholar.google.com/scholar?q=Beitong+Gao+mitochondria
+
+"chowdhury":
+  - firstname: ["Suvagata Roy"]
+    url: https://scholar.google.com/scholar?q=Suvagata+Roy+Chowdhury+mitochondria
+
+"tabara":
+  - firstname: ["Luis-Carlos"]
+    url: https://scholar.google.com/citations?user=gYKISfkAAAAJ
+
+"frison":
+  - firstname: ["Michele"]
+    url: https://www.mrc-mbu.cam.ac.uk/mbu-postdoctoral-society/postdocs/michele-frison
+
+"petridi":
+  - firstname: ["Stavroula"]
+    url: https://www.mrc-mbu.cam.ac.uk/mbu-postdoctoral-society/postdocs/stavroula-petridi
+
+"ma":
+  - firstname: ["Hansong"]
+    url: https://scholar.google.com/citations?user=UGWlIA8AAAAJ
