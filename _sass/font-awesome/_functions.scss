@@ -32,7 +32,10 @@
 // THE SOFTWARE.
 
 @function fa-divide($dividend, $divisor, $precision: 10) {
-  $sign: if($dividend > 0 and $divisor > 0, 1, -1);
+  $sign: 1;
+  @if not ($dividend > 0 and $divisor > 0) {
+    $sign: -1;
+  }
   $dividend: abs($dividend);
   $divisor: abs($divisor);
   $quotient: 0;
