@@ -72,9 +72,11 @@ While the Pi was perfectly capable and handled most simple tasks well on my loca
     <a href="https://code.visualstudio.com/" target="_blank" rel="noopener">Apple Mac Mini M1</a>
 </span>
 
-My current self-hosting setup is on an Apple Mac Mini M1
+Moving continents, I had to rebuild my self-hosting setup from scratch and I decided to go with an Apple Mac Mini, initially starting with the M1 model and recently upgrading to the Mac Mini M4. The attraction of the Mac Mini was it's compact form factor, energy efficiency, native transcoding abilities.
 
-Important pre-requisites
+### Important pre-requisites
+
+Self-hosting before the containerization era meant setting up and configuring each service individually, making all the dependencies work together and hoping that conflicts don't break anything when inadvertently updating one of the services.
 
 <span class="tool">
     <img src="/assets/img/posts/bioinformaticians-toolkit/docker.svg" class="tool-icon" alt="Docker logo">
