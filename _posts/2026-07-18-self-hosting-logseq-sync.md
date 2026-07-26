@@ -8,7 +8,6 @@ categories: tech
 thumbnail: assets/img/posts/self-hosting-logseq-sync/self-hosting-logseq-sync-thumbnail.webp
 giscus_comments: true
 disable_animation: true
-pretty_table: true
 ---
 
 <style>
@@ -55,7 +54,7 @@ Whichever access route you choose, you will need:
 - **Git**: For cloning the [`logseq-selfhost`](<(https://github.com/yshalsager/logseq-selfhost)>) repository
 - **Logseq DB clients**: For every device you want to sync
 
-## <span class="option-icon--tailscale" role="img" aria-label="Tailscale logo"></span> Local access with Tailscale
+## <span class="option-icon--tailscale" role="img" aria-label="Tailscale logo"></span> Private access over Tailscale
 
 [Tailscale](https://tailscale.com/) creates a private mesh network (a "tailnet") between your devices, so the sync server never needs a public IP, a domain, or a certificate: you just point your Logseq clients at the server's Tailscale IP address.
 
@@ -115,7 +114,7 @@ http://YOUR_TAILSCALE_IP:8787
 
 > <p>💡 You can optionally enable MagicDNS in Tailscale and use a memorable address such as <code>http://my-server:8787</code> instead of the server's Tailscale IP.</p>
 
-## <img src="/assets/img/posts/ditch-the-cloud/nginxproxymanager.svg" width="24" height="24" style="margin-right: 6px; vertical-align: middle;"> Remote access with a reverse proxy
+## <img src="/assets/img/posts/ditch-the-cloud/nginxproxymanager.svg" width="24" height="24" style="margin-right: 6px; vertical-align: middle;"> Public access through a reverse proxy
 
 If you want to sync from outside your tailnet, or cannot install Tailscale on a device, you can place the same Sync server behind **NGINX Proxy Manager (NPM)** and access it through a normal HTTPS domain.
 
@@ -123,10 +122,9 @@ If you want to sync from outside your tailnet, or cannot install Tailscale on a 
 
 ### Prerequisites
 
-- **NGINX Proxy Manager already deployed**, with its own Docker network you can attach other stacks to.
-- A domain with a DNS provider you control (the source uses Cloudflare as its example).
-- A method for obtaining TLS certificates
-- OpenSSL, for generating a random admin token.
+- **NGINX Proxy Manager already installed and running**, with a Docker network that the Logseq container can join.
+- **A domain with a DNS probvider**, with the ability to create and edit DNS records (this guide uses [Cloudflare](https://dash.cloudflare.com/login))
+- **Ports 80 and 443 forwarded to NGINX Proxy Manager** from your router or firewall.
 
 ### Setup
 
@@ -152,63 +150,64 @@ If you want to sync from outside your tailnet, or cannot install Tailscale on a 
 
 3. **Create `docker-compose.yml`:**
 
-<details markdown="1">
-<summary><strong>Show the Sync-only Docker Compose file</strong></summary>
+   <details markdown="1">
+   <summary><strong>Show the Sync-only Docker Compose file</strong></summary>
 
-```yaml
-name: logseq-selfhost-sync
+   ```yaml
+   name: logseq-selfhost-sync
 
-services:
-  logseq-sync:
-    image: ghcr.io/yshalsager/logseq-selfhost-sync:latest
-    container_name: logseq-selfhost-sync
-    restart: unless-stopped
-    pull_policy: always
+   services:
+     logseq-sync:
+       image: ghcr.io/yshalsager/logseq-selfhost-sync:latest
+       container_name: logseq-selfhost-sync
+       restart: unless-stopped
+       pull_policy: always
 
-    environment:
-      DB_SYNC_PORT: "8787"
-      DB_SYNC_BASE_URL: "${DB_SYNC_BASE_URL}"
-      DB_SYNC_DATA_DIR: "/app/data"
-      DB_SYNC_STORAGE_DRIVER: "sqlite"
-      DB_SYNC_ASSETS_DRIVER: "filesystem"
-      DB_SYNC_LOG_LEVEL: "info"
+       environment:
+         DB_SYNC_PORT: "8787"
+         DB_SYNC_BASE_URL: "${DB_SYNC_BASE_URL}"
+         DB_SYNC_DATA_DIR: "/app/data"
+         DB_SYNC_STORAGE_DRIVER: "sqlite"
+         DB_SYNC_ASSETS_DRIVER: "filesystem"
+         DB_SYNC_LOG_LEVEL: "info"
 
-      COGNITO_ISSUER: "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_dtagLnju8"
-      COGNITO_CLIENT_ID: "69cs1lgme7p8kbgld8n5kseii6"
-      COGNITO_JWKS_URL: "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_dtagLnju8/.well-known/jwks.json"
+         COGNITO_ISSUER: "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_dtagLnju8"
+         COGNITO_CLIENT_ID: "69cs1lgme7p8kbgld8n5kseii6"
+         COGNITO_JWKS_URL: "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_dtagLnju8/.well-known/jwks.json"
 
-      DB_SYNC_ADMIN_TOKEN: "${DB_SYNC_ADMIN_TOKEN}"
+         DB_SYNC_ADMIN_TOKEN: "${DB_SYNC_ADMIN_TOKEN}"
 
-    volumes:
-      - ./data:/app/data
+       volumes:
+         - ./data:/app/data
 
-    read_only: true
+       read_only: true
 
-    tmpfs:
-      - /tmp
+       tmpfs:
+         - /tmp
 
-    cap_drop:
-      - ALL
+       cap_drop:
+         - ALL
 
-    security_opt:
-      - no-new-privileges:true
+       security_opt:
+         - no-new-privileges:true
 
-    networks:
-      - default
-      - nginx-proxy-manager_default
+       networks:
+         - default
+         - nginx-proxy-manager_default
 
-networks:
-  nginx-proxy-manager_default:
-    external: true
-```
+   networks:
+     nginx-proxy-manager_default:
+       external: true
+   ```
 
-</details>
+   </details>
 
-The network name must match the Docker network used by your NPM deployment. You can find it by running:
+   The network name must match the Docker network used by your NPM deployment. You can find it by running:
 
-```bash
-docker network ls
-```
+   ```bash
+   docker network ls
+   ```
+
 4. **Set up DNS.** Create a record pointing at your infrastructure:
 
    ```text
@@ -224,32 +223,46 @@ docker network ls
 
 6. **Create a proxy host in NGINX Proxy Manager:**
 
-   | Setting | Value |
-   |---|---|
-   | Domain name | `logseq-sync.example.com` |
-   | Scheme | `http` |
-   | Forward hostname | `logseq-selfhost-sync` |
-   | Forward port | `8787` |
+   | Setting          | Value                     |
+   | ---------------- | ------------------------- |
+   | Domain name      | `logseq-sync.example.com` |
+   | Scheme           | `http`                    |
+   | Forward hostname | `logseq-selfhost-sync`    |
+   | Forward port     | `8787`                    |
 
-   Under **Advanced**, add:
+  <br>
 
-   ```nginx
-   client_max_body_size 1024m;
-   proxy_read_timeout 3600s;
-   proxy_send_timeout 3600s;
-   ```
+Enable **Websockets Support** and **Block Common Exploits**
 
-   Enable **Websockets Support**, **Block Common Exploits**, **Force SSL**, and **HTTP/2 Support**, then request or select an SSL certificate.
+   <div class="row justify-content-center mt-3">
+       <div class="col-sm-8 mt-3 mt-md-0">
+           {% include figure.liquid loading="eager" path="assets/img/posts/self-hosting-logseq-sync/npm-proxy-host.webp" class="img-fluid rounded z-depth-1 mx-auto d-block" width="70%" zoomable=true caption="The Details tab for the Sync proxy host, with Block Common Exploits and Websockets Support enabled." %}
+       </div>
+   </div>
 
-<div class="row justify-content-center mt-3">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/posts/self-hosting-logseq-sync/npm-proxy-host-advanced.webp" class="img-fluid rounded z-depth-1" zoomable=true caption="The Advanced tab for the Sync proxy host, with the custom NGINX configuration and Websockets Support enabled." %}
-    </div>
-</div>
+Under the "SSL" tab, enable **Force SSL** and **HTTP/2 Support** and request a new certificate:
 
-<aside>
-  <p>💡 <strong>Tip:</strong> The longer <code>proxy_read_timeout</code>/<code>proxy_send_timeout</code> values matter here — Logseq Sync operations on large graphs can take a while, and NPM's defaults will otherwise cut the connection early.</p>
-</aside>
+   <div class="row justify-content-center mt-3">
+       <div class="col-sm-8 mt-3 mt-md-0">
+           {% include figure.liquid loading="eager" path="assets/img/posts/self-hosting-logseq-sync/npm-proxy-host-SSL.webp" class="img-fluid rounded z-depth-1 mx-auto d-block" width="70%" zoomable=true caption="The SSL tab for the Sync proxy host, with Force SSL and HTTP/2 Support enabled." %}
+       </div>
+   </div>
+
+Under **Advanced** (the settings <i class="fa-solid fa-gear"></i> icon), add:
+
+```bash
+client_max_body_size 1024m;
+proxy_read_timeout 3600s;
+proxy_send_timeout 3600s;
+```
+
+   <div class="row justify-content-center mt-3">
+       <div class="col-sm-8 mt-3 mt-md-0">
+           {% include figure.liquid loading="eager" path="assets/img/posts/self-hosting-logseq-sync/npm-proxy-host-advanced.webp" class="img-fluid rounded z-depth-1 mx-auto d-block" width="70%" zoomable=true caption="The Advanced tab for the Sync proxy host, with the custom NGINX configuration applied." %}
+       </div>
+   </div>
+
+> <p>💡 <strong>Tip:</strong> The longer <code>proxy_read_timeout</code>/<code>proxy_send_timeout</code> values matter here: Logseq Sync operations on large graphs can take a while, and NPM's defaults will otherwise cut the connection early.</p>
 
 ### Verification
 
@@ -281,7 +294,7 @@ The source compose file also wires up Cognito-based authentication using AWS cre
 The client setup is the same for both access routes. The only difference is the Sync server URL:
 
 | Access route  | Sync server URL                   |
-| ------------- | --------------------------------- |
+| :------------ | :-------------------------------- |
 | Tailscale     | `http://YOUR_TAILSCALE_IP:8787`   |
 | Reverse proxy | `https://logseq-sync.example.com` |
 
@@ -311,6 +324,12 @@ When using Tailscale, install [Tailscale for Android](https://tailscale.com/down
 
 Log in through [test.logseq.com](https://test.logseq.com), then enter the appropriate server URL under the Sync settings.
 
+ <div class="row justify-content-center mt-3">
+    <div class="col-sm-8 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/posts/self-hosting-logseq-sync/logseq-custom-sync-server-url_android.webp" class="img-fluid rounded z-depth-1 mx-auto d-block" width="40%" zoomable=true caption="Setting the custom Sync Server URL in Logseq for Android." %}
+       </div>
+   </div>
+
 On every device, make sure **Use Logseq Sync Beta** is enabled before creating a new graph or synchronizing an existing one.
 
 ## Optional: Web and Publish servers
@@ -329,10 +348,10 @@ Create two additional DNS records:
 
 Then create proxy hosts pointing to:
 
-| Service | Forward hostname | Internal port |
-|---|---|---:|
-| Web | `logseq-selfhost-web` | `8080` |
-| Publish | `logseq-selfhost-publish` | `8787` |
+| Service | Forward hostname          | Internal port |
+| ------- | ------------------------- | ------------: |
+| Web     | `logseq-selfhost-web`     |        `8080` |
+| Publish | `logseq-selfhost-publish` |        `8787` |
 
 For both hosts, enable **Force SSL** and **HTTP/2 Support**. The Web proxy can use the same timeout configuration as Sync, while the Publish proxy should also allow long-running requests.
 

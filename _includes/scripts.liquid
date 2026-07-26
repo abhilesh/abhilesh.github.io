@@ -166,6 +166,19 @@
     integrity="{{ site.third_party_libraries.bootstrap-table.integrity.js }}"
     crossorigin="anonymous"
   ></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('#markdown-content table').forEach(function (table) {
+        table.classList.add('table', 'table-hover');
+        if (!table.parentNode.classList.contains('table-responsive')) {
+          var wrapper = document.createElement('div');
+          wrapper.className = 'table-responsive';
+          table.parentNode.insertBefore(wrapper, table);
+          wrapper.appendChild(table);
+        }
+      });
+    });
+  </script>
 {% endif %}
 
 <!-- Load Common JS -->

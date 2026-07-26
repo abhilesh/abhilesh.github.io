@@ -26,14 +26,23 @@ hr {
 }
 
 table {
+  width: 100%;
+  border-collapse: collapse;
+  border-bottom: 2px solid var(--global-divider-color);
+
   td,
   th {
     font-size: 1rem;
-    padding: 1px 1rem 1px 0;
+    padding: 0.4rem 3.5rem 0.4rem 0;
   }
 
   th {
     font-weight: bold;
+    border-bottom: 2px solid var(--global-divider-color);
+  }
+
+  td {
+    border-bottom: 1px solid var(--global-divider-color);
   }
 }
 

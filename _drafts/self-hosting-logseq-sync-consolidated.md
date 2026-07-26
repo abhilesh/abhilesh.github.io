@@ -232,12 +232,12 @@ docker network ls
 
 6. **Create a proxy host in NGINX Proxy Manager:**
 
-   | Setting | Value |
-   |---|---|
-   | Domain name | `logseq-sync.example.com` |
-   | Scheme | `http` |
-   | Forward hostname | `logseq-selfhost-sync` |
-   | Forward port | `8787` |
+   | Setting          | Value                     |
+   | ---------------- | ------------------------- |
+   | Domain name      | `logseq-sync.example.com` |
+   | Scheme           | `http`                    |
+   | Forward hostname | `logseq-selfhost-sync`    |
+   | Forward port     | `8787`                    |
 
    Under **Advanced**, add:
 
@@ -306,10 +306,10 @@ Create two additional DNS records:
 
 Then create proxy hosts pointing to:
 
-| Service | Forward hostname | Internal port |
-|---|---|---:|
-| Web | `logseq-selfhost-web` | `8080` |
-| Publish | `logseq-selfhost-publish` | `8787` |
+| Service | Forward hostname          | Internal port |
+| ------- | ------------------------- | ------------: |
+| Web     | `logseq-selfhost-web`     |        `8080` |
+| Publish | `logseq-selfhost-publish` |        `8787` |
 
 For both hosts, enable **Force SSL** and **HTTP/2 Support**. The Web proxy can use the same timeout configuration as Sync, while the Publish proxy should also allow long-running requests.
 
