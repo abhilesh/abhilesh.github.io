@@ -1141,8 +1141,12 @@ nav[data-toggle="toc"] {
 
 /* small screens */
 @media (max-width: 576px) {
-  /* override stickyness so that the navigation does not follow scrolling */
-  nav[data-toggle="toc"] {
+  /* override stickyness so that the navigation does not follow scrolling.
+     #toc-sidebar is targeted directly (not just the data-toggle attribute
+     bootstrap-toc.js adds on document ready) so it's hidden from first
+     paint instead of flashing visible until that JS runs. */
+  nav[data-toggle="toc"],
+  #toc-sidebar {
     visibility: hidden;
     height: 0;
     top: 0;

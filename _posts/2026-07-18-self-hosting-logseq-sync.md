@@ -41,6 +41,10 @@ html[data-theme="dark"] .option-icon--tailscale {
   color: #0076df;
   margin-right: 6px;
 }
+
+.success-icon {
+  color: #28a745;
+}
 </style>
 
 <div class="row justify-content-center mt-3">
@@ -68,15 +72,21 @@ Whichever access route you choose, you will need:
 - **Device capable of running Docker**: A home server, NAS, desktop computer, or VPS.
 - **Docker Engine with Compose**: On Linux, follow [Docker's official install guide](https://docs.docker.com/engine/install/); On MacOS and Windows, Docker Desktop includes the Compose plugin
 - **Git**: For cloning the [`logseq-selfhost`](https://github.com/yshalsager/logseq-selfhost) repository
-- **Logseq DB clients**: For every device you want to sync
+- **Logseq DB clients**: Client application for every device you want to sync
 
-## <span class="option-icon--tailscale" role="img" aria-label="Tailscale logo"></span> Private access over Tailscale
+### <img src="/assets/img/posts/bioinformaticians-toolkit/logseq.svg" width="24" height="24" style="margin-right: 6px; vertical-align: middle;"> Creating a Logseq Account
+
+A Logseq account can be created using any of Logseq's client applications or by navigating to [test.logseq.com](https://test.logseq.com/) <i class="fa-solid fa-arrow-right"></i> "<i class="fa-solid fa-ellipsis"></i>" <i class="fa-solid fa-arrow-right"></i> **Login** <i class="fa-solid fa-arrow-right"></i> **Sign Up**.
+
+The account created here will be used to authenticate all other clients for the sync operations.
+
+### <span class="option-icon--tailscale" role="img" aria-label="Tailscale logo"></span> Private access over Tailscale
 
 [Tailscale](https://tailscale.com/) creates a private mesh network (a "tailnet") between your devices, so the sync server never needs a public IP, a domain, or a certificate: you just point your Logseq clients at the server's Tailscale IP address.
 
 > <i class="fa-solid fa-circle-info info-icon"></i> Ensure [Tailscale](https://tailscale.com/download) is installed and signed in on the server **and** on every device you want to sync from.
 
-### Setup
+#### Setup
 
 1. **Install Tailscale on the server and on each client device**, then note the Tailscale IP address assigned to the server (visible in the Tailscale admin console, or by running `tailscale ip -4` on the server itself).
 
@@ -137,19 +147,19 @@ One thing worth flagging: the sync server listens on port 8787 by default, and T
 
 > <i class="fa-solid fa-lightbulb tip-icon"></i> Most firewalls can scope that rule to Tailscale's own IP range (100.64.0.0/10) rather than opening the port to everyone.
 
-## <img src="/assets/img/posts/ditch-the-cloud/nginxproxymanager.svg" width="24" height="24" style="margin-right: 6px; vertical-align: middle;"> Public access through a reverse proxy
+### <img src="/assets/img/posts/ditch-the-cloud/nginxproxymanager.svg" width="24" height="24" style="margin-right: 6px; vertical-align: middle;"> Public access through a reverse proxy
 
 If you want to sync from outside your tailnet, or cannot install Tailscale on a device, you can place the same Sync server behind **NGINX Proxy Manager (NPM)** and access it through a normal HTTPS domain.
 
 > <i class="fa-solid fa-circle-info info-icon"></i> I chose NGINX Proxy Manager (NPM) as I already have a server stack running with NPM to connect to. NPM can be replaced with your reverse-proxy manager of choice.
 
-### Prerequisites
+#### Prerequisites
 
 - **NGINX Proxy Manager already installed and running**, with a Docker network that the Logseq container can join.
 - **A domain with a DNS provider**, with the ability to create and edit DNS records (this guide uses [Cloudflare](https://dash.cloudflare.com/login))
 - **Ports 80 and 443 forwarded to NGINX Proxy Manager** from your router or firewall.
 
-### Setup
+#### Setup
 
 1. **Create a deployment directory** containing `docker-compose.yml` and `.env`, with persistent data stored in a `./data` subdirectory:
 
@@ -280,9 +290,9 @@ proxy_send_timeout 3600s;
        </div>
    </div>
 
-> <i class="fa-solid fa-lightbulb tip-icon"></i> <strong>Tip:</strong> The longer <code>proxy_read_timeout</code>/<code>proxy_send_timeout</code> values matter here: Logseq Sync operations on large graphs can take a while, and NPM's defaults will otherwise cut the connection early.
+> <i class="fa-solid fa-circle-info info-icon"></i> The longer <code>proxy_read_timeout</code>/<code>proxy_send_timeout</code> values matter here: Logseq Sync operations on large graphs can take a while, and NPM's defaults will otherwise cut the connection early.
 
-### Verification
+#### Verification
 
 ```bash
 docker compose ps
@@ -302,11 +312,11 @@ Once the public health endpoint is working, continue to [Connecting your Logseq 
 https://logseq-sync.example.com
 ```
 
-### A note on security
+#### A note on security
 
 If you adapt this compose file for your own setup, keep the hardening defaults intact: read-only filesystems, dropped capabilities, and no ports published directly on the host. Together they mean the container has little room to do anything beyond running the sync service, even if something in it were compromised.
 
-## Connecting your Logseq clients
+### Connecting your Logseq clients
 
 The client setup is the same for both access routes. The only difference is the Sync server URL:
 
@@ -319,7 +329,9 @@ Use the appropriate URL on every device you want to synchronize.
 
 #### Desktop
 
-In Logseq, go to **Settings → Advanced → Sync Server URL** and enter your Sync server URL.
+The latest Desktop client builds can be downloaded from [Logseq's GitHub](https://github.com/logseq/logseq/releases/tag/2.0.1): choose the installer appropriate for your OS.
+
+In Logseq, login with your Logseq account (see [Creating a Logseq Account](#creating-a-logseq-account)), then go to **Settings → Advanced → Sync Server URL** and enter your Sync server URL.
 
 <div class="row justify-content-center mt-3">
     <div class="col-sm-8 mt-3 mt-md-0">
@@ -327,13 +339,13 @@ In Logseq, go to **Settings → Advanced → Sync Server URL** and enter your Sy
     </div>
 </div>
 
+If successful, you should see a cloud icon with a green dot signalling the sync status in the top right corner, next to <i class="fa-solid fa-ellipsis"></i>. Clicking on it will display the current sync status.
+
 #### iPhone and iPad
 
-When using Tailscale, install [Tailscale for iOS](https://tailscale.com/download/ios), sign in to the same tailnet, and confirm that the server's `/health` endpoint opens in Safari.
+The iOS/iPadOS clients for Logseq DB can be downloaded by joining the [TestFlight](https://testflight.apple.com/join/eBcJ9Hpc) program for the Logseq Beta app.
 
-In Logseq, go to **Settings → Advanced → Sync Server URL** and enter the appropriate server URL.
-
-Tailscale must remain connected whenever Logseq needs to reach a private Tailscale address. This is not required when using the public reverse-proxy address.
+In Logseq, login with your Logseq account (see [Creating a Logseq Account](#creating-a-logseq-account)), then add your server url to the **Sync Server URL** setting.
 
 <div class="row justify-content-center mt-3">
     <div class="col-sm-8 mt-3 mt-md-0">
@@ -341,11 +353,13 @@ Tailscale must remain connected whenever Logseq needs to reach a private Tailsca
     </div>
 </div>
 
+If successful, you should see a cloud icon with a green dot (<i class="fa-solid fa-circle success-icon"></i>) signalling the sync status in the top right corner, next to <i class="fa-solid fa-ellipsis"></i>. Clicking on it will display the current sync status.
+
 #### Android
 
-When using Tailscale, install [Tailscale for Android](https://tailscale.com/download/android), sign in to the same tailnet, and confirm that the server's `/health` endpoint opens in your browser.
+The latest Desktop client builds can be downloaded from [Logseq's GitHub](https://github.com/logseq/logseq/releases/tag/2.0.1): choose the `.apk` file from the Assets list.
 
-Log in through [test.logseq.com](https://test.logseq.com), then enter the appropriate server URL under the Sync settings.
+In Logseq, login with your Logseq account (see [Creating a Logseq Account](#creating-a-logseq-account)), then add your server url to the **Sync Server URL** setting.
 
  <div class="row justify-content-center mt-3">
     <div class="col-sm-8 mt-3 mt-md-0">
@@ -353,9 +367,13 @@ Log in through [test.logseq.com](https://test.logseq.com), then enter the approp
        </div>
    </div>
 
-On every device, make sure **Use Logseq Sync Beta** is enabled before creating a new graph or synchronizing an existing one.
+If successful, you should see a cloud icon with a green dot (<i class="fa-solid fa-circle success-icon"></i>) signalling the sync status in the top right corner, next to <i class="fa-solid fa-ellipsis"></i>. Clicking on it will display the current sync status.
 
-## Optional: Web and Publish servers
+> <i class="fa-solid fa-circle-info info-icon"></i> If using <code>Tailscale</code>, install <code>Tailscale</code> and sign in to the same tailnet.
+
+> <i class="fa-solid fa-circle-info info-icon"></i> On every device, make sure **Use Logseq Sync Beta** is enabled before creating a new graph or synchronizing an existing one.
+
+### Optional: Web and Publish servers
 
 The Sync server is all you need to synchronize a DB graph. The same `logseq-selfhost` project also provides two optional services:
 
@@ -388,7 +406,7 @@ You can see the Publish server in action in the [previous version of this guide]
 
 For most personal setups, Tailscale is the simplest place to start. If you later need the reverse proxy route or want to publish Logseq DB pages publicly, replace the Tailscale deployment with the reverse proxy route.
 
-## Useful Links
+### Useful Links
 
 - [Logseq Open Collective for Official Sync ("Backers" & "Sponsors")](https://opencollective.com/logseq)
 - [Logseq DB Documentation](https://github.com/logseq/docs/blob/master/db-version.md)

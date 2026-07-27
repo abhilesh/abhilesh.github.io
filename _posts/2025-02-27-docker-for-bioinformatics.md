@@ -11,12 +11,6 @@ giscus_comments: true
 tabs: true
 disable_animation: true
 toc: true
-authors:
-  - name: Abhilesh Dhawanjewar
-    url: "https://abhilesh.github.io"
-    affiliations:
-      name: University of Cambridge
-      url: "https://www.cam.ac.uk/"
 bibliography: 2025-02-27-docker-for-bioinformatics.bib
 ---
 
