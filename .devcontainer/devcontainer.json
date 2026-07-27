@@ -15,7 +15,7 @@
   },
 
   "postCreateCommand": {
-    "bundle-install": "bash -l -c 'bundle install'"
+    "bundle-install": "bash -l -c 'gem install --no-document bundler -v $(tail -n 1 Gemfile.lock | tr -d \" \") && bundle install'"
   },
   "postAttachCommand": "bash -l -c './bin/entry_point.sh'",
 

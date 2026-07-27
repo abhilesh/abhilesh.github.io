@@ -7,7 +7,6 @@ _site
 .ruby-version
 .ruby-lsp
 .tweet-cache
-Gemfile.lock
 assets/libs/
 node_modules/
 vendor
