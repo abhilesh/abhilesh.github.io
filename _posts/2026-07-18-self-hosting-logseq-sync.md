@@ -45,6 +45,20 @@ html[data-theme="dark"] .option-icon--tailscale {
 .success-icon {
   color: #28a745;
 }
+
+.warning-icon {
+  color: var(--global-danger-block);
+  font-size: 1.1em;
+  margin-right: 6px;
+}
+
+blockquote p + p {
+  margin-top: 1em;
+}
+
+blockquote li + li {
+  margin-top: 1em;
+}
 </style>
 
 <div class="row justify-content-center mt-3">
@@ -168,6 +182,17 @@ If you want to sync from outside your tailnet, or cannot install Tailscale on a 
    cd ~/home-server/logseq-sync
    ```
 
+   > <i class="fa-solid fa-triangle-exclamation warning-icon"></i> **Additional config for Linux Users**
+   >
+   > _Linux bind-mount permissions_: The container runs as the unprivileged user `nonroot` with UID/GID `65532:65532`. On native Linux, or when the deployment directory is stored inside the WSL Linux filesystem, the bind-mounted `data` directory may need to be owned by this UID:
+   >
+   > ```bash
+   > sudo chown -R 65532:65532 ~/home-server/logseq-sync/data
+   > sudo chmod 750 ~/home-server/logseq-sync/data
+   > ```
+   >
+   > Docker Desktop users on macOS, and Windows users mounting a folder from the Windows filesystem, normally do not need this step. Keep the directory owned by your normal host user unless the container reports a permission error.
+
 2. **Create the environment file (`.env`):**
 
    ```
@@ -230,6 +255,11 @@ If you want to sync from outside your tailnet, or cannot install Tailscale on a 
        external: true
    ```
 
+   > <i class="fa-solid fa-circle-info info-icon"></i> This Compose configuration makes two deliberate changes from the upstream [yshalsager's `logseq-selfhost`](https://github.com/yshalsager/logseq-selfhost) example:
+   >
+   > 1. `./data:/app/data` is a **bind mount**, so the sync database and uploaded assets are stored in the `data` directory beside the Compose file rather than in a Docker-managed volume. The data therefore persists when the container is recreated and can be included in your normal server backups.
+   > 2. The service has no `ports:` section, so port `8787` is not published directly on the Docker host. Instead, the Logseq container joins the same Docker network as NGINX Proxy Manager, which can reach it internally at `logseq-selfhost-sync:8787`. Only NGINX Proxy Manager needs to expose ports `80` and `443` to the host and the wider network.
+
    The network name must match the Docker network used by your NPM deployment. You can find it by running:
 
    ```bash
@@ -241,6 +271,15 @@ If you want to sync from outside your tailnet, or cannot install Tailscale on a 
    ```text
    logseq-sync.example.com
    ```
+
+   <div class="row justify-content-center mt-3">
+       <div class="col-sm-8 mt-3 mt-md-0">
+           <figure>
+               <img src="/assets/img/posts/self-hosting-logseq-sync/cloudflare-dns-record.webp" class="img-fluid rounded z-depth-1 mx-auto d-block" width="70%" loading="eager" data-zoomable>
+               <figcaption class="caption">Adding a CNAME record for the Sync subdomain in the Cloudflare dashboard.</figcaption>
+           </figure>
+       </div>
+   </div>
 
 5. **Start the container:**
 
@@ -315,6 +354,183 @@ https://logseq-sync.example.com
 #### A note on security
 
 If you adapt this compose file for your own setup, keep the hardening defaults intact: read-only filesystems, dropped capabilities, and no ports published directly on the host. Together they mean the container has little room to do anything beyond running the sync service, even if something in it were compromised.
+
+#### Alternative: Cloudflare Tunnel without port forwarding
+
+Some internet providers use carrier-grade NAT or otherwise prevent customers from forwarding ports on their router. In that situation, a [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) can publish the Sync server without opening ports `80`, `443`, or `8787`.
+
+Instead of accepting an inbound connection from the internet, a small `cloudflared` container establishes an outbound connection to Cloudflare. Requests to your Sync hostname travel through that tunnel and are forwarded directly to the Logseq container over Docker's internal network.
+
+This method does not require NGINX Proxy Manager, but it reuses the same deployment directory, bind-mount, and `.env` pattern from steps 1–2 of the reverse-proxy setup above — including the Linux permissions note if you're on native Linux or WSL. Create that directory and `.env` file first if you haven't already.
+
+##### Prerequisites
+
+You will need:
+
+- A Cloudflare account.
+- A domain using Cloudflare DNS.
+- A server capable of making outbound internet connections.
+- Docker Engine with Compose.
+
+##### 1. Create the tunnel
+
+Open the Cloudflare dashboard and navigate to:
+
+**Networking** → **Tunnels** → **Create tunnel**
+
+Give the tunnel a descriptive name, such as:
+
+```text
+logseq-sync
+```
+
+Choose **Docker** as the deployment environment. Cloudflare will display a command containing a long tunnel token after the `--token` argument of the command
+
+<div class="row justify-content-center mt-3">
+    <div class="col-sm-8 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/posts/self-hosting-logseq-sync/cloudflare-docker-tunnel.webp" class="img-fluid rounded z-depth-1 mx-auto d-block" width="70%" zoomable=true caption="Naming the tunnel, selecting Docker as the environment, and confirming a successful connection in the Cloudflare dashboard." %}
+    </div>
+</div>
+
+Copy only the token and add it to the `.env` file alongside the variables from step 2 above:
+
+```bash
+CLOUDFLARE_TUNNEL_TOKEN=<Copied from the docker run command>
+```
+
+Treat the tunnel token as a password. Do not commit the `.env` file to Git or publish it in your Compose file.
+
+##### 2. Create the Compose configuration
+
+Start from the `docker-compose.yml` in step 3 above. Change the `logseq-sync` service's `networks:` entry to `logseq-tunnel`, drop `nginx-proxy-manager_default`, and add a `cloudflared` service:
+
+```yaml
+services:
+  logseq-sync:
+    # ...unchanged from step 3 above...
+
+    networks:
+      - logseq-tunnel
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: logseq-cloudflared
+    restart: unless-stopped
+    pull_policy: always
+
+    command:
+      - tunnel
+      - --no-autoupdate
+      - run
+
+    environment:
+      TUNNEL_TOKEN: "${CLOUDFLARE_TUNNEL_TOKEN}"
+
+    depends_on:
+      - logseq-sync
+
+    networks:
+      - logseq-tunnel
+
+networks:
+  logseq-tunnel:
+```
+
+This configuration deliberately contains no `ports:` section. Neither container publishes a port on the Docker host; `logseq-sync` and `cloudflared` communicate only through the private `logseq-tunnel` Docker network.
+
+##### 3. Configure the published hostname
+
+Return to the tunnel in the Cloudflare dashboard and add a **Published application** route.
+
+Use the following values:
+
+| Setting             | Value                     |
+| -------------------- | ------------------------- |
+| Subdomain            | `logseq-sync`             |
+| Domain               | `example.com`             |
+| Path                 | *(leave empty)*           |
+| Service URL          | `http://logseq-sync:8787` |
+
+<div class="row justify-content-center mt-3">
+    <div class="col-sm-8 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/posts/self-hosting-logseq-sync/cloudflare-published-hostname.webp" class="img-fluid rounded z-depth-1 mx-auto d-block" width="70%" zoomable=true caption="Adding the published application route in the Cloudflare dashboard." %}
+    </div>
+</div>
+
+The service URL uses the Docker Compose service name, not the server's LAN address. Because `cloudflared` and `logseq-sync` share the same Docker network, `cloudflared` can resolve that name internally.
+
+The public URL must match `DB_SYNC_BASE_URL`:
+
+```text
+https://logseq-sync.example.com
+```
+
+Cloudflare terminates the public HTTPS connection. Communication between `cloudflared` and the Logseq container remains internal to the Docker host and therefore uses HTTP.
+
+##### 4. Start the containers
+
+From the deployment directory, run:
+
+```bash
+docker compose pull
+docker compose up -d
+```
+
+Check that both containers are running:
+
+```bash
+docker compose ps
+```
+
+You can inspect the tunnel connection with:
+
+```bash
+docker compose logs cloudflared
+```
+
+##### 5. Test the public endpoint
+
+Test the health endpoint through Cloudflare:
+
+```bash
+curl https://logseq-sync.example.com/health
+```
+
+It should return:
+
+```json
+{ "ok": true }
+```
+
+You can then enter the following as the custom Sync server URL in Logseq:
+
+```text
+https://logseq-sync.example.com
+```
+
+> <i class="fa-solid fa-circle-info info-icon"></i> A Cloudflare Tunnel avoids opening inbound ports, but the hostname is still publicly reachable through Cloudflare. Authentication is still provided by the Logseq account and Cognito configuration; the tunnel itself should not be treated as an authentication mechanism.
+
+> <i class="fa-solid fa-lightbulb tip-icon"></i> Cloudflare Tunnel supports WebSockets automatically, so there is no equivalent of NGINX Proxy Manager's **Websockets Support** switch to enable.
+
+> <i class="fa-solid fa-triangle-exclamation warning-icon"></i> Avoid placing an interactive Cloudflare Access login page in front of the Sync hostname unless you have verified that the Logseq client can complete that authentication flow. A browser-based challenge may prevent the desktop or mobile client from reaching the Sync API.
+
+##### Optional: bypass Cloudflare caching
+
+The Sync hostname serves changing API data rather than a conventional static website. To avoid unexpected caching behaviour, create a Cloudflare Cache Rule matching:
+
+```text
+Hostname equals logseq-sync.example.com
+```
+
+and set:
+
+```text
+Cache eligibility: Bypass cache
+```
+
+##### Upload-size limitation
+
+Traffic sent through a Cloudflare Tunnel is subject to Cloudflare's proxied request-size limits. Free and Pro zones currently allow request bodies of up to `100 MB`; larger individual asset uploads may return a `413 Payload Too Large` response.
 
 ### Connecting your Logseq clients
 
