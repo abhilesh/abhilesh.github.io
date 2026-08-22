@@ -444,12 +444,12 @@ Return to the tunnel in the Cloudflare dashboard and add a **Published applicati
 
 Use the following values:
 
-| Setting             | Value                     |
-| -------------------- | ------------------------- |
-| Subdomain            | `logseq-sync`             |
-| Domain               | `example.com`             |
-| Path                 | *(leave empty)*           |
-| Service URL          | `http://logseq-sync:8787` |
+| Setting     | Value                     |
+| ----------- | ------------------------- |
+| Subdomain   | `logseq-sync`             |
+| Domain      | `example.com`             |
+| Path        | _(leave empty)_           |
+| Service URL | `http://logseq-sync:8787` |
 
 <div class="row justify-content-center mt-3">
     <div class="col-sm-8 mt-3 mt-md-0">
@@ -622,9 +622,145 @@ You can see the Publish server in action in the [previous version of this guide]
 
 For most personal setups, Tailscale is the simplest place to start. If you later need the reverse proxy route or want to publish Logseq DB pages publicly, replace the Tailscale deployment with the reverse proxy route.
 
+### Backing Up Your Data
+
+The self-hosted Sync server has no built-in backup mechanism: everything a graph depends on (`data/index.sqlite`, each graph's `data/graphs/<graph-id>/db.sqlite`, and the files in `data/assets/`) lives only on your server. If that directory is lost, so are the graphs synced through it.
+
+[`logseq-sync-restic-backup`](https://github.com/abhilesh/logseq-sync-restic-backup) is a script I wrote to automate this with [restic](https://restic.net/), an encrypted, deduplicating backup tool. It briefly stops the Sync container, copies the live SQLite databases out with SQLite's own `.backup` command (so a WAL/SHM file mid-write can't corrupt the snapshot), restarts the container, then takes a restic snapshot of the copies plus `data/assets/`. Retention and, optionally, off-site replication with [rclone](https://rclone.org/) are handled from the same script.
+
+This works the same way regardless of which access route you chose above, since it operates on the `data/` directory and Compose file directly rather than on the Sync API.
+
+#### Prerequisites
+
+- **The Sync server already running**, from either the [Tailscale](#-private-access-over-tailscale) or [reverse proxy](#-public-access-through-a-reverse-proxy) setup above, so you have a `data/` directory and `docker-compose.yml` to point the backup script at.
+- **`restic`** and **`sqlite3`** installed on the machine running the backup (this can be the server itself, or another host with access to the same `data/` directory).
+- **`rclone`**, only if you want off-site replication.
+
+#### Setup
+
+1. **Install `restic` and `sqlite3`:**
+
+   ```bash
+   brew install restic sqlite
+   # or use your Linux distro's package manager
+   ```
+
+2. **Create a restic password file:**
+
+   ```bash
+   mkdir -p ~/.config/restic
+   printf '%s\n' 'YOUR-RESTIC-PASSWORD' > ~/.config/restic/logseq-sync-password
+   chmod 600 ~/.config/restic/logseq-sync-password
+   ```
+
+3. **Initialize a local restic repository:**
+
+   ```bash
+   restic -r /path/to/local/restic/repository \
+     --password-file ~/.config/restic/logseq-sync-password init
+   ```
+
+4. **Clone the backup repository and create your config:**
+
+   ```bash
+   git clone https://github.com/abhilesh/logseq-sync-restic-backup.git
+   cd logseq-sync-restic-backup
+   cp config.example.sh config.sh
+   chmod +x backup-logseq-sync.sh
+   ```
+
+5. **Edit `config.sh`** with the required variables:
+
+   | Variable              | Value                                                                                      |
+   | --------------------- | ------------------------------------------------------------------------------------------ |
+   | `DATA_DIR`            | Path to the Sync server's `data/` directory from the setup above                           |
+   | `COMPOSE_FILE`        | Absolute path to that deployment's `docker-compose.yml`                                    |
+   | `SERVICE_NAME`        | The Compose service name (`logseq-sync`, or check with `docker compose config --services`) |
+   | `LOG_FILE`            | Where the script should log to                                                             |
+   | `LOCAL_REPOSITORY`    | The restic repository path from step 3                                                     |
+   | `LOCAL_PASSWORD_FILE` | The password file from step 2                                                              |
+
+   > <i class="fa-solid fa-lightbulb tip-icon"></i> The retention policy (`KEEP_DAILY`/`KEEP_WEEKLY`/`KEEP_MONTHLY`/`KEEP_YEARLY`, defaulting to `7`/`4`/`6`/`1`) and the `BACKUP_TAG` used to tag snapshots are also configurable in `config.sh`, but have sensible defaults.
+
+6. **Run a backup manually to verify it works:**
+
+   ```bash
+   ./backup-logseq-sync.sh
+   ```
+
+#### Scheduling
+
+Once a manual run succeeds, schedule it with cron. Confirm the tools the script needs are on `PATH` for cron's environment:
+
+```bash
+command -v docker restic sqlite3
+```
+
+Then add the relevant lines from [`cron.example`](https://github.com/abhilesh/logseq-sync-restic-backup/blob/main/cron.example) via `crontab -e`; by default it runs nightly at 03:00.
+
+> <i class="fa-solid fa-triangle-exclamation warning-icon"></i> Don't run `crontab cron.example` directly, as that replaces your entire crontab. Copy the relevant line(s) into `crontab -e` instead.
+
+#### Optional: off-site replication
+
+To also copy snapshots off-site (e.g. Google Drive), install and configure `rclone`:
+
+```bash
+brew install rclone
+rclone config
+# create a remote, e.g. "gdrive"
+```
+
+Seed an off-site repository from your local one, so both share the same deduplication chunking:
+
+```bash
+restic -r "rclone:gdrive:logseq-sync-backups" \
+  --password-file ~/.config/restic/logseq-sync-offsite-password \
+  init --from-repo /path/to/local/restic/repository \
+  --from-password-file ~/.config/restic/logseq-sync-password \
+  --copy-chunker-params
+```
+
+Then set in `config.sh`:
+
+```bash
+ENABLE_OFFSITE_COPY=true
+OFFSITE_REPOSITORY="rclone:gdrive:logseq-sync-backups"
+OFFSITE_PASSWORD_FILE="$HOME/.config/restic/logseq-sync-offsite-password"
+```
+
+> <i class="fa-solid fa-circle-info info-icon"></i> restic also supports S3, SFTP, a REST server, Azure Blob, and Google Cloud Storage natively, without going through rclone.
+
+#### Verifying backups
+
+```bash
+cat ~/logs/restic-logseq-sync.log
+
+restic -r /path/to/local/restic/repository \
+  --password-file ~/.config/restic/logseq-sync-password \
+  snapshots --tag logseq-sync
+
+docker compose -f /path/to/docker-compose.yml ps
+```
+
+#### Restoring
+
+1. **Restore a snapshot to a scratch directory** first, rather than directly over live data:
+
+   ```bash
+   restic -r /path/to/local/restic/repository \
+     --password-file ~/.config/restic/logseq-sync-password \
+     restore <snapshot-id> --target ~/logseq-restore-test
+   ```
+
+2. **Stop the Sync container**, move the current `data/` directory aside, then copy the restored `index.sqlite`, each graph's `db.sqlite`, and `assets/` into its place.
+3. **Restart the container** and confirm your graphs sync correctly from a client.
+
+> <i class="fa-solid fa-triangle-exclamation warning-icon"></i> `config.sh`, the restic password file(s), and any cloud credentials contain secrets. Keep them out of version control. The repository's `.gitignore` covers the common cases, but double-check before committing if you fork or copy it.
+
 ### Useful Links
 
 - [Logseq Open Collective for Official Sync ("Backers" & "Sponsors")](https://opencollective.com/logseq)
 - [Logseq DB Documentation](https://github.com/logseq/docs/blob/master/db-version.md)
 - [Logseq DB Unofficial FAQ by Luhmann](https://logseq.io/page/e87c7359-51f7-44fe-87b3-4a0cd9f2dee3/695feeec-88be-4c5b-8bf2-572513c2f730)
 - [Logseq Discord Server](https://discord.gg/logseq-725182569297215569)
+- [`logseq-sync-restic-backup`](https://github.com/abhilesh/logseq-sync-restic-backup)
